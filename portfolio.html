@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Precious Olonade — Dev & Designer</title>
+<link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0A0A0A;--surface:#111111;--surface2:#181818;--border:#252525;
+  --text:#F0EDE8;--muted:#888880;--accent:#E8C547;--white:#FFFFFF;
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);
+  font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;
+}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1rem 2.5rem;background:rgba(10,10,10,0.88);
+  backdrop-filter:blur(16px);border-bottom:1px solid var(--border);
+}
+.nav-logo{
+  width:38px;height:38px;border-radius:50%;background:var(--surface2);
+  border:1px solid var(--border);display:flex;align-items:center;justify-content:center;
+  font-weight:700;font-size:0.8rem;color:var(--accent);text-decoration:none;letter-spacing:0.04em;
+}
+.nav-links{
+  display:flex;align-items:center;background:var(--surface2);
+  border:1px solid var(--border);border-radius:100px;padding:0.2rem;list-style:none;
+}
+.nav-links a{
+  display:block;padding:0.4rem 1rem;font-size:0.8125rem;color:var(--muted);
+  text-decoration:none;border-radius:100px;transition:all 0.2s;letter-spacing:0.02em;
+}
+.nav-links a:hover,.nav-links a.active{color:var(--text);background:var(--border)}
+.nav-cta{
+  padding:0.5rem 1.25rem;background:var(--text);color:var(--bg);
+  text-decoration:none;font-size:0.8125rem;font-weight:500;
+  border-radius:100px;transition:background 0.2s,transform 0.15s;
+}
+.nav-cta:hover{background:var(--accent);transform:translateY(-1px)}
+
+/* LAYOUT */
+.wrap{max-width:1160px;margin:0 auto;padding:0 2.5rem}
+
+/* HERO */
+.hero-outer{border-bottom:1px solid var(--border)}
+.hero{
+  min-height:100vh;display:grid;grid-template-columns:1fr 1fr;
+  align-items:center;gap:4rem;padding:7rem 0 5rem;
+}
+.hero-eyebrow{font-size:0.9375rem;color:var(--muted);font-weight:300;margin-bottom:0.75rem}
+.hero-eyebrow span{color:var(--text);font-weight:400}
+.hero h1{
+  font-family:'Arial Black','Arial',sans-serif;
+  font-size:clamp(2.75rem,5.5vw,4.5rem);
+  font-weight:900;line-height:1.0;letter-spacing:-0.03em;
+  margin-bottom:1.25rem;color:var(--white);
+}
+.hero h1 .hl{color:var(--accent);display:block}
+.hero-desc{font-size:1rem;color:var(--muted);font-weight:300;line-height:1.75;max-width:420px;margin-bottom:2rem}
+.hero-actions{display:flex;gap:0.875rem;flex-wrap:wrap;margin-bottom:2.5rem}
+.btn-solid{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  padding:0.7rem 1.5rem;background:var(--text);color:var(--bg);
+  text-decoration:none;font-size:0.875rem;font-weight:500;
+  border-radius:100px;transition:all 0.2s;
+}
+.btn-solid:hover{background:var(--accent);transform:translateY(-1px)}
+.btn-ghost{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  padding:0.7rem 1.5rem;border:1px solid var(--border);color:var(--muted);
+  text-decoration:none;font-size:0.875rem;border-radius:100px;transition:all 0.2s;
+}
+.btn-ghost:hover{border-color:var(--text);color:var(--text)}
+.socials{display:flex;gap:0.625rem}
+.soc-btn{
+  width:36px;height:36px;border:1px solid var(--border);border-radius:8px;
+  display:flex;align-items:center;justify-content:center;color:var(--muted);
+  text-decoration:none;font-size:0.75rem;font-weight:600;transition:all 0.2s;
+}
+.soc-btn:hover{border-color:var(--text);color:var(--text)}
+.photo-wrap{
+  width:100%;max-width:380px;aspect-ratio:3/4;
+  background:var(--surface);border:1px solid var(--border);border-radius:20px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:0.875rem;position:relative;overflow:hidden;
+}
+.photo-initials{
+  width:72px;height:72px;border-radius:50%;background:var(--surface2);
+  border:1px solid var(--border);display:flex;align-items:center;justify-content:center;
+  font-weight:700;font-size:1.375rem;color:var(--muted);
+}
+.photo-hint{font-size:0.8125rem;color:var(--muted);text-align:center;padding:0 2rem;letter-spacing:0.03em}
+.photo-hint small{display:block;font-size:0.6875rem;color:var(--border);margin-top:0.3rem}
+.location-badge{
+  position:absolute;bottom:1.25rem;left:50%;transform:translateX(-50%);
+  background:rgba(10,10,10,0.9);border:1px solid var(--border);border-radius:100px;
+  padding:0.45rem 1.1rem;font-size:0.75rem;color:var(--muted);white-space:nowrap;
+}
+.location-badge span{color:var(--accent);font-weight:500}
+
+/* STATS */
+.stats-bar{border-bottom:1px solid var(--border);display:grid;grid-template-columns:repeat(4,1fr)}
+.stat-cell{padding:1.75rem;border-right:1px solid var(--border);text-align:center}
+.stat-cell:last-child{border-right:none}
+.stat-num{font-weight:900;font-family:'Arial Black','Arial',sans-serif;font-size:2rem;color:var(--white);letter-spacing:-0.02em}
+.stat-label{font-size:0.8rem;color:var(--muted);margin-top:0.2rem;letter-spacing:0.03em}
+
+/* SECTIONS */
+section{padding:5rem 0;border-bottom:1px solid var(--border)}
+.sec-eyebrow{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--muted);font-weight:500;margin-bottom:1.1rem;
+}
+.sec-eyebrow::before{content:'';width:18px;height:1px;background:var(--border)}
+.sec-h2{
+  font-family:'Arial Black','Arial',sans-serif;
+  font-size:clamp(1.75rem,3vw,2.5rem);
+  font-weight:900;letter-spacing:-0.025em;color:var(--white);margin-bottom:0.5rem;
+}
+.sec-sub{font-size:0.9375rem;color:var(--muted);font-weight:300;margin-bottom:3rem;max-width:480px}
+
+/* SERVICES */
+.svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border)}
+.svc-card{background:var(--surface);padding:1.75rem;transition:background 0.2s}
+.svc-card:hover{background:var(--surface2)}
+.svc-ico{
+  width:40px;height:40px;border:1px solid var(--border);border-radius:9px;
+  display:flex;align-items:center;justify-content:center;font-size:1rem;margin-bottom:1.25rem;
+}
+.svc-card h3{font-weight:600;font-size:0.9375rem;color:var(--white);margin-bottom:0.625rem}
+.svc-card p{font-size:0.875rem;color:var(--muted);font-weight:300;line-height:1.65;margin-bottom:1.25rem}
+.svc-items{display:flex;flex-direction:column;gap:0.4rem}
+.svc-item{
+  padding:0.35rem 0.75rem;background:var(--surface2);border:1px solid var(--border);
+  border-radius:6px;font-size:0.8rem;color:var(--muted);
+}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+.about-text p{font-size:0.9375rem;color:var(--muted);font-weight:300;line-height:1.8;margin-bottom:1.25rem}
+.about-text p strong{color:var(--text);font-weight:500}
+.approach{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-top:1.5rem}
+.ap-cell{background:var(--surface);padding:1.1rem;display:flex;align-items:flex-start;gap:0.625rem}
+.ap-num{font-size:0.75rem;font-weight:700;color:var(--accent);min-width:1.25rem;margin-top:2px}
+.ap-cell p{font-size:0.85rem;color:var(--muted);font-weight:300}
+.skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.sk-block{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.1rem}
+.sk-block h4{font-size:0.75rem;color:var(--muted);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:0.75rem}
+.tag-row{display:flex;flex-wrap:wrap;gap:0.35rem}
+.stag{
+  padding:0.275rem 0.7rem;background:var(--surface2);border:1px solid var(--border);
+  border-radius:100px;font-size:0.75rem;color:var(--text);
+}
+
+/* DESIGNS */
+.designs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.design-card{
+  background:var(--surface);border:1px solid var(--border);border-radius:14px;
+  overflow:hidden;transition:transform 0.25s,border-color 0.2s;cursor:pointer;
+}
+.design-card:hover{transform:translateY(-4px);border-color:#383838}
+.design-thumb{
+  width:100%;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;
+  font-size:2.25rem;position:relative;
+}
+.dt-brand{background:#1C1408}
+.dt-social{background:#0A0F1C}
+.dt-poster{background:#100A1C}
+.dt-flyer{background:#0A1410}
+.dt-banner{background:#1C100A}
+.dt-canva{background:#0F0F0F;border-bottom:1px solid var(--border)}
+.design-info{padding:1rem 1.25rem 1.25rem}
+.design-info h3{font-size:0.9375rem;font-weight:500;color:var(--white);margin-bottom:0.25rem}
+.design-info p{font-size:0.8125rem;color:var(--muted)}
+.design-note{
+  background:var(--surface);border:1px solid var(--border);border-radius:12px;
+  padding:1.25rem 1.5rem;margin-top:1.5rem;
+  display:flex;align-items:center;gap:1rem;
+}
+.design-note-icon{font-size:1.25rem;flex-shrink:0}
+.design-note p{font-size:0.875rem;color:var(--muted);font-weight:300;line-height:1.65}
+.design-note p strong{color:var(--text);font-weight:500}
+
+/* PROJECTS */
+.proj-list{display:flex;flex-direction:column;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:14px;overflow:hidden}
+.proj-row{
+  background:var(--surface);padding:1.625rem 2rem;
+  display:grid;grid-template-columns:auto 1fr auto auto;align-items:center;gap:2rem;
+  text-decoration:none;color:inherit;transition:background 0.2s;
+}
+.proj-row:hover{background:var(--surface2)}
+.proj-n{font-weight:900;font-family:'Arial Black','Arial',sans-serif;font-size:1rem;color:var(--accent);min-width:2rem}
+.proj-row h3{font-size:0.9375rem;font-weight:500;color:var(--white);margin-bottom:0.25rem}
+.proj-row p{font-size:0.85rem;color:var(--muted);font-weight:300}
+.proj-tags{display:flex;gap:0.35rem;flex-wrap:wrap}
+.ptag{padding:0.25rem 0.625rem;background:var(--surface2);border:1px solid var(--border);border-radius:100px;font-size:0.75rem;color:var(--muted)}
+.proj-arrow{font-size:1rem;color:var(--border);transition:all 0.2s}
+.proj-row:hover .proj-arrow{color:var(--text);transform:translate(3px,-3px)}
+
+/* EXPERIENCE */
+.exp-item{padding:2rem 0;border-bottom:1px solid var(--border);display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:start}
+.exp-item:last-child{border-bottom:none}
+.exp-role{font-weight:600;font-size:1.0625rem;color:var(--white);margin-bottom:0.2rem}
+.exp-company{font-size:0.9rem;color:var(--accent);margin-bottom:0.5rem}
+.exp-desc{font-size:0.875rem;color:var(--muted);font-weight:300;line-height:1.7}
+.exp-date{font-size:0.8rem;color:var(--muted);text-align:right;white-space:nowrap;padding-top:3px}
+.exp-date small{display:block;color:#3a3a3a;margin-top:0.2rem}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.contact-headline{
+  font-family:'Arial Black','Arial',sans-serif;
+  font-size:clamp(2rem,4vw,3.25rem);font-weight:900;line-height:1.05;
+  color:var(--white);letter-spacing:-0.03em;margin-bottom:1.25rem;
+}
+.contact-headline em{font-style:italic;color:var(--accent)}
+.contact-desc{font-size:0.9375rem;color:var(--muted);font-weight:300;line-height:1.75}
+.clink-list{display:flex;flex-direction:column;gap:0.75rem}
+.clink{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1rem 1.25rem;background:var(--surface);border:1px solid var(--border);
+  border-radius:10px;text-decoration:none;color:inherit;transition:all 0.2s;
+}
+.clink:hover{background:var(--surface2);border-color:var(--text)}
+.clink-label{font-size:0.75rem;color:var(--muted);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:0.2rem}
+.clink-val{font-size:0.9rem;color:var(--text)}
+.clink-arr{color:var(--border);transition:all 0.2s}
+.clink:hover .clink-arr{color:var(--text);transform:translate(3px,-3px)}
+
+/* FOOTER */
+footer{padding:2rem 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.ft-name{font-weight:700;color:var(--white);font-size:0.9375rem}
+.ft-copy{font-size:0.8rem;color:var(--muted)}
+
+/* ANIMATIONS */
+.fu{}
+
+
+/* RESPONSIVE */
+@media(max-width:960px){
+  .hero{grid-template-columns:1fr;min-height:auto;padding:7rem 0 4rem}
+  .photo-wrap{display:none}
+  .about-grid,.contact-grid{grid-template-columns:1fr;gap:2.5rem}
+  .skills-grid{grid-template-columns:1fr}
+  .approach{grid-template-columns:1fr}
+  .stats-bar{grid-template-columns:1fr 1fr}
+  .stat-cell:nth-child(2){border-right:none}
+  .stat-cell:nth-child(3){border-top:1px solid var(--border)}
+  .svc-grid{grid-template-columns:1fr 1fr}
+  .designs-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:640px){
+  nav{padding:0.875rem 1.25rem}
+  .nav-links{display:none}
+  .wrap{padding:0 1.25rem}
+  .svc-grid,.designs-grid{grid-template-columns:1fr}
+  .proj-row{grid-template-columns:auto 1fr;gap:1rem}
+  .proj-tags,.proj-arrow{display:none}
+  .exp-item{grid-template-columns:1fr;gap:0.5rem}
+  .exp-date{text-align:left}
+  footer{flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#home" class="nav-logo">PO</a>
+  <ul class="nav-links">
+    <li><a href="#home" class="active">Home</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#designs">Designs</a></li>
+    <li><a href="#projects">Projects</a></li>
+  </ul>
+  <a href="/cdn-cgi/l/email-protection#84f7e1e3f1eaebe8ebeae5e0e1c4e3e9e5ede8aae7ebe9" class="nav-cta">Let's Talk</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero-outer">
+  <div class="wrap">
+    <div class="hero" id="home">
+      <div class="fu">
+        <p class="hero-eyebrow">I am <span>Precious Olonade</span></p>
+        <h1>CS Student,<br><span class="hl">Dev & Designer</span></h1>
+        <p class="hero-desc">I turn ideas into fast, functional web apps. CS student by day, building real products at night — from full-stack letter platforms to movie discovery engines.</p>
+        <div class="hero-actions">
+          <a href="#projects" class="btn-solid">View Projects</a>
+          <a href="https://github.com/preshdevops" target="_blank" class="btn-ghost">GitHub ↗</a>
+        </div>
+        <div class="socials">
+          <a href="https://github.com/preshdevops" target="_blank" class="soc-btn" title="GitHub">GH</a>
+          <a href="/cdn-cgi/l/email-protection#592a3c3e2c3736353637383d3c193e34383035773a3634" class="soc-btn" title="Email">@</a>
+          <a href="https://cinevault-app.netlify.app" target="_blank" class="soc-btn" title="CineVault">↗</a>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:flex-end" class="fu">
+        <div class="photo-wrap">
+          <div class="photo-initials">PO</div>
+          <p class="photo-hint">Add your photo here<small>Replace div with &lt;img src="photo.jpg" style="width:100%;height:100%;object-fit:cover"&gt;</small></p>
+          <div class="location-badge">Based in <span>Osogbo, Nigeria</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-bar fu">
+  <div class="stat-cell"><div class="stat-num">05+</div><div class="stat-label">Projects Built</div></div>
+  <div class="stat-cell"><div class="stat-num">3+</div><div class="stat-label">Years Coding</div></div>
+  <div class="stat-cell"><div class="stat-num">CS</div><div class="stat-label">Osun State University</div></div>
+  <div class="stat-cell"><div class="stat-num">NG</div><div class="stat-label">Nigeria</div></div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="wrap">
+    <div class="fu"><div class="sec-eyebrow">What I do</div><h2 class="sec-h2">Services</h2><p class="sec-sub">Building clean, scalable digital experiences for the web</p></div>
+  </div>
+  <div style="padding:0 2.5rem;max-width:1160px;margin:0 auto" class="fu">
+    <div class="svc-grid">
+      <div class="svc-card"><div class="svc-ico">🌐</div><h3>Web Development</h3><p>Responsive, fast websites using HTML, CSS and JavaScript. Landing pages to full apps.</p><div class="svc-items"><div class="svc-item">HTML5 & CSS3</div><div class="svc-item">Vanilla JavaScript</div><div class="svc-item">Responsive design</div></div></div>
+      <div class="svc-card"><div class="svc-ico">🎨</div><h3>UI/UX Design</h3><p>Figma-based design systems translated into pixel-perfect, well-structured interfaces.</p><div class="svc-items"><div class="svc-item">Figma design</div><div class="svc-item">UI/UX principles</div><div class="svc-item">Component systems</div></div></div>
+      <div class="svc-card"><div class="svc-ico">⚡</div><h3>API Integration</h3><p>Connecting apps to live data using RESTful APIs. Dynamic content, real-time fetching.</p><div class="svc-items"><div class="svc-item">REST APIs</div><div class="svc-item">Async JS / Fetch</div><div class="svc-item">TMDB / OMDb</div></div></div>
+      <div class="svc-card"><div class="svc-ico">🐍</div><h3>Python Apps</h3><p>Desktop and backend apps in Python — currency converters, Django-based frameworks.</p><div class="svc-items"><div class="svc-item">Python</div><div class="svc-item">Django</div><div class="svc-item">Desktop apps</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <div class="fu"><div class="sec-eyebrow">About me</div><h2 class="sec-h2">Motivated. Building. Growing.</h2></div>
+    <div class="about-grid" style="margin-top:3rem">
+      <div class="fu">
+        <div class="about-text">
+          <p>I'm <strong>Precious Oluwasegun Olonade</strong> — a CS student at <strong>Osun State University</strong> and a software developer currently working at <strong>Hiit Plc</strong>. I build things for the web that actually work.</p>
+          <p>My stack spans <strong>JavaScript, React, Python and Node.js</strong>. I care about clean architecture, good UI, and shipping products that feel polished — whether it's a movie platform with API integration or a full letter-delivery app with email tracking.</p>
+          <p>I also do <strong>graphic design and social media strategy</strong> — giving me a rare edge where I can handle both the visual and technical side of a project.</p>
+        </div>
+        <p style="font-size:0.8rem;color:var(--muted);margin:1.5rem 0 0.75rem;text-transform:uppercase;letter-spacing:0.06em">My approach</p>
+        <div class="approach">
+          <div class="ap-cell"><span class="ap-num">01</span><p>Understand the goal and user needs first</p></div>
+          <div class="ap-cell"><span class="ap-num">02</span><p>Create clean, intuitive layouts</p></div>
+          <div class="ap-cell"><span class="ap-num">03</span><p>Build responsive, accessible experiences</p></div>
+        </div>
+      </div>
+      <div class="fu">
+        <p style="font-weight:600;font-size:1rem;color:var(--white);margin-bottom:1.25rem">Skills & tools</p>
+        <div class="skills-grid">
+          <div class="sk-block"><h4>Frontend</h4><div class="tag-row"><span class="stag">HTML5</span><span class="stag">CSS3</span><span class="stag">JavaScript</span><span class="stag">Flexbox</span><span class="stag">Grid</span></div></div>
+          <div class="sk-block"><h4>Backend</h4><div class="tag-row"><span class="stag">Python</span><span class="stag">Django</span><span class="stag">REST APIs</span></div></div>
+          <div class="sk-block"><h4>Design</h4><div class="tag-row"><span class="stag">Figma</span><span class="stag">Canva</span><span class="stag">UI/UX</span></div></div>
+          <div class="sk-block"><h4>Tools</h4><div class="tag-row"><span class="stag">Git</span><span class="stag">VS Code</span><span class="stag">Netlify</span><span class="stag">GitHub</span></div></div>
+        </div>
+        <div class="sk-block" style="margin-top:1rem"><h4>Microsoft & Google</h4><div class="tag-row"><span class="stag">Word</span><span class="stag">Excel</span><span class="stag">PowerPoint</span><span class="stag">Google Analytics</span><span class="stag">Google Ads</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GRAPHIC DESIGNS -->
+<section id="designs">
+  <div class="wrap">
+    <div class="fu"><div class="sec-eyebrow">Visual work</div><h2 class="sec-h2">Graphic designs</h2><p class="sec-sub">Brand visuals, social media graphics, and print design</p></div>
+    <div class="designs-grid fu">
+
+      <div class="design-card">
+        <div class="design-thumb dt-brand">🎨</div>
+        <div class="design-info"><h3>Brand Identity</h3><p>Logo design & visual identity systems</p></div>
+      </div>
+
+      <div class="design-card">
+        <div class="design-thumb dt-social">📱</div>
+        <div class="design-info"><h3>Social Media Graphics</h3><p>Campaigns, posts & reusable templates</p></div>
+      </div>
+
+      <div class="design-card">
+        <div class="design-thumb dt-poster">🖼️</div>
+        <div class="design-info"><h3>Poster Design</h3><p>Event posters & promotional artwork</p></div>
+      </div>
+
+      <div class="design-card">
+        <div class="design-thumb dt-flyer">📄</div>
+        <div class="design-info"><h3>Flyers & Print</h3><p>Digital & print-ready flyer layouts</p></div>
+      </div>
+
+      <div class="design-card">
+        <div class="design-thumb dt-banner">🏷️</div>
+        <div class="design-info"><h3>Banners & Headers</h3><p>Web banners, covers & profile headers</p></div>
+      </div>
+
+      <div class="design-card">
+        <div class="design-thumb dt-canva" style="flex-direction:column;gap:0.5rem">
+          <span style="font-size:2rem">✦</span>
+          <span style="font-size:0.75rem;color:var(--muted);letter-spacing:0.05em;text-transform:uppercase">Canva</span>
+        </div>
+        <div class="design-info"><h3>Canva Design Work</h3><p>Templates, media graphics & creative content</p></div>
+      </div>
+
+    </div>
+
+    <!-- placeholder note -->
+    <div class="design-note fu">
+      <span class="design-note-icon">💡</span>
+      <p>To add your actual designs, replace the emoji thumbnails with <strong>&lt;img src="your-design.jpg"&gt;</strong> inside each <strong>.design-thumb</strong> div. You can also link each card to a Behance project or Google Drive folder by wrapping the card in an <strong>&lt;a href="..."&gt;</strong> tag.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="wrap">
+    <div class="fu"><div class="sec-eyebrow">What I've built</div><h2 class="sec-h2">Projects</h2><p class="sec-sub">Live projects — APIs, responsive design, real functionality</p></div>
+    <div class="proj-list fu">
+      <a href="https://cinevault-app.netlify.app" target="_blank" class="proj-row">
+        <span class="proj-n">01</span>
+        <div><h3>CineVault</h3><p>Movie discovery platform — browse films, search actors, manage a watchlist. Figma-designed, API-ready, fully responsive.</p></div>
+        <div class="proj-tags"><span class="ptag">JavaScript</span><span class="ptag">REST API</span><span class="ptag">Figma</span></div>
+        <span class="proj-arrow">↗</span>
+      </a>
+
+      <a href="https://editorial-muse.onrender.com" target="_blank" class="proj-row">
+        <span class="proj-n">02</span>
+        <div><h3>Editorial Muse</h3><p>Full letter-writing app — compose styled letters, deliver via email, track when they're opened. Backend on Render.</p></div>
+        <div class="proj-tags"><span class="ptag">JavaScript</span><span class="ptag">Node.js</span><span class="ptag">Email API</span></div>
+        <span class="proj-arrow">↗</span>
+      </a>
+      <a href="https://github.com/preshdevops/Blog-Site" target="_blank" class="proj-row">
+        <span class="proj-n">03</span>
+        <div><h3>Blog Site</h3><p>Personal blog with article layout, navigation, and responsive design for long-form content.</p></div>
+        <div class="proj-tags"><span class="ptag">JavaScript</span><span class="ptag">Frontend</span></div>
+        <span class="proj-arrow">↗</span>
+      </a>
+
+      <a href="https://github.com/preshdevops/currency_desktop_app" target="_blank" class="proj-row">
+        <span class="proj-n">04</span>
+        <div><h3>Currency Converter</h3><p>Desktop currency conversion app built in Python with real exchange rate logic and a clean interface.</p></div>
+        <div class="proj-tags"><span class="ptag">Python</span><span class="ptag">Tkinter</span></div>
+        <span class="proj-arrow">↗</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section>
+  <div class="wrap">
+    <div class="fu"><div class="sec-eyebrow">Experience & education</div><h2 class="sec-h2">Background</h2></div>
+    <div style="margin-top:2.5rem" class="fu">
+
+      <div class="exp-item">
+        <div>
+          <div class="exp-role">Programmer</div>
+          <div class="exp-company">Hiit Plc</div>
+          <div class="exp-desc">Software development role applying web and programming skills in a professional environment.</div>
+        </div>
+        <div class="exp-date">Apr 2025 — Nov 2025<small>Lagos, Nigeria</small></div>
+      </div>
+
+      <div class="exp-item">
+        <div>
+          <div class="exp-role">Graphics Designer & Social Media Manager</div>
+          <div class="exp-company">Osogbo Peace Club of Nigeria</div>
+          <div class="exp-desc">Creating visual content including flyers, posters, and social media graphics. Managing social media presence, developing content strategies, and growing community engagement across platforms.</div>
+        </div>
+        <div class="exp-date"><!-- Dates --><small>Nigeria</small></div>
+      </div>
+
+      <div class="exp-item">
+        <div>
+          <div class="exp-role">B.Sc. Computer Science</div>
+          <div class="exp-company">Osun State University</div>
+          <div class="exp-desc">Studying computer science with a focus on web development and software engineering. Building real products alongside my degree.</div>
+        </div>
+        <div class="exp-date">Nov 2022 — Present<small>Osogbo, Nigeria</small></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-grid fu">
+      <div>
+        <div class="sec-eyebrow">Say hello</div>
+        <div class="contact-headline">Let's build<br><em>something</em><br>together.</div>
+        <p class="contact-desc">Open to freelance projects, collaborations and interesting conversations. Based in Nigeria, working with people anywhere.</p>
+      </div>
+      <div class="clink-list">
+        <a href="/cdn-cgi/l/email-protection#c4b7a1a3b1aaaba8abaaa5a0a184a3a9a5ada8eaa7aba9" class="clink">
+          <div><div class="clink-label">Email</div><div class="clink-val"><span class="__cf_email__" data-cfemail="61120406140f0e0d0e0f00050421060c00080d4f020e0c">[email&#160;protected]</span></div></div>
+          <span class="clink-arr">↗</span>
+        </a>
+        <a href="https://github.com/preshdevops" target="_blank" class="clink">
+          <div><div class="clink-label">GitHub</div><div class="clink-val">github.com/preshdevops</div></div>
+          <span class="clink-arr">↗</span>
+        </a>
+        <a href="https://www.instagram.com/precious_segun/" target="_blank" class="clink">
+          <div><div class="clink-label">Instagram</div><div class="clink-val">@precious_segun</div></div>
+          <span class="clink-arr">↗</span>
+        </a>
+        <a href="tel:+2348065963265" class="clink">
+          <div><div class="clink-label">Phone</div><div class="clink-val">+234 911 648 9585</div></div>
+          <span class="clink-arr">↗</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div style="border-top:1px solid var(--border)">
+  <div class="wrap">
+    <footer>
+      <span class="ft-name">Precious Olonade</span>
+      <span class="ft-copy">© 2026 — CS Student, Developer & Designer · Osogbo, Nigeria</span>
+    </footer>
+  </div>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+const obs=new IntersectionObserver((entries)=>{
+  entries.forEach((e,i)=>{if(e.isIntersecting)setTimeout(()=>e.target.classList.add('in'),i*70)});
+},{threshold:0.08});
+document.querySelectorAll('.fu').forEach(el=>obs.observe(el));
+const secs=document.query
