@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://precious-olonade.netlify.app/sitemap.xml
