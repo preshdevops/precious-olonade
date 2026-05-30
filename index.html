@@ -219,6 +219,247 @@
       .exp-date{text-align:left}
       footer{flex-direction:column;align-items:flex-start}
     }
+    
+    /* Spotify Currently Playing Widget */
+    .spotify-card {
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 0.75rem 1.25rem 0.75rem 0.75rem;
+      margin-top: 2rem;
+      text-decoration: none;
+      color: var(--text);
+      max-width: 380px;
+      width: 100%;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+    }
+    .spotify-card:hover {
+      border-color: #1DB954;
+      background: var(--surface2);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 30px rgba(29, 185, 84, 0.15);
+    }
+    .spotify-art-wrap {
+      position: relative;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid var(--border);
+      flex-shrink: 0;
+      transition: border-color 0.3s;
+    }
+    .spotify-card:hover .spotify-art-wrap {
+      border-color: #1DB954;
+    }
+    .spotify-art-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .spotify-disc-hole {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 10px;
+      height: 10px;
+      background: var(--bg);
+      border-radius: 50%;
+      border: 2px solid var(--border);
+      display: none;
+    }
+    .spotify-card.is-playing .spotify-disc-hole {
+      display: block;
+    }
+    .spotify-card.is-playing .spotify-art-wrap img {
+      animation: spin 8s linear infinite;
+    }
+    .spotify-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      flex-grow: 1;
+      overflow: hidden;
+    }
+    .spotify-status {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .status-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--muted);
+      transition: background 0.3s;
+    }
+    .spotify-card.is-playing .status-dot {
+      background: #1DB954;
+      box-shadow: 0 0 8px #1DB954;
+      animation: pulse 1.5s infinite alternate;
+    }
+    .spotify-card.is-playing .spotify-status {
+      color: #1DB954;
+    }
+    .spotify-track-container {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    .spotify-title {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--white);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .spotify-artist {
+      font-size: 0.75rem;
+      color: var(--muted);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    /* Animated Equalizer */
+    .spotify-eq {
+      display: flex;
+      align-items: flex-end;
+      gap: 3px;
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+    }
+    .eq-bar {
+      width: 3px;
+      height: 3px;
+      background: var(--muted);
+      border-radius: 3px;
+      transition: all 0.3s;
+    }
+    .spotify-card.is-playing .eq-bar {
+      background: #1DB954;
+      animation: bounce 1.2s ease-in-out infinite;
+    }
+    .spotify-card.is-playing .eq-bar:nth-child(1) { animation-delay: 0.1s; animation-duration: 1.0s; }
+    .spotify-card.is-playing .eq-bar:nth-child(2) { animation-delay: 0.4s; animation-duration: 1.4s; height: 16px; }
+    .spotify-card.is-playing .eq-bar:nth-child(3) { animation-delay: 0.2s; animation-duration: 1.2s; height: 10px; }
+    .spotify-card.is-playing .eq-bar:nth-child(4) { animation-delay: 0.6s; animation-duration: 0.8s; height: 14px; }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    @keyframes pulse {
+      from { opacity: 0.6; }
+      to { opacity: 1; }
+    }
+    @keyframes bounce {
+      0%, 100% { height: 3px; }
+      50% { height: 20px; }
+    }
+
+    /* Blog Section */
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .blog-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.75rem;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .blog-card:hover {
+      border-color: var(--accent);
+      background: var(--surface2);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px rgba(232, 197, 71, 0.05);
+    }
+    .blog-card-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+    .blog-card-category {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      padding: 0.25rem 0.625rem;
+      border-radius: 100px;
+      color: var(--accent);
+      font-weight: 500;
+    }
+    .blog-card h3 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 0.75rem;
+      line-height: 1.4;
+      transition: color 0.2s;
+    }
+    .blog-card:hover h3 {
+      color: var(--accent);
+    }
+    .blog-card-excerpt {
+      font-size: 0.875rem;
+      color: var(--muted);
+      font-weight: 300;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
+    }
+    .blog-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      padding-top: 1rem;
+    }
+    .blog-card-readmore {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      color: var(--text);
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .blog-card:hover .blog-card-readmore {
+      color: var(--accent);
+    }
+
+    @media(max-width:960px){
+      .blog-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media(max-width:640px){
+      .blog-grid {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 <body>
@@ -230,6 +471,7 @@
     <li><a href="#services">Services</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#projects">Projects</a></li>
+    <li><a href="#blog">Blog</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <a href="mailto:segunolonade03@gmail.com" class="nav-cta">Let's Talk</a>
@@ -252,6 +494,30 @@
           <a href="mailto:segunolonade03@gmail.com" class="soc-btn">@</a>
           <a href="#" class="soc-btn">↗</a>
         </div>
+        
+        <!-- Spotify Currently Playing Widget -->
+        <a id="spotify-widget" href="https://open.spotify.com" target="_blank" class="spotify-card">
+          <div class="spotify-art-wrap">
+            <img id="spotify-art" src="assets/spotify-placeholder.png" alt="Album Art">
+            <div class="spotify-disc-hole"></div>
+          </div>
+          <div class="spotify-info">
+            <div class="spotify-status">
+              <span id="spotify-status-dot" class="status-dot"></span>
+              <span id="spotify-status-text">Offline</span>
+            </div>
+            <div class="spotify-track-container">
+              <div id="spotify-title" class="spotify-title">Not listening to anything</div>
+              <div id="spotify-artist" class="spotify-artist">Spotify</div>
+            </div>
+          </div>
+          <div class="spotify-eq">
+            <span class="eq-bar"></span>
+            <span class="eq-bar"></span>
+            <span class="eq-bar"></span>
+            <span class="eq-bar"></span>
+          </div>
+        </a>
       </div>
       <div style="display:flex;justify-content:flex-end">
         <div class="photo-wrap">
@@ -345,6 +611,23 @@
   </div>
 </section>
 
+<!-- BLOG -->
+<section id="blog">
+  <div class="wrap">
+    <div class="sec-eyebrow">Writing</div>
+    <h2 class="sec-h2">Blog</h2>
+    <p class="sec-sub">Thoughts on faith, football, tech, and culture. Read the full blog at <a href="https://preciouswrites.vercel.app" target="_blank" style="color:var(--accent);text-decoration:underline;">preciouswrites.vercel.app</a></p>
+    
+    <div class="blog-grid" id="blog-posts-container">
+      <!-- Blog cards will be rendered here dynamically or statically -->
+    </div>
+    
+    <div style="text-align:center;margin-top:3rem;">
+      <a href="https://preciouswrites.vercel.app" target="_blank" class="btn-ghost">Visit Full Blog ↗</a>
+    </div>
+  </div>
+</section>
+
 <!-- CONTACT -->
 <section id="contact">
   <div class="wrap">
@@ -378,6 +661,140 @@
     <span class="ft-copy">© 2026 · Built with care</span>
   </footer>
 </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const spotifyWidget = document.getElementById('spotify-widget');
+    const spotifyArt = document.getElementById('spotify-art');
+    const spotifyStatusText = document.getElementById('spotify-status-text');
+    const spotifyTitle = document.getElementById('spotify-title');
+    const spotifyArtist = document.getElementById('spotify-artist');
+
+    async function updateSpotify() {
+      try {
+        // Fetch Spotify currently playing data from our serverless function
+        const res = await fetch('/.netlify/functions/spotify');
+        if (!res.ok) throw new Error('API Error');
+        const data = await res.json();
+
+        if (data.isPlaying) {
+          spotifyWidget.classList.add('is-playing');
+          spotifyWidget.href = data.url;
+          spotifyArt.src = data.albumArt || 'assets/spotify-placeholder.png';
+          spotifyStatusText.innerText = 'Now Playing';
+          spotifyTitle.innerText = data.title;
+          spotifyArtist.innerText = data.artist;
+        } else if (data.title) {
+          // Recently played fallback
+          spotifyWidget.classList.remove('is-playing');
+          spotifyWidget.href = data.url;
+          spotifyArt.src = data.albumArt || 'assets/spotify-placeholder.png';
+          spotifyStatusText.innerText = 'Recently Played';
+          spotifyTitle.innerText = data.title;
+          spotifyArtist.innerText = data.artist;
+        } else {
+          // Offline entirely
+          spotifyWidget.classList.remove('is-playing');
+          spotifyWidget.href = 'https://open.spotify.com';
+          spotifyArt.src = 'assets/spotify-placeholder.png';
+          spotifyStatusText.innerText = 'Offline';
+          spotifyTitle.innerText = 'Not listening to anything';
+          spotifyArtist.innerText = 'Spotify';
+        }
+      } catch (err) {
+        console.error('Error fetching Spotify status:', err);
+      }
+    }
+
+    // Run immediately and poll every 15 seconds
+    updateSpotify();
+    setInterval(updateSpotify, 15000);
+
+    // Blog Loader
+    const blogPostsContainer = document.getElementById('blog-posts-container');
+    const staticBlogPosts = [
+      {
+        slug: "god-first",
+        title: "God First",
+        excerpt: "Not a slogan. Not a caption. Just the only order that makes sense when everything else is noise.",
+        date: "May 28, 2026",
+        category: "Faith",
+        readingTime: "2 min read"
+      },
+      {
+        slug: "cunha-and-mbeumo-era",
+        title: "The Cunha and Mbeumo Era",
+        excerpt: "We went from Garnacho and Antony to actual quality. Man United fans are not used to this feeling.",
+        date: "May 22, 2026",
+        category: "Football",
+        readingTime: "2 min read"
+      },
+      {
+        slug: "watching-below-1080p-should-be-illegal",
+        title: "Watching Movies Below 1080p Should Be Illegal",
+        excerpt: "The Map that leads to you had one of the best cinematography in 2025. You can't experience that in 480p.",
+        date: "May 14, 2026",
+        category: "Culture",
+        readingTime: "2 min read"
+      }
+    ];
+
+    function renderBlogPosts(posts) {
+      if (!blogPostsContainer) return;
+      blogPostsContainer.innerHTML = '';
+      
+      const latestPosts = posts.slice(0, 3);
+      latestPosts.forEach(post => {
+        const card = document.createElement('a');
+        card.href = `https://preciouswrites.vercel.app/blog/${post.slug}`;
+        card.target = '_blank';
+        card.className = 'blog-card';
+        
+        card.innerHTML = `
+          <div>
+            <div class="blog-card-meta">
+              <span class="blog-card-category">${post.category}</span>
+              <span>${post.date}</span>
+            </div>
+            <h3>${post.title}</h3>
+            <p class="blog-card-excerpt">${post.excerpt}</p>
+          </div>
+          <div class="blog-card-footer">
+            <span>${post.readingTime || '2 min read'}</span>
+            <span class="blog-card-readmore">Read post <span style="transition: transform 0.2s; display: inline-block;">→</span></span>
+          </div>
+        `;
+        
+        card.addEventListener('mouseenter', () => {
+          const arr = card.querySelector('.blog-card-readmore span');
+          if (arr) arr.style.transform = 'translateX(4px)';
+        });
+        card.addEventListener('mouseleave', () => {
+          const arr = card.querySelector('.blog-card-readmore span');
+          if (arr) arr.style.transform = 'translateX(0)';
+        });
+        
+        blogPostsContainer.appendChild(card);
+      });
+    }
+
+    async function loadBlogPosts() {
+      renderBlogPosts(staticBlogPosts);
+      try {
+        const res = await fetch('https://preciouswrites.vercel.app/api/posts');
+        if (!res.ok) throw new Error('API Error');
+        const data = await res.json();
+        if (data && data.posts && data.posts.length > 0) {
+          renderBlogPosts(data.posts);
+        }
+      } catch (err) {
+        console.warn('Could not load live blog posts, using fallback:', err);
+      }
+    }
+    
+    loadBlogPosts();
+  });
+</script>
 
 </body>
 </html>

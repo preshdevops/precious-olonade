@@ -1,0 +1,5 @@
+.env
+spotify-config.json
+node_modules/
+.netlify/
+dist/
