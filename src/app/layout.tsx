@@ -2,12 +2,12 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Precious Olonade — Son & Potter | Full-Stack Developer",
+  title: "Precious Olonade — Full-Stack Developer",
   description:
     "Full-stack developer and CS student based in Nigeria. Building web and mobile products at the intersection of faith, craft, and real utility.",
   metadataBase: new URL("https://precious-olonade.netlify.app"),
   openGraph: {
-    title: "Precious Olonade — Son & Potter",
+    title: "Precious Olonade — Full-Stack Developer",
     description:
       "Full-stack developer building privacy-first platforms, community apps, and beautiful interfaces.",
     url: "https://precious-olonade.netlify.app",
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Precious Olonade — Son & Potter",
+    title: "Precious Olonade — Full-Stack Developer",
     description:
       "Full-stack developer and CS student building things that matter.",
   },

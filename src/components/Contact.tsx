@@ -40,7 +40,7 @@ export default function Contact() {
 
       <RevealOnScroll delay={0.3}>
         <p className="text-[#8A8880] text-base md:text-lg mt-4 leading-relaxed max-w-lg mx-auto">
-          Open to contracts, collaborations, and conversations.
+          Open to contracts, collabs, and cold emails. If you have something interesting, send it.
         </p>
       </RevealOnScroll>
 

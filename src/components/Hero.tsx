@@ -28,7 +28,7 @@ export default function Hero() {
               <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#C8A96E]"></span>
             </span>
             <span className="font-mono text-xs text-[#8A8880] uppercase tracking-wider">
-              Available for work
+              Open to work
             </span>
           </div>
         </RevealOnScroll>
@@ -36,11 +36,11 @@ export default function Hero() {
         {/* Headings */}
         <RevealOnScroll delay={0.2}>
           <h1 className="flex flex-col gap-2">
-            <span className="font-heading text-[clamp(2.75rem,7vw,5.5rem)] font-bold text-[#E8E4DC] leading-[1.1]">
-              Son & Potter.
+            <span className="font-heading text-[clamp(2.5rem,6.5vw,5rem)] font-bold text-[#E8E4DC] leading-[1.1]">
+              I build things that actually ship.
             </span>
-            <span className="font-heading text-[clamp(1.75rem,4.5vw,3.5rem)] text-[#C8A96E] italic font-medium leading-[1.2] tracking-wide">
-              I build things that matter.
+            <span className="font-heading text-[clamp(1.5rem,4vw,3rem)] text-[#C8A96E] italic font-medium leading-[1.2] tracking-wide">
+              Full-stack dev. CS student. Based in Nigeria.
             </span>
           </h1>
         </RevealOnScroll>
@@ -48,9 +48,7 @@ export default function Hero() {
         {/* Paragraph */}
         <RevealOnScroll delay={0.3}>
           <p className="text-[#8A8880] text-base md:text-lg max-w-xl leading-relaxed mt-6 text-center mx-auto">
-            Full-stack developer and CS student based in Nigeria. I build web and
-            mobile products at the intersection of faith, craft, and real utility
-            — from privacy-first platforms to community apps.
+            React, Django, React Native — web and mobile, frontend to backend. I work on real products: privacy tools, community apps, and things I'd actually use myself.
           </p>
         </RevealOnScroll>
 

@@ -11,10 +11,8 @@ const SKILLS = [
   "Tailwind",
   "Python",
   "JavaScript",
-  "TypeScript",
   "Git",
   "Figma",
-  "VS Code",
 ];
 
 export default function About() {
@@ -40,19 +38,14 @@ export default function About() {
 
           <RevealOnScroll delay={0.3}>
             <p className="text-[#8A8880] text-base leading-relaxed mt-6">
-              I'm Precious. I build for the web and mobile, study CS at Osun State
-              University, and do media work for a local ministry and peace club.
-              Faith is the foundation — the rest is craft.
+              I'm Precious — a full-stack developer and final-year CS student at Osun State University, Nigeria. I've shipped encrypted web apps, mobile apps still in the oven, and more side projects than I care to admit. Outside the code editor I do media and graphics work for a local ministry and a peace club, write about football, film, and faith, and occasionally beat people at eFootball.
             </p>
           </RevealOnScroll>
 
           <RevealOnScroll delay={0.4}>
             <div className="glass p-6 rounded-xl border-l-2 border-l-[#C8A96E] mt-8 shadow-sm">
               <p className="font-heading italic text-lg text-[#C8A96E] leading-relaxed">
-                "The potter has come."
-              </p>
-              <p className="font-mono text-xs text-[#8A8880] mt-2">
-                — What Olonade means
+                "Build with intention. Ship with purpose."
               </p>
             </div>
           </RevealOnScroll>

@@ -17,7 +17,7 @@ const STATIC_POSTS: Post[] = [
     slug: "god-first",
     title: "God First",
     excerpt:
-      "Not a slogan. Not a caption. Just the only order that makes sense when everything else is noise.",
+      "Not a slogan. Not a caption. The only order of priority that makes sense when everything else is noise.",
     date: "May 28, 2026",
     category: "Faith",
     readingTime: "2 min read",
@@ -26,7 +26,7 @@ const STATIC_POSTS: Post[] = [
     slug: "cunha-and-mbeumo-era",
     title: "The Cunha and Mbeumo Era",
     excerpt:
-      "We went from Garnacho and Antony to actual quality. Man United fans are not used to this feeling.",
+      "We went from Garnacho and Antony to actual quality. Man United fans are genuinely not used to this feeling.",
     date: "May 22, 2026",
     category: "Football",
     readingTime: "2 min read",
@@ -35,7 +35,7 @@ const STATIC_POSTS: Post[] = [
     slug: "watching-below-1080p-should-be-illegal",
     title: "Watching Movies Below 1080p Should Be Illegal",
     excerpt:
-      "The Map that leads to you had one of the best cinematography in 2025.",
+      "The Map That Leads to You had some of the best cinematography of 2025. You should not be watching it in 480p.",
     date: "May 14, 2026",
     category: "Culture",
     readingTime: "2 min read",

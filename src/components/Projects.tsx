@@ -6,7 +6,7 @@ const PROJECTS = [
   {
     num: "01",
     name: "Privora",
-    desc: "Privacy-first full-stack web app. AES-256 two-layer encryption, NDPR/GDPR compliance, JWT auth.",
+    desc: "End-to-end encrypted data vault. Built for users who actually care about their privacy — AES-256, NDPR/GDPR compliant, JWT auth. My final-year project.",
     stack: ["React", "Django", "PostgreSQL"],
     link: "https://github.com/preshdevops",
     featured: true,
@@ -14,7 +14,7 @@ const PROJECTS = [
   {
     num: "02",
     name: "Feelms",
-    desc: "A mood-based movie discovery experience. TMDB-powered, editorial UI, AI mood-fit blurbs.",
+    desc: "Pick a mood. Get a movie. TMDB-powered discovery with an editorial UI and AI-generated mood-fit blurbs. It's basically your next film rec.",
     stack: ["React", "TMDB API"],
     link: "https://feelms.vercel.app",
     featured: false,
@@ -22,7 +22,7 @@ const PROJECTS = [
   {
     num: "03",
     name: "Editorial Muse",
-    desc: "Romantic letter composer with encrypted delivery, read tracking, and email retry logic.",
+    desc: "Write someone a letter. Encrypt it. Send it. Track when they read it. Old-school romance, built with actual backend logic.",
     stack: ["Node.js", "SQLite", "Render"],
     link: "https://editorial-muse.onrender.com",
     featured: false,
@@ -30,7 +30,7 @@ const PROJECTS = [
   {
     num: "04",
     name: "CineVault",
-    desc: "Movie discovery platform — browse films, search actors, manage a watchlist. Fully responsive.",
+    desc: "Film discovery app — search movies, browse actors, build a watchlist. My first serious frontend project, fully responsive.",
     stack: ["HTML", "CSS", "JavaScript", "REST API"],
     link: "https://cinevault-app.netlify.app",
     featured: false,
@@ -38,7 +38,7 @@ const PROJECTS = [
   {
     num: "05",
     name: "Currency Converter",
-    desc: "Desktop currency conversion app with real exchange rate logic and a clean interface.",
+    desc: "Desktop app with live exchange rate logic. Clean interface, no fluff. Built it because I needed it.",
     stack: ["Python", "Desktop App"],
     link: "https://github.com/preshdevops/currency_desktop_app",
     featured: false,
