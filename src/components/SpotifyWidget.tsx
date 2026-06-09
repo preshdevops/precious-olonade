@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Image from "next/image";
 
 interface SpotifyData {
   isPlaying: boolean;
@@ -43,7 +42,7 @@ export default function SpotifyWidget() {
 
   if (loading) {
     return (
-      <div className="glass border-l-2 border-l-[#C8A96E] rounded-2xl p-4 max-w-sm w-full animate-pulse flex items-center gap-4">
+      <div className="glass border-l-2 border-l-[#4A8FE7] rounded-2xl p-4 max-w-sm w-full animate-pulse flex items-center gap-4">
         <div className="w-11 h-11 bg-[rgba(255,255,255,0.06)] rounded-full"></div>
         <div className="flex-1 flex flex-col gap-2">
           <div className="h-2.5 w-16 bg-[rgba(255,255,255,0.06)] rounded-full"></div>
@@ -65,11 +64,11 @@ export default function SpotifyWidget() {
       href={trackUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className="group block glass glass-hover border-l-2 border-l-[#C8A96E] rounded-2xl p-4 max-w-sm w-full shadow-sm hover:scale-[1.01]"
+      className="group block glass glass-hover border-l-2 border-l-[#4A8FE7] rounded-2xl p-4 max-w-sm w-full shadow-sm hover:scale-[1.01]"
     >
       <div className="flex items-center gap-4">
         {/* Album Art / Spin */}
-        <div className="relative w-11 h-11 flex-shrink-0 rounded-full overflow-hidden border border-[rgba(255,255,255,0.1)] bg-[#111210]">
+        <div className="relative w-11 h-11 flex-shrink-0 rounded-full overflow-hidden border border-[rgba(255,255,255,0.1)] bg-[#0A0A0A]">
           <img
             src={albumArt}
             alt={data?.album || "Spotify album art"}
@@ -91,20 +90,20 @@ export default function SpotifyWidget() {
           <div className="flex items-center gap-1.5 mb-0.5">
             {isPlaying && (
               <span className="relative flex h-1.5 w-1.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#C8A96E] opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#C8A96E]"></span>
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#4A8FE7] opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#4A8FE7]"></span>
               </span>
             )}
             <span
               className={`font-mono text-[9px] uppercase tracking-wider font-semibold ${
-                isPlaying ? "text-[#C8A96E]" : "text-[#8A8880]"
+                isPlaying ? "text-[#4A8FE7]" : "text-[#8A8880]"
               }`}
             >
               {isPlaying ? "Now Playing" : hasTrack ? "Recently Played" : "Offline"}
             </span>
           </div>
 
-          <h4 className="text-sm font-semibold text-[#E8E4DC] truncate group-hover:text-[#C8A96E] transition-colors duration-300">
+          <h4 className="text-sm font-semibold text-[#EDEBE4] truncate group-hover:text-[#4A8FE7] transition-colors duration-300">
             {title}
           </h4>
           <p className="text-xs text-[#8A8880] truncate mt-0.5">{artist}</p>

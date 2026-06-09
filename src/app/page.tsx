@@ -6,15 +6,11 @@ import About from "@/components/About";
 import Blog from "@/components/Blog";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
-import CursorGlow from "@/components/CursorGlow";
 import RevealOnScroll from "@/components/RevealOnScroll";
 
 export default function Home() {
   return (
     <>
-      {/* Ambient cursor glow backdrop element */}
-      <CursorGlow />
-
       {/* Global sticky navigation bar */}
       <Navbar />
 

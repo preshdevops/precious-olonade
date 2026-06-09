@@ -24,17 +24,17 @@ export default function Contact() {
     >
       <RevealOnScroll delay={0.1}>
         <div className="flex items-center justify-center gap-3 mb-3">
-          <span className="w-8 h-[2px] bg-[#C8A96E]"></span>
-          <span className="font-mono text-xs text-[#C8A96E] uppercase tracking-[0.15em]">
+          <span className="w-8 h-[2px] bg-[#4A8FE7]"></span>
+          <span className="font-mono text-xs text-[#4A8FE7] uppercase tracking-[0.15em]">
             Contact
           </span>
-          <span className="w-8 h-[2px] bg-[#C8A96E]"></span>
+          <span className="w-8 h-[2px] bg-[#4A8FE7]"></span>
         </div>
       </RevealOnScroll>
 
       <RevealOnScroll delay={0.2}>
-        <h2 className="font-heading text-[clamp(2.5rem,5vw,3.75rem)] font-bold text-[#E8E4DC] leading-tight">
-          Let's build something.
+        <h2 className="font-heading text-[clamp(2.5rem,5vw,3.75rem)] font-bold text-[#EDEBE4] leading-tight">
+          {"Let's build something."}
         </h2>
       </RevealOnScroll>
 
@@ -49,7 +49,7 @@ export default function Contact() {
         <div className="mt-8 flex justify-center">
           <button
             onClick={handleCopy}
-            className="group relative flex items-center gap-3 bg-[#C8A96E] text-[#111210] font-semibold px-8 py-4 rounded-full text-base md:text-lg hover:opacity-95 active:scale-[0.98] transition-all duration-300 shadow-[0_4px_20px_rgba(200,169,110,0.15)] cursor-pointer"
+            className="group relative flex items-center gap-3 bg-[#4A8FE7] text-[#0A0A0A] font-semibold px-8 py-4 rounded-full text-base md:text-lg hover:opacity-95 active:scale-[0.98] transition-all duration-300 shadow-[0_4px_20px_rgba(74, 143, 231, 0.15)] cursor-pointer"
           >
             <span>{copied ? "Copied!" : email}</span>
             <svg
@@ -85,7 +85,7 @@ export default function Contact() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub Profile"
-            className="glass w-12 h-12 rounded-xl flex items-center justify-center text-[#8A8880] hover:text-[#C8A96E] hover:border-[rgba(200,169,110,0.3)] transition-all duration-300"
+            className="glass w-12 h-12 rounded-xl flex items-center justify-center text-[#8A8880] hover:text-[#4A8FE7] hover:border-[rgba(74, 143, 231, 0.3)] transition-all duration-300"
           >
             <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
               <path
@@ -100,7 +100,7 @@ export default function Contact() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn Profile"
-            className="glass w-12 h-12 rounded-xl flex items-center justify-center text-[#8A8880] hover:text-[#C8A96E] hover:border-[rgba(200,169,110,0.3)] transition-all duration-300"
+            className="glass w-12 h-12 rounded-xl flex items-center justify-center text-[#8A8880] hover:text-[#4A8FE7] hover:border-[rgba(74, 143, 231, 0.3)] transition-all duration-300"
           >
             <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
               <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
@@ -111,7 +111,7 @@ export default function Contact() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Blog Journal"
-            className="glass w-12 h-12 rounded-xl flex items-center justify-center text-[#8A8880] hover:text-[#C8A96E] hover:border-[rgba(200,169,110,0.3)] transition-all duration-300"
+            className="glass w-12 h-12 rounded-xl flex items-center justify-center text-[#8A8880] hover:text-[#4A8FE7] hover:border-[rgba(74, 143, 231, 0.3)] transition-all duration-300"
           >
             <svg
               className="w-5 h-5"

@@ -60,14 +60,14 @@ export default function Projects() {
       <div className="mb-16">
         <RevealOnScroll delay={0.1}>
           <div className="flex items-center gap-3 mb-3">
-            <span className="w-8 h-[2px] bg-[#C8A96E]"></span>
-            <span className="font-mono text-xs text-[#C8A96E] uppercase tracking-[0.15em]">
+            <span className="w-8 h-[2px] bg-[#4A8FE7]"></span>
+            <span className="font-mono text-xs text-[#4A8FE7] uppercase tracking-[0.15em]">
               Selected Work
             </span>
           </div>
         </RevealOnScroll>
         <RevealOnScroll delay={0.2}>
-          <h2 className="font-heading text-[clamp(2.25rem,5vw,3rem)] font-bold text-[#E8E4DC] leading-tight">
+          <h2 className="font-heading text-[clamp(2.25rem,5vw,3rem)] font-bold text-[#EDEBE4] leading-tight">
             Selected work.
           </h2>
         </RevealOnScroll>
@@ -121,12 +121,12 @@ function ProjectCard({
       rel="noopener noreferrer"
       className={`group block glass glass-hover relative rounded-2xl transition-all duration-300 ${
         isFeatured
-          ? "p-8 md:p-10 border-l-2 border-l-[#C8A96E] h-full flex flex-col justify-between"
+          ? "p-8 md:p-10 border-l-2 border-l-[#4A8FE7] h-full flex flex-col justify-between"
           : "p-7 flex flex-col justify-between"
       }`}
     >
       {/* Top right icon */}
-      <div className="absolute top-6 right-6 text-[#8A8880] group-hover:text-[#C8A96E] transition-colors duration-300">
+      <div className="absolute top-6 right-6 text-[#8A8880] group-hover:text-[#4A8FE7] transition-colors duration-300">
         <svg
           className="w-5 h-5 transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300"
           fill="none"
@@ -143,11 +143,11 @@ function ProjectCard({
       </div>
 
       <div>
-        <div className="font-mono text-xs text-[#C8A96E] tracking-wider mb-2">
+        <div className="font-mono text-xs text-[#4A8FE7] tracking-wider mb-2">
           {project.num}
         </div>
         <h3
-          className={`font-heading font-bold text-[#E8E4DC] mb-3 group-hover:text-[#C8A96E] transition-colors ${
+          className={`font-heading font-bold text-[#EDEBE4] mb-3 group-hover:text-[#4A8FE7] transition-colors ${
             isFeatured ? "text-2xl md:text-3xl" : "text-xl"
           }`}
         >
@@ -166,7 +166,7 @@ function ProjectCard({
         {project.stack.map((tech) => (
           <span
             key={tech}
-            className="font-mono text-[10px] md:text-[11px] text-[#C8A96E] bg-[rgba(200,169,110,0.08)] px-3 py-1 rounded-full border border-[rgba(200,169,110,0.12)]"
+            className="font-mono text-[10px] md:text-[11px] text-[#4A8FE7] bg-[rgba(74,143,231,0.08)] px-3 py-1 rounded-full border border-[rgba(74,143,231,0.12)]"
           >
             {tech}
           </span>

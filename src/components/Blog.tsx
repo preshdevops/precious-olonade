@@ -68,14 +68,14 @@ export default function Blog() {
       <div className="mb-16">
         <RevealOnScroll delay={0.1}>
           <div className="flex items-center gap-3 mb-3">
-            <span className="w-8 h-[2px] bg-[#C8A96E]"></span>
-            <span className="font-mono text-xs text-[#C8A96E] uppercase tracking-[0.15em]">
+            <span className="w-8 h-[2px] bg-[#4A8FE7]"></span>
+            <span className="font-mono text-xs text-[#4A8FE7] uppercase tracking-[0.15em]">
               Writing
             </span>
           </div>
         </RevealOnScroll>
         <RevealOnScroll delay={0.2}>
-          <h2 className="font-heading text-[clamp(2.25rem,5vw,3rem)] font-bold text-[#E8E4DC] leading-tight">
+          <h2 className="font-heading text-[clamp(2.25rem,5vw,3rem)] font-bold text-[#EDEBE4] leading-tight">
             From the journal.
           </h2>
         </RevealOnScroll>
@@ -92,11 +92,11 @@ export default function Blog() {
               className="group flex flex-col justify-between glass glass-hover rounded-2xl p-6 min-h-[280px] h-full transition-all duration-300"
             >
               <div>
-                <span className="font-mono text-[10px] md:text-[11px] uppercase tracking-wider text-[#C8A96E] bg-[rgba(200,169,110,0.1)] px-3 py-1 rounded-full inline-block">
+                <span className="font-mono text-[10px] md:text-[11px] uppercase tracking-wider text-[#4A8FE7] bg-[rgba(74,143,231,0.1)] px-3 py-1 rounded-full inline-block">
                   {post.category}
                 </span>
 
-                <h3 className="font-heading text-lg md:text-xl font-bold text-[#E8E4DC] mt-4 group-hover:text-[#C8A96E] transition-colors duration-300">
+                <h3 className="font-heading text-lg md:text-xl font-bold text-[#EDEBE4] mt-4 group-hover:text-[#4A8FE7] transition-colors duration-300">
                   {post.title}
                 </h3>
 
@@ -109,7 +109,7 @@ export default function Blog() {
                 <span className="font-mono text-xs text-[#8A8880]">
                   {post.date}
                 </span>
-                <span className="font-mono text-xs text-[#C8A96E] flex items-center gap-1.5 group-hover:underline">
+                <span className="font-mono text-xs text-[#4A8FE7] flex items-center gap-1.5 group-hover:underline">
                   <span>Read</span>
                   <svg
                     className="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform duration-300"

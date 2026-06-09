@@ -24,8 +24,8 @@ export default function Hero() {
         <RevealOnScroll delay={0.1}>
           <div className="inline-flex items-center gap-2.5 glass px-4 py-2 rounded-full mb-8 shadow-sm">
             <span className="relative flex h-2.5 w-2.5">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#C8A96E] opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#C8A96E]"></span>
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#4A8FE7] opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#4A8FE7]"></span>
             </span>
             <span className="font-mono text-xs text-[#8A8880] uppercase tracking-wider">
               Open to work
@@ -36,10 +36,10 @@ export default function Hero() {
         {/* Headings */}
         <RevealOnScroll delay={0.2}>
           <h1 className="flex flex-col gap-2">
-            <span className="font-heading text-[clamp(2.5rem,6.5vw,5rem)] font-bold text-[#E8E4DC] leading-[1.1]">
+            <span className="font-heading text-[clamp(2.5rem,6.5vw,5rem)] font-bold text-[#EDEBE4] leading-[1.1]">
               I build things that actually ship.
             </span>
-            <span className="font-heading text-[clamp(1.5rem,4vw,3rem)] text-[#C8A96E] italic font-medium leading-[1.2] tracking-wide">
+            <span className="font-heading text-[clamp(1.5rem,4vw,3rem)] text-[#4A8FE7] italic font-medium leading-[1.2] tracking-wide">
               Full-stack dev. CS student. Based in Nigeria.
             </span>
           </h1>
@@ -48,7 +48,7 @@ export default function Hero() {
         {/* Paragraph */}
         <RevealOnScroll delay={0.3}>
           <p className="text-[#8A8880] text-base md:text-lg max-w-xl leading-relaxed mt-6 text-center mx-auto">
-            React, Django, React Native — web and mobile, frontend to backend. I work on real products: privacy tools, community apps, and things I'd actually use myself.
+            {"React, Django, React Native — web and mobile, frontend to backend. I work on real products: privacy tools, community apps, and things I'd actually use myself."}
           </p>
         </RevealOnScroll>
 
@@ -58,7 +58,7 @@ export default function Hero() {
             <a
               href="#projects"
               onClick={handleScrollToProjects}
-              className="inline-flex items-center justify-center gap-2 bg-[#C8A96E] text-[#111210] font-semibold px-8 py-3.5 rounded-full hover:opacity-95 transition-all duration-300 shadow-[0_4px_20px_rgba(200,169,110,0.2)]"
+              className="inline-flex items-center justify-center gap-2 bg-[#4A8FE7] text-[#0A0A0A] font-semibold px-8 py-3.5 rounded-full hover:opacity-95 transition-all duration-300 shadow-[0_4px_20px_rgba(74, 143, 231, 0.2)]"
             >
               <span>View Projects</span>
               <svg
@@ -79,7 +79,7 @@ export default function Hero() {
               href="https://preciouswrites.vercel.app"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center border border-[rgba(255,255,255,0.12)] text-[#E8E4DC] px-8 py-3.5 rounded-full hover:border-[#C8A96E] hover:text-[#C8A96E] transition-all duration-300"
+              className="inline-flex items-center justify-center border border-[rgba(255,255,255,0.12)] text-[#EDEBE4] px-8 py-3.5 rounded-full hover:border-[#4A8FE7] hover:text-[#4A8FE7] transition-all duration-300"
             >
               Read the Blog
             </a>
@@ -94,7 +94,7 @@ export default function Hero() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub Profile"
-              className="glass w-11 h-11 rounded-xl flex items-center justify-center text-[#8A8880] hover:text-[#C8A96E] hover:border-[rgba(200,169,110,0.3)] transition-all duration-300"
+              className="glass w-11 h-11 rounded-xl flex items-center justify-center text-[#8A8880] hover:text-[#4A8FE7] hover:border-[rgba(74, 143, 231, 0.3)] transition-all duration-300"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                 <path
@@ -107,7 +107,7 @@ export default function Hero() {
             <a
               href="mailto:segunolonade03@gmail.com"
               aria-label="Send Email"
-              className="glass w-11 h-11 rounded-xl flex items-center justify-center text-[#8A8880] hover:text-[#C8A96E] hover:border-[rgba(200,169,110,0.3)] transition-all duration-300"
+              className="glass w-11 h-11 rounded-xl flex items-center justify-center text-[#8A8880] hover:text-[#4A8FE7] hover:border-[rgba(74, 143, 231, 0.3)] transition-all duration-300"
             >
               <svg
                 className="w-5 h-5"
@@ -128,7 +128,7 @@ export default function Hero() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Blog Journal"
-              className="glass w-11 h-11 rounded-xl flex items-center justify-center text-[#8A8880] hover:text-[#C8A96E] hover:border-[rgba(200,169,110,0.3)] transition-all duration-300"
+              className="glass w-11 h-11 rounded-xl flex items-center justify-center text-[#8A8880] hover:text-[#4A8FE7] hover:border-[rgba(74, 143, 231, 0.3)] transition-all duration-300"
             >
               <svg
                 className="w-5 h-5"
