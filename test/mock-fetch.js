@@ -6,7 +6,7 @@ if (typeof globalThis.fetch !== 'undefined') {
   const originalFetch = globalThis.fetch;
   
   globalThis.fetch = async function (input, init) {
-    const url = typeof input === 'string' ? input : input.url;
+    const url = typeof input === 'string' ? input : (input.url || String(input));
     
     // 1. Mock Spotify token endpoint
     if (url.includes('accounts.spotify.com/api/token')) {

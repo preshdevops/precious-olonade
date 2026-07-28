@@ -1,70 +1,60 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Outfit:wght@400;600;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap');
 
 @import "tailwindcss";
 
-/* ─── TAILWIND THEME ─── */
+/* ─── POSTER WALL DESIGN SYSTEM ─── */
 @theme {
   --font-heading: 'Playfair Display', serif;
-  --font-body: 'Inter', sans-serif;
+  --font-body: 'Outfit', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
-  --color-background: #0A0A0A;
-  --color-foreground: #EDEBE4;
-  --color-accent: #4A8FE7;
+  --color-background: #090A0F;
+  --color-foreground: #F8FAFC;
+  --color-accent: #2563EB;
+  --color-yellow: #CCFF00;
 }
 
 /* ─── BASE ─── */
-html {
+html, body {
+  margin: 0;
+  padding: 0;
   scroll-behavior: smooth;
 }
 
 body {
   font-family: var(--font-body);
-  background-color: #0A0A0A;
-  color: #EDEBE4;
+  background-color: #090A0F;
+  color: #F8FAFC;
   font-size: 16px;
-  line-height: 1.7;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
 }
 
-/* ─── GRAIN TEXTURE OVERLAY ─── */
-body::after {
-  content: '';
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  pointer-events: none;
-  opacity: 0.035;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-  background-repeat: repeat;
-  mix-blend-mode: overlay;
-}
-
 /* ─── SELECTION ─── */
 ::selection {
-  background: rgba(74, 143, 231, 0.3);
-  color: #EDEBE4;
+  background: #CCFF00;
+  color: #090A0F;
 }
 
 /* ─── SCROLLBAR ─── */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #0A0A0A;
+  background: #090A0F;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(74, 143, 231, 0.3);
-  border-radius: 3px;
+  background: #2563EB;
+  border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(74, 143, 231, 0.5);
+  background: #CCFF00;
 }
 
 /* ─── FOCUS STYLES ─── */
 :focus-visible {
-  outline: 2px solid #4A8FE7;
+  outline: 3px solid #CCFF00;
   outline-offset: 2px;
 }
 
@@ -79,45 +69,72 @@ body::after {
   font-family: var(--font-mono);
 }
 
-/* ─── GLASS CARD ─── */
-.glass {
-  background: rgba(255, 255, 255, 0.04);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.07);
+/* Kinetic Marquee Keyframes */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
 }
 
-.glass-hover {
-  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.glass-hover:hover {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(74, 143, 231, 0.25);
-  box-shadow: 0 0 30px rgba(74, 143, 231, 0.1);
-  transform: translateY(-2px);
+.animate-marquee {
+  display: flex;
+  width: 200%;
+  animation: marquee 22s linear infinite;
 }
 
-/* ─── SPOTIFY EQUALIZER ─── */
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
+    width: 100%;
+  }
+}
+
+/* Poster Card Base & Shadows */
+.poster-card {
+  background: #11141D;
+  border: 2px solid rgba(248, 250, 252, 0.15);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.poster-card:hover {
+  border-color: #CCFF00;
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 8px 8px 0px 0px #CCFF00;
+}
+
+.poster-card-flagship {
+  background: #161B26;
+  border: 3px solid #CCFF00;
+  box-shadow: 8px 8px 0px 0px #2563EB;
+}
+
+.poster-card-flagship:hover {
+  box-shadow: 12px 12px 0px 0px #CCFF00;
+}
+
+/* Poster Stamp Badge */
+.poster-stamp {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  background: #CCFF00;
+  color: #090A0F;
+  padding: 0.25rem 0.6rem;
+  font-size: 0.7rem;
+  border-radius: 2px;
+  transform: rotate(-3deg);
+  display: inline-block;
+  box-shadow: 2px 2px 0px 0px #090A0F;
+}
+
+/* Equalizer Bars */
 @keyframes eq-bounce {
   0%, 100% { height: 3px; }
-  50% { height: 16px; }
+  50% { height: 14px; }
 }
 
 .eq-bar {
-  width: 2.5px;
-  border-radius: 2px;
-  background: #4A8FE7;
-}
-
-/* ─── SECTION DIVIDER ─── */
-.section-divider {
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(255, 255, 255, 0.06) 20%,
-    rgba(74, 143, 231, 0.15) 50%,
-    rgba(255, 255, 255, 0.06) 80%,
-    transparent 100%
-  );
+  width: 2px;
+  border-radius: 1px;
+  background: #CCFF00;
 }

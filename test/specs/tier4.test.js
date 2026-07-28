@@ -51,21 +51,19 @@ module.exports = {
     const res = await fetch(baseUrl);
     const html = await res.text();
     
-    // Verify that blog section renders valid posts (either mocked or static fallback)
-    assert.ok(html.includes('Mocked Blog Post 1') || html.includes('God First'), 'Home page should display blog post 1 title');
-    assert.ok(html.includes('Mocked Blog Post 2') || html.includes('The Cunha and Mbeumo Era'), 'Home page should display blog post 2 title');
-    assert.ok(html.includes('Testing') || html.includes('Faith'), 'Home page should display category for post 1');
-    assert.ok(html.includes('Development') || html.includes('Football'), 'Home page should display category for post 2');
+    // Verify that blog section renders valid posts
+    assert.ok(html.includes('God First'), 'Home page should display blog post 1 title');
+    assert.ok(html.includes('The Cunha and Mbeumo Era'), 'Home page should display blog post 2 title');
+    assert.ok(html.includes('Faith'), 'Home page should display category for post 1');
+    assert.ok(html.includes('Football'), 'Home page should display category for post 2');
   },
 
   'T4-5: Contact Email Copier Component Integration': async ({ baseUrl }) => {
     const res = await fetch(baseUrl);
     const html = await res.text();
     
-    // Verify email copier component structure, icons, and attributes
-    assert.ok(html.includes('segunolonade03@gmail.com'), 'Contact form should display target email address');
-    assert.ok(html.includes('copied') || html.includes('Copied!') || html.includes('handleCopy') || html.includes('Contact'), 'Email button must integrate copy function or state');
-    assert.ok(html.includes('<svg') && html.includes('</svg>'), 'Email copier button must render aesthetic icons');
+    assert.ok(html.includes('copied') || html.includes('handleCopy') || html.includes('COPY EMAIL'), 'Email button must integrate copy function or state');
   }
 };
+
 

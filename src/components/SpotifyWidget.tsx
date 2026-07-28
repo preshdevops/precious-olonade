@@ -73,74 +73,31 @@ export default function SpotifyWidget() {
       href={trackUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className="group block glass glass-hover border-l-2 border-l-[#4A8FE7] rounded-2xl p-4 max-w-sm w-full shadow-sm hover:scale-[1.01] transition-all duration-300"
+      className="group flex items-center gap-2.5 bg-[#11141D] border border-rgba(248,250,252,0.15) hover:border-[#CCFF00] px-3.5 py-2 rounded-lg text-xs font-mono transition-all"
       aria-label={`Spotify player: ${title} by ${artist}`}
     >
-      <div className="flex items-center gap-4">
-        {/* Album Art / Spin */}
-        <div className="relative w-11 h-11 flex-shrink-0 rounded-full overflow-hidden border border-[rgba(255,255,255,0.1)] bg-[#0A0A0A]">
-          <img
-            src={albumArt}
-            alt={data?.album || "Spotify album art"}
-            width={44}
-            height={44}
-            className={`w-full h-full object-cover transition-transform duration-500 ${
-              isPlaying ? "origin-center" : ""
-            }`}
-            style={
-              isPlaying
-                ? { animation: "spin 8s linear infinite" }
-                : undefined
-            }
-          />
-        </div>
-
-        {/* Info */}
-        <div className="flex-1 min-w-0 flex flex-col justify-center">
-          <div className="flex items-center gap-1.5 mb-0.5">
-            {isPlaying && (
-              <span className="relative flex h-1.5 w-1.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#4A8FE7] opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#4A8FE7]"></span>
-              </span>
-            )}
-            <span
-              className={`font-mono text-[9px] uppercase tracking-wider font-semibold ${
-                isPlaying ? "text-[#4A8FE7]" : "text-[#8A8880]"
-              }`}
-            >
-              {isPlaying ? "Now Playing" : hasTrack ? "Recently Played" : "Offline"}
-            </span>
-          </div>
-
-          <h4 className="text-sm font-semibold text-[#EDEBE4] truncate group-hover:text-[#4A8FE7] transition-colors duration-300">
-            {title}
-          </h4>
-          <p className="text-xs text-[#8A8880] truncate mt-0.5">{artist}</p>
-        </div>
-
-        {/* Equalizer */}
-        {isPlaying && (
-          <div className="flex items-end gap-[3px] h-4 pb-0.5 flex-shrink-0" aria-hidden="true">
-            <span className="eq-bar" style={{ animation: "eq-bounce 1.0s 0.1s ease-in-out infinite" }}></span>
-            <span className="eq-bar" style={{ animation: "eq-bounce 1.4s 0.4s ease-in-out infinite" }}></span>
-            <span className="eq-bar" style={{ animation: "eq-bounce 1.2s 0.2s ease-in-out infinite" }}></span>
-            <span className="eq-bar" style={{ animation: "eq-bounce 0.8s 0.6s ease-in-out infinite" }}></span>
-          </div>
-        )}
+      <div className="relative w-4 h-4 shrink-0 rounded-full overflow-hidden border border-[#2563EB] bg-[#090A0F]">
+        <img
+          src={albumArt}
+          alt={data?.album || "Spotify album art"}
+          width={16}
+          height={16}
+          className={`w-full h-full object-cover ${isPlaying ? "animate-spin" : ""}`}
+        />
       </div>
 
-      {/* Track Progress Scrubber */}
+      <div className="flex items-center gap-1.5 truncate max-w-[220px]">
+        {isPlaying && <span className="w-1.5 h-1.5 rounded-full bg-[#CCFF00] shrink-0"></span>}
+        <span className="text-[#F8FAFC] font-semibold truncate group-hover:text-[#CCFF00] transition-colors">{title}</span>
+        <span className="text-[#F8FAFC]/50">•</span>
+        <span className="text-[#F8FAFC]/70 truncate">{artist}</span>
+      </div>
+
       {isPlaying && (
-        <div className="mt-3 pt-2 border-t border-[rgba(255,255,255,0.05)] flex items-center gap-2">
-          <span className="font-mono text-[9px] text-[#8A8880]">1:14</span>
-          <div className="flex-1 h-1 bg-[rgba(255,255,255,0.08)] rounded-full overflow-hidden">
-            <div
-              className="h-full bg-[#4A8FE7] rounded-full transition-all duration-300"
-              style={{ width: `${progress}%` }}
-            />
-          </div>
-          <span className="font-mono text-[9px] text-[#8A8880]">3:20</span>
+        <div className="flex items-end gap-[2px] h-3 shrink-0" aria-hidden="true">
+          <span className="eq-bar" style={{ animation: "eq-bounce 1.0s 0.1s ease-in-out infinite" }}></span>
+          <span className="eq-bar" style={{ animation: "eq-bounce 1.4s 0.4s ease-in-out infinite" }}></span>
+          <span className="eq-bar" style={{ animation: "eq-bounce 1.2s 0.2s ease-in-out infinite" }}></span>
         </div>
       )}
     </a>
