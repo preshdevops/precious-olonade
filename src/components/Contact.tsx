@@ -5,22 +5,56 @@ import RevealOnScroll from "./RevealOnScroll";
 
 export default function Contact() {
   const [copied, setCopied] = useState(false);
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [errors, setErrors] = useState<{ email?: string; message?: string }>({});
+  const [submitted, setSubmitted] = useState(false);
+  const [toastMessage, setToastMessage] = useState<string | null>(null);
+
   const email = "segunolonade03@gmail.com";
+
+  const showToast = (msg: string) => {
+    setToastMessage(msg);
+    setTimeout(() => setToastMessage(null), 3000);
+  };
 
   const handleCopy = async () => {
     try {
       await navigator.clipboard.writeText(email);
       setCopied(true);
+      showToast("Email address copied to clipboard!");
       setTimeout(() => setCopied(false), 2000);
     } catch (err) {
       console.error("Failed to copy text: ", err);
     }
   };
 
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const newErrors: { email?: string; message?: string } = {};
+
+    if (!formData.email || !formData.email.includes("@")) {
+      newErrors.email = "Please enter a valid email address.";
+    }
+    if (!formData.message || formData.message.length < 10) {
+      newErrors.message = "Message must be at least 10 characters long.";
+    }
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
+
+    setErrors({});
+    setSubmitted(true);
+    showToast("Message sent! Thanks for reaching out.");
+    setFormData({ name: "", email: "", message: "" });
+    setTimeout(() => setSubmitted(false), 5000);
+  };
+
   return (
     <section
       id="contact"
-      className="py-24 px-6 max-w-2xl mx-auto text-center scroll-mt-12"
+      className="py-24 px-6 max-w-2xl mx-auto text-center scroll-mt-12 relative"
     >
       <RevealOnScroll delay={0.1}>
         <div className="flex items-center justify-center gap-3 mb-3">
@@ -40,16 +74,16 @@ export default function Contact() {
 
       <RevealOnScroll delay={0.3}>
         <p className="text-[#8A8880] text-base md:text-lg mt-4 leading-relaxed max-w-lg mx-auto">
-          Open to contracts, collabs, and cold emails. If you have something interesting, send it.
+          Open to contracts, collabs, and cold emails. Send a direct message below or copy my email address.
         </p>
       </RevealOnScroll>
 
-      {/* Interactive Email Button */}
+      {/* Interactive Quick Copy Email Button */}
       <RevealOnScroll delay={0.4}>
         <div className="mt-8 flex justify-center">
           <button
             onClick={handleCopy}
-            className="group relative flex items-center gap-3 bg-[#4A8FE7] text-[#0A0A0A] font-semibold px-8 py-4 rounded-full text-base md:text-lg hover:opacity-95 active:scale-[0.98] transition-all duration-300 shadow-[0_4px_20px_rgba(74, 143, 231, 0.15)] cursor-pointer"
+            className="group relative flex items-center gap-3 bg-[#4A8FE7] text-[#0A0A0A] font-semibold px-8 py-4 rounded-full text-base md:text-lg hover:opacity-95 active:scale-[0.98] transition-all duration-300 shadow-[0_4px_20px_rgba(74,143,231,0.15)] cursor-pointer"
           >
             <span>{copied ? "Copied!" : email}</span>
             <svg
@@ -60,11 +94,7 @@ export default function Contact() {
               viewBox="0 0 24 24"
             >
               {copied ? (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M5 13l4 4L19 7"
-                />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
               ) : (
                 <path
                   strokeLinecap="round"
@@ -77,6 +107,57 @@ export default function Contact() {
         </div>
       </RevealOnScroll>
 
+      {/* Direct Contact Form */}
+      <RevealOnScroll delay={0.45}>
+        <form onSubmit={handleSubmit} className="mt-12 glass rounded-2xl p-6 sm:p-8 text-left space-y-4">
+          <div>
+            <label className="block font-mono text-xs text-[#8A8880] uppercase tracking-wider mb-2">Name</label>
+            <input
+              type="text"
+              placeholder="Your name"
+              value={formData.name}
+              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+              className="w-full bg-[rgba(255,255,255,0.03)] border border-[rgba(255,255,255,0.08)] rounded-xl px-4 py-3 text-sm text-[#EDEBE4] placeholder-[#8A8880]/50 focus:outline-none focus:border-[#4A8FE7] transition-colors"
+            />
+          </div>
+
+          <div>
+            <label className="block font-mono text-xs text-[#8A8880] uppercase tracking-wider mb-2">Email Address *</label>
+            <input
+              type="email"
+              placeholder="you@domain.com"
+              value={formData.email}
+              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+              className={`w-full bg-[rgba(255,255,255,0.03)] border rounded-xl px-4 py-3 text-sm text-[#EDEBE4] placeholder-[#8A8880]/50 focus:outline-none transition-colors ${
+                errors.email ? "border-red-500/80" : "border-[rgba(255,255,255,0.08)] focus:border-[#4A8FE7]"
+              }`}
+            />
+            {errors.email && <p className="text-red-400 font-mono text-xs mt-1">{errors.email}</p>}
+          </div>
+
+          <div>
+            <label className="block font-mono text-xs text-[#8A8880] uppercase tracking-wider mb-2">Message *</label>
+            <textarea
+              rows={4}
+              placeholder="Tell me about your project or inquiry..."
+              value={formData.message}
+              onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+              className={`w-full bg-[rgba(255,255,255,0.03)] border rounded-xl px-4 py-3 text-sm text-[#EDEBE4] placeholder-[#8A8880]/50 focus:outline-none transition-colors ${
+                errors.message ? "border-red-500/80" : "border-[rgba(255,255,255,0.08)] focus:border-[#4A8FE7]"
+              }`}
+            />
+            {errors.message && <p className="text-red-400 font-mono text-xs mt-1">{errors.message}</p>}
+          </div>
+
+          <button
+            type="submit"
+            className="w-full bg-[rgba(74,143,231,0.15)] text-[#4A8FE7] border border-[rgba(74,143,231,0.3)] font-semibold py-3.5 rounded-xl hover:bg-[#4A8FE7] hover:text-[#0A0A0A] transition-all duration-300 font-mono text-sm cursor-pointer"
+          >
+            {submitted ? "Message Sent!" : "Send Message"}
+          </button>
+        </form>
+      </RevealOnScroll>
+
       {/* Social Links Row */}
       <RevealOnScroll delay={0.5}>
         <div className="flex gap-4 justify-center mt-10">
@@ -85,7 +166,7 @@ export default function Contact() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub Profile"
-            className="glass w-12 h-12 rounded-xl flex items-center justify-center text-[#8A8880] hover:text-[#4A8FE7] hover:border-[rgba(74, 143, 231, 0.3)] transition-all duration-300"
+            className="glass w-12 h-12 rounded-xl flex items-center justify-center text-[#8A8880] hover:text-[#4A8FE7] hover:border-[rgba(74,143,231,0.3)] transition-all duration-300"
           >
             <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
               <path
@@ -100,7 +181,7 @@ export default function Contact() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn Profile"
-            className="glass w-12 h-12 rounded-xl flex items-center justify-center text-[#8A8880] hover:text-[#4A8FE7] hover:border-[rgba(74, 143, 231, 0.3)] transition-all duration-300"
+            className="glass w-12 h-12 rounded-xl flex items-center justify-center text-[#8A8880] hover:text-[#4A8FE7] hover:border-[rgba(74,143,231,0.3)] transition-all duration-300"
           >
             <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
               <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
@@ -111,7 +192,7 @@ export default function Contact() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Blog Journal"
-            className="glass w-12 h-12 rounded-xl flex items-center justify-center text-[#8A8880] hover:text-[#4A8FE7] hover:border-[rgba(74, 143, 231, 0.3)] transition-all duration-300"
+            className="glass w-12 h-12 rounded-xl flex items-center justify-center text-[#8A8880] hover:text-[#4A8FE7] hover:border-[rgba(74,143,231,0.3)] transition-all duration-300"
           >
             <svg
               className="w-5 h-5"
@@ -129,6 +210,14 @@ export default function Contact() {
           </a>
         </div>
       </RevealOnScroll>
+
+      {/* Toast Notification Banner */}
+      {toastMessage && (
+        <div className="fixed bottom-6 right-6 z-50 bg-[#4A8FE7] text-[#0A0A0A] font-semibold font-mono text-xs px-5 py-3 rounded-xl shadow-2xl animate-bounce">
+          {toastMessage}
+        </div>
+      )}
     </section>
   );
 }
+

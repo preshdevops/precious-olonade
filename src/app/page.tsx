@@ -14,7 +14,7 @@ export default function Home() {
       {/* Global sticky navigation bar */}
       <Navbar />
 
-      <main className="relative z-10 w-full min-h-screen">
+      <main id="main-content" className="relative z-10 w-full min-h-screen">
         {/* Hero Section Container */}
         <div className="w-full flex flex-col items-center">
           <Hero />

@@ -136,10 +136,11 @@ async function main() {
     // This intercepts fetch calls in child process Node runtime.
     const nodeOptions = `--import file://${mockFilePath}`;
     
-    const command = 'npx';
+    const nextBin = path.join(__dirname, '..', 'node_modules', 'next', 'dist', 'bin', 'next');
+    const command = 'node';
     const args = runDev 
-      ? ['next', 'dev', '-p', PORT.toString()] 
-      : ['next', 'start', '-p', PORT.toString()];
+      ? [nextBin, 'dev', '-p', PORT.toString()] 
+      : [nextBin, 'start', '-p', PORT.toString()];
     
     serverProcess = spawn(command, args, {
       stdio: 'inherit',

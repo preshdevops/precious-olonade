@@ -15,6 +15,7 @@ interface SpotifyData {
 export default function SpotifyWidget() {
   const [data, setData] = useState<SpotifyData | null>(null);
   const [loading, setLoading] = useState(true);
+  const [progress, setProgress] = useState(42); // simulated percentage progress
 
   useEffect(() => {
     async function fetchSpotify() {
@@ -24,7 +25,6 @@ export default function SpotifyWidget() {
           const json = await res.json();
           setData(json);
         } else {
-          // Keep old data or show offline
           setData({ isPlaying: false, message: "Offline" });
         }
       } catch (err) {
@@ -39,6 +39,15 @@ export default function SpotifyWidget() {
     const interval = setInterval(fetchSpotify, 15000);
     return () => clearInterval(interval);
   }, []);
+
+  // Timer to increment simulated scrubber progress
+  useEffect(() => {
+    if (!data?.isPlaying) return;
+    const progressTimer = setInterval(() => {
+      setProgress((prev) => (prev >= 98 ? 5 : prev + 1));
+    }, 1000);
+    return () => clearInterval(progressTimer);
+  }, [data?.isPlaying]);
 
   if (loading) {
     return (
@@ -64,7 +73,8 @@ export default function SpotifyWidget() {
       href={trackUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className="group block glass glass-hover border-l-2 border-l-[#4A8FE7] rounded-2xl p-4 max-w-sm w-full shadow-sm hover:scale-[1.01]"
+      className="group block glass glass-hover border-l-2 border-l-[#4A8FE7] rounded-2xl p-4 max-w-sm w-full shadow-sm hover:scale-[1.01] transition-all duration-300"
+      aria-label={`Spotify player: ${title} by ${artist}`}
     >
       <div className="flex items-center gap-4">
         {/* Album Art / Spin */}
@@ -111,7 +121,7 @@ export default function SpotifyWidget() {
 
         {/* Equalizer */}
         {isPlaying && (
-          <div className="flex items-end gap-[3px] h-4 pb-0.5 flex-shrink-0">
+          <div className="flex items-end gap-[3px] h-4 pb-0.5 flex-shrink-0" aria-hidden="true">
             <span className="eq-bar" style={{ animation: "eq-bounce 1.0s 0.1s ease-in-out infinite" }}></span>
             <span className="eq-bar" style={{ animation: "eq-bounce 1.4s 0.4s ease-in-out infinite" }}></span>
             <span className="eq-bar" style={{ animation: "eq-bounce 1.2s 0.2s ease-in-out infinite" }}></span>
@@ -119,6 +129,21 @@ export default function SpotifyWidget() {
           </div>
         )}
       </div>
+
+      {/* Track Progress Scrubber */}
+      {isPlaying && (
+        <div className="mt-3 pt-2 border-t border-[rgba(255,255,255,0.05)] flex items-center gap-2">
+          <span className="font-mono text-[9px] text-[#8A8880]">1:14</span>
+          <div className="flex-1 h-1 bg-[rgba(255,255,255,0.08)] rounded-full overflow-hidden">
+            <div
+              className="h-full bg-[#4A8FE7] rounded-full transition-all duration-300"
+              style={{ width: `${progress}%` }}
+            />
+          </div>
+          <span className="font-mono text-[9px] text-[#8A8880]">3:20</span>
+        </div>
+      )}
     </a>
   );
 }
+
