@@ -53,7 +53,7 @@ export default function PosterHero() {
           </span>
         </motion.div>
 
-        {/* Oversized Dominant Hero Typography (Swinging into place via arc + rotation settle) */}
+        {/* Oversized Dominant Hero Typography */}
         <div className="space-y-4">
           <motion.h1
             initial={{ rotate: -6, y: -50, opacity: 0 }}
@@ -79,9 +79,9 @@ export default function PosterHero() {
               damping: 15,
               delay: 0.35,
             }}
-            className="font-heading text-2xl sm:text-4xl md:text-5xl lg:text-6xl text-[#E8353E] tracking-wide uppercase pt-2"
+            className="font-heading text-2xl sm:text-4xl md:text-5xl lg:text-6xl text-[#E8353E] tracking-wide uppercase pt-2 drop-shadow-lg"
           >
-            &ldquo;I build things that actually ship.&rdquo;
+            &ldquo;With Great Design Comes Great Responsibility.&rdquo;
           </motion.div>
         </div>
 
@@ -90,12 +90,12 @@ export default function PosterHero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="text-lg sm:text-2xl text-[#F8FAFC]/90 max-w-3xl font-body leading-relaxed pt-2"
+          className="text-lg sm:text-2xl text-[#F8FAFC]/90 max-w-3xl font-body leading-relaxed pt-2 drop-shadow-md"
         >
-          Full-stack developer and final-year CS student in Nigeria. Creator of{" "}
+          Final-year Computer Science student at UNIOSUN, in Osogbo. Creator of{" "}
           <strong className="text-[#E8353E] font-semibold">Privora</strong> (encrypted data vault thesis),{" "}
           <strong className="text-[#2563EB] font-semibold">Feelms</strong>, and{" "}
-          <strong className="text-[#F8FAFC] font-semibold">Editorial Muse</strong>. Also crafting event flyers, social graphics, and writing on faith, football, and film.
+          <strong className="text-[#F8FAFC] font-semibold">Editorial Muse</strong>. Also crafting event flyers, social graphics, and writing on faith, film, and tech.
         </motion.p>
 
         {/* Action Buttons */}

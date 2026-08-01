@@ -13,8 +13,9 @@ interface Project {
   summary: string;
   description: string;
   tech: string[];
-  link: string;
-  linkText: string;
+  link?: string;
+  linkText?: string;
+  githubUrl: string;
   isFlagship?: boolean;
 }
 
@@ -25,11 +26,12 @@ const PROJECTS: Project[] = [
     category: "FLAGSHIP // FINAL-YEAR THESIS",
     badge: "AES-256-GCM",
     title: "Privora",
-    summary: "End-to-end encrypted data vault. Built for users who actually care about their privacy — AES-256, NDPR/GDPR compliant, JWT auth. My final-year project.",
-    description: "Privora is an end-to-end encrypted file & data vault platform designed to guarantee absolute data privacy. Client-side key derivation paired with AES-256-GCM encryption ensures server zero-knowledge architecture. Built as a comprehensive final-year Computer Science thesis project at Osun State University.",
-    tech: ["React", "Django", "PostgreSQL", "AES-256"],
-    link: "https://github.com/preshdevops",
-    linkText: "VIEW REPOSITORY",
+    summary:
+      "My final year project. Started as an AI-generated codebase I had to learn line by line to actually own it. Now it's a real encrypted data vault: AES-256 encryption, JWT auth, and a compliance layer built around NDPR and GDPR, not just checkbox security.",
+    description:
+      "My final year project. Started as an AI-generated codebase I had to learn line by line to actually own it. Now it's a real encrypted data vault: AES-256 encryption, JWT auth, and a compliance layer built around NDPR and GDPR, not just checkbox security.",
+    tech: ["React", "Django", "PostgreSQL", "AES-256", "JWT"],
+    githubUrl: "https://github.com/preshdevops/privora",
     isFlagship: true,
   },
   {
@@ -38,11 +40,14 @@ const PROJECTS: Project[] = [
     category: "MOVIE RECS",
     badge: "LIVE APP",
     title: "Feelms",
-    summary: "Pick a mood. Get a movie. TMDB-powered discovery with an editorial UI and AI-generated mood-fit blurbs. It's basically your next film rec.",
-    description: "Feelms transforms movie discovery by matching films strictly to your emotional state. Integrates with the TMDB API to deliver customized recommendations, complete with editorial reviews and mood-fit ratings.",
-    tech: ["React", "TMDB API", "Tailwind CSS"],
+    summary:
+      "A mood-based movie recommender. Tell it how you're feeling, it finds you something to watch, powered by Groq/Llama instead of generic genre-matching. Django backend, React frontend, deployed across Vercel, Railway, and Aiven Postgres.",
+    description:
+      "A mood-based movie recommender. Tell it how you're feeling, it finds you something to watch, powered by Groq/Llama instead of generic genre-matching. Django backend, React frontend, deployed across Vercel, Railway, and Aiven Postgres.",
+    tech: ["Django", "React", "Groq / Llama", "PostgreSQL", "Vercel", "Railway", "Aiven"],
     link: "https://feelms.vercel.app",
     linkText: "Launch App (feelms.vercel.app)",
+    githubUrl: "https://github.com/preshdevops/feelms",
   },
   {
     id: "editorial-muse",
@@ -50,35 +55,42 @@ const PROJECTS: Project[] = [
     category: "LETTER VAULT",
     badge: "LIVE APP",
     title: "Editorial Muse",
-    summary: "Write someone a letter. Encrypt it. Send it. Track when they read it. Old-school romance, built with actual backend logic.",
-    description: "An editorial digital letter platform combining vintage epistolary aesthetics with modern security. Features encrypted letter transmission, read receipts, and custom typography styling.",
-    tech: ["Node.js", "SQLite", "Render"],
+    summary:
+      "Write a real letter and have it delivered by email, encrypted end to end. Built full-stack on Node/Express with SQLite and nodemailer. Small app, but the encryption gets the same seriousness I put into Privora.",
+    description:
+      "Write a real letter and have it delivered by email, encrypted end to end. Built full-stack on Node/Express with SQLite and nodemailer. Small app, but the encryption gets the same seriousness I put into Privora.",
+    tech: ["Node.js", "Express", "SQLite", "Nodemailer", "Render"],
     link: "https://editorial-muse.onrender.com",
     linkText: "Launch App (editorial-muse.onrender.com)",
+    githubUrl: "https://github.com/preshdevops/editorial-muse",
+  },
+  {
+    id: "dabar",
+    number: "04",
+    category: "AUDIO & VIDEO CLIPPING",
+    badge: "AI TOOL",
+    title: "Dabar",
+    summary:
+      "Repurposes long sermon recordings into short clips for social media, using Whisper for transcription, FFmpeg for cutting, and Groq for fast inference. Built for churches that record everything and post nothing.",
+    description:
+      "Repurposes long sermon recordings into short clips for social media, using Whisper for transcription, FFmpeg for cutting, and Groq for fast inference. Built for churches that record everything and post nothing.",
+    tech: ["Whisper", "FFmpeg", "Groq", "Python"],
+    githubUrl: "https://github.com/preshdevops/dabar",
   },
   {
     id: "cinevault",
-    number: "04",
+    number: "05",
     category: "DISCOVERY",
     badge: "NETLIFY",
     title: "CineVault",
-    summary: "Film discovery app — search movies, browse actors, build a watchlist. My first serious frontend project, fully responsive.",
-    description: "CineVault is a feature-rich film discovery platform featuring dynamic searching, actor filmographies, watchlist persistence, and detailed movie stats. Clean vanilla JavaScript architecture.",
+    summary:
+      "A movie discovery site. One of my earlier full-stack builds, before Feelms taught me people don't just want movies. They want movies that match how they feel.",
+    description:
+      "A movie discovery site. One of my earlier full-stack builds, before Feelms taught me people don't just want movies. They want movies that match how they feel.",
     tech: ["HTML", "CSS", "JavaScript", "REST API"],
     link: "https://cinevault-app.netlify.app",
     linkText: "Launch App (cinevault-app.netlify.app)",
-  },
-  {
-    id: "currency-converter",
-    number: "05",
-    category: "DESKTOP APP",
-    badge: "PYTHON",
-    title: "Currency Converter",
-    summary: "Desktop app with live exchange rate logic. Clean interface, no fluff. Built it because I needed it.",
-    description: "A lightweight cross-platform desktop application built in Python for real-time exchange rate calculation, historical trends, and multi-currency conversions with offline caching.",
-    tech: ["Python", "Desktop App", "REST API"],
-    link: "https://github.com/preshdevops/currency_desktop_app",
-    linkText: "View Repository on GitHub",
+    githubUrl: "https://github.com/preshdevops/CineVault",
   },
 ];
 
@@ -102,7 +114,7 @@ export default function PosterProjects() {
         </p>
       </div>
 
-      {/* Freestanding Splash Layout (No Boxed Cards / Containers) */}
+      {/* Freestanding Splash Layout */}
       <div className="grid grid-cols-1 md:grid-cols-12 gap-12 pt-6">
         {PROJECTS.map((project, index) => {
           if (project.isFlagship) {
@@ -150,15 +162,31 @@ export default function PosterProjects() {
                     ))}
                   </div>
 
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setSelectedProject(project);
-                    }}
-                    className="font-mono font-bold text-xs bg-[#E8353E] hover:bg-[#2563EB] text-[#090A0F] hover:text-[#F8FAFC] px-6 py-3 rounded shadow-[4px_4px_0px_0px_#2563EB] transition-all"
-                  >
-                    COMIC DETAIL VIEW &rarr;
-                  </button>
+                  <div className="flex flex-wrap items-center gap-3">
+                    {project.githubUrl && (
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="font-mono font-bold text-xs bg-[#090A0F] hover:bg-[#121620] text-[#F8FAFC] hover:text-[#E8353E] px-4 py-3 rounded border border-[#2563EB] hover:border-[#E8353E] transition-all flex items-center gap-2"
+                        title="View Source Code on GitHub"
+                      >
+                        <span>VIEW CODE</span>
+                        <span className="text-[10px] text-[#2563EB]">&rarr;</span>
+                      </a>
+                    )}
+
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setSelectedProject(project);
+                      }}
+                      className="font-mono font-bold text-xs bg-[#E8353E] hover:bg-[#2563EB] text-[#090A0F] hover:text-[#F8FAFC] px-6 py-3 rounded shadow-[4px_4px_0px_0px_#2563EB] transition-all"
+                    >
+                      COMIC DETAIL VIEW &rarr;
+                    </button>
+                  </div>
                 </div>
               </motion.div>
             );
@@ -204,11 +232,23 @@ export default function PosterProjects() {
                 ))}
               </div>
 
-              <div className="pt-2">
+              <div className="pt-2 flex items-center gap-4">
                 <span className="inline-flex items-center gap-1.5 font-mono text-xs text-[#E8353E] font-bold group-hover:underline">
                   <span>Open Detail Panel</span>
                   <span>&rarr;</span>
                 </span>
+
+                {project.githubUrl && (
+                  <a
+                    href={project.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                    className="font-mono text-xs text-[#2563EB] hover:text-[#E8353E] underline font-bold"
+                  >
+                    [View Code]
+                  </a>
+                )}
               </div>
             </motion.div>
           );
@@ -279,15 +319,31 @@ export default function PosterProjects() {
 
             {/* Modal Footer Actions */}
             <div className="pt-4 border-t border-[rgba(248,250,252,0.15)] flex flex-wrap items-center justify-between gap-4">
-              <a
-                href={selectedProject.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-mono font-bold text-xs bg-[#E8353E] hover:bg-[#2563EB] text-[#090A0F] hover:text-[#F8FAFC] px-6 py-3 rounded shadow-[3px_3px_0px_0px_#2563EB] transition-all flex items-center gap-2"
-              >
-                <span>{selectedProject.linkText}</span>
-                <span>&rarr;</span>
-              </a>
+              <div className="flex flex-wrap items-center gap-3">
+                {selectedProject.link && (
+                  <a
+                    href={selectedProject.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-mono font-bold text-xs bg-[#E8353E] hover:bg-[#2563EB] text-[#090A0F] hover:text-[#F8FAFC] px-6 py-3 rounded shadow-[3px_3px_0px_0px_#2563EB] transition-all flex items-center gap-2"
+                  >
+                    <span>{selectedProject.linkText}</span>
+                    <span>&rarr;</span>
+                  </a>
+                )}
+
+                {selectedProject.githubUrl && (
+                  <a
+                    href={selectedProject.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-mono font-bold text-xs bg-[#090A0F] hover:bg-[#121620] text-[#F8FAFC] hover:text-[#E8353E] px-5 py-3 rounded border border-[#2563EB] hover:border-[#E8353E] transition-all flex items-center gap-2"
+                  >
+                    <span>View Repository (GitHub)</span>
+                    <span>&rarr;</span>
+                  </a>
+                )}
+              </div>
 
               <button
                 onClick={() => setSelectedProject(null)}

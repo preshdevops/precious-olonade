@@ -139,7 +139,7 @@ export default function PosterBio() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start pt-6">
-        {/* Origin Story Narrative (Freestanding Comic Splash Text) */}
+        {/* Origin Story Narrative (Freestanding Splash Text - Exact copy without em dashes) */}
         <div className="lg:col-span-7 space-y-6 text-lg sm:text-xl text-[#F8FAFC]/95 leading-relaxed font-body">
           <motion.p
             initial={{ opacity: 0, x: -40 }}
@@ -148,7 +148,7 @@ export default function PosterBio() {
             transition={{ duration: 0.6 }}
             className="drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]"
           >
-            I&apos;m Precious — a full-stack developer and final-year CS student at Osun State University, Nigeria. I&apos;ve shipped encrypted web apps, mobile apps still in the oven, and more side projects than I care to admit.
+            Final-year Computer Science student at UNIOSUN, in Osogbo. Most of what I know about building software didn&apos;t come from a classroom. It came from Privora, my final year project, which started as an AI-generated codebase I didn&apos;t fully understand and turned into something I actually own: JWT auth, AES-256 encryption, and NDPR/GDPR compliance built in from the ground up, not bolted on after.
           </motion.p>
 
           <motion.p
@@ -158,7 +158,7 @@ export default function PosterBio() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]"
           >
-            As a working graphic designer, I craft bold event flyers and social graphics for a local ministry and a peace club — applying poster design principles, layout hierarchy, and visual energy directly to my frontend software work.
+            Outside the thesis, I build things people use. Feelms recommends movies based on your mood, not your watch history. Editorial Muse lets you write and send a real letter instead of a text. Dabar turns long sermon recordings into short clips people actually watch. I also design: flyers, social graphics, brand work for a peace initiative and an NGO reaching over 20,000 young people across southwest Nigeria.
           </motion.p>
 
           <motion.p
@@ -168,7 +168,16 @@ export default function PosterBio() {
             transition={{ duration: 0.6, delay: 0.35 }}
             className="drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]"
           >
-            Outside the code editor and Figma canvas, I write about football, film, and faith on my journal, and occasionally beat people at eFootball.
+            I&apos;m also just a person who watches too much football, plays keyboard badly but improving, and writes about faith, film, and tech at{" "}
+            <a
+              href="https://preciouswrites.vercel.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#E8353E] underline font-bold"
+            >
+              preciouswrites.vercel.app
+            </a>
+            .
           </motion.p>
 
           {/* Freestanding Splash Pull-Quote */}
@@ -179,7 +188,7 @@ export default function PosterBio() {
             transition={{ type: "spring", stiffness: 140, damping: 12, delay: 0.5 }}
             className="font-heading text-3xl sm:text-4xl text-[#E8353E] border-l-4 border-l-[#E8353E] pl-6 py-2 my-8 drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)]"
           >
-            &ldquo;Build with intention. Ship with purpose.&rdquo;
+            &ldquo;With Great Design Comes Great Responsibility.&rdquo;
           </motion.blockquote>
         </div>
 
