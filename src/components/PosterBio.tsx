@@ -134,12 +134,12 @@ export default function PosterBio() {
           BIOGRAPHY & GRAPHIC DESIGN // ORIGIN STORY
         </div>
         <h2 className="font-heading text-5xl sm:text-7xl text-[#F8FAFC]">
-          The story so far.
+          Every hero has an origin.
         </h2>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start pt-6">
-        {/* Origin Story Narrative (Freestanding Splash Text - Exact copy without em dashes) */}
+        {/* Origin Story Narrative */}
         <div className="lg:col-span-7 space-y-6 text-lg sm:text-xl text-[#F8FAFC]/95 leading-relaxed font-body">
           <motion.p
             initial={{ opacity: 0, x: -40 }}
@@ -148,27 +148,47 @@ export default function PosterBio() {
             transition={{ duration: 0.6 }}
             className="drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]"
           >
-            I&apos;m Precious. Final-year Computer Science student at UNIOSUN, in Osogbo. Faith comes first for me, before code, before school, before anything else, that&apos;s not a caption, it&apos;s just true.
+            My journey into tech didn&apos;t begin with a startup or a hackathon. It started with curiosity.
           </motion.p>
 
           <motion.p
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.15 }}
             className="drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]"
           >
-            I grew up loving football way more than is probably healthy (Man United, for better or worse), I&apos;m slowly learning keyboard and church music, and I write about faith, football, and film on my own time because I like having a place that&apos;s just mine, not tied to a client or a grade. I do graphics and social media for a peace initiative, and I help lead creative work at an NGO that reaches over 20,000 young people across southwest Nigeria, that side of my life matters as much to me as the technical side does.
+            I wanted to understand how websites worked, why some apps felt effortless while others were frustrating, and how a few lines of code could solve real problems. That curiosity became an obsession.
+          </motion.p>
+
+          <motion.p
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.25 }}
+            className="drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]"
+          >
+            Today, I&apos;m a Computer Science student who spends most of his time building products, studying software engineering, improving my design skills, and exploring how technology can make everyday life better.
+          </motion.p>
+
+          <motion.p
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.35 }}
+            className="drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]"
+          >
+            Outside development, I enjoy graphic design, writing, storytelling, and community work. Every project teaches me something new, and every challenge becomes another opportunity to grow.
           </motion.p>
 
           <motion.blockquote
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ type: "spring", stiffness: 140, damping: 12, delay: 0.35 }}
+            transition={{ type: "spring", stiffness: 140, damping: 12, delay: 0.45 }}
             className="font-heading text-2xl sm:text-3xl text-[#E8353E] border-l-4 border-l-[#E8353E] pl-6 py-2 my-8 drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)] italic"
           >
-            &ldquo;Gospel. Tech. Precious.&rdquo; isn&apos;t a tagline I came up with for a portfolio, it&apos;s genuinely how I think about myself, faith and building things aren&apos;t two separate lanes I&apos;m juggling.
+            &ldquo;I&apos;m not chasing perfection. I&apos;m committed to becoming better than I was yesterday.&rdquo;
           </motion.blockquote>
         </div>
 

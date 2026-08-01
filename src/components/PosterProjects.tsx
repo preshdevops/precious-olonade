@@ -103,14 +103,14 @@ export default function PosterProjects() {
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-6 border-b-2 border-[#E8353E]/30">
         <div>
           <div className="font-mono text-xs text-[#2563EB] font-bold uppercase tracking-widest mb-1">
-            SAVED THE DAY // 01 - 05
+            MISSIONS COMPLETED // 01 - 05
           </div>
           <h2 className="font-heading text-5xl sm:text-7xl text-[#F8FAFC] tracking-tight">
-            Selected work.
+            Missions completed.
           </h2>
         </div>
-        <p className="font-mono text-xs text-[#F8FAFC]/80 max-w-md">
-          A wall of hand-crafted software projects built with intention. Click any freestanding title to open comic panel detail view.
+        <p className="font-body text-sm sm:text-base text-[#F8FAFC]/90 max-w-lg leading-relaxed">
+          Every project below started with a problem. Some were built to learn new technologies, others to solve real-world challenges. Together, they represent my growth as a developer, designer, and builder. From secure platforms to creative experiments, each pushed me to become a better engineer.
         </p>
       </div>
 

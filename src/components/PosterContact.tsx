@@ -26,12 +26,20 @@ export default function PosterContact() {
           </div>
 
           <h2 className="font-heading text-5xl sm:text-7xl lg:text-9xl text-[#F8FAFC] tracking-tight drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)]">
-            Let&apos;s build <span className="text-[#E8353E]">something.</span>
+            Let&apos;s build <span className="text-[#E8353E]">something amazing.</span>
           </h2>
 
-          <p className="text-lg sm:text-2xl text-[#F8FAFC]/90 font-body max-w-2xl leading-relaxed drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]">
-            Open to contracts, full-stack software development roles, and graphic design collaborations. Click below to launch your email client directly.
-          </p>
+          <div className="space-y-4 text-lg sm:text-xl text-[#F8FAFC]/90 font-body max-w-2xl leading-relaxed drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]">
+            <p>
+              Whether you have a project, an opportunity, or simply want to connect, I&apos;d love to hear from you.
+            </p>
+            <p>
+              I&apos;m always open to collaborating with great people, learning something new, and creating products that make an impact.
+            </p>
+            <p className="font-semibold text-[#F8FAFC]">
+              Your next idea could be our next mission. Let&apos;s make it happen.
+            </p>
+          </div>
         </div>
 
         {/* Direct Email Mailto Action Button (No Copy, Direct Mail Launch) */}

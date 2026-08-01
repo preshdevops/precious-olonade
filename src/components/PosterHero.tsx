@@ -45,10 +45,9 @@ export default function PosterHero() {
           className="flex flex-wrap items-center gap-3"
         >
           <span className="poster-stamp">
-            OPEN TO WORK
+            FRIENDLY NEIGHBORHOOD DEVELOPER
           </span>
           <span className="font-mono text-xs text-[#F8FAFC] bg-[#121620]/90 backdrop-blur-sm px-3.5 py-1.5 rounded border border-rgba(248,250,252,0.15) flex items-center gap-2">
-            {/* <span className="w-2 h-2 rounded-full bg-[#E8353E] animate-ping" /> */}
             <span>NIGERIA • OSUN STATE UNIVERSITY</span>
           </span>
         </motion.div>
@@ -81,22 +80,30 @@ export default function PosterHero() {
             }}
             className="font-heading text-2xl sm:text-4xl md:text-5xl lg:text-6xl text-[#E8353E] tracking-wide uppercase pt-2 drop-shadow-lg"
           >
-            &ldquo;With Great Design Comes Great Responsibility.&rdquo;
+            &ldquo;I build digital experiences that feel effortless.&rdquo;
           </motion.div>
         </div>
 
         {/* Role & Bio Blurb */}
-        <motion.p
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="text-lg sm:text-2xl text-[#F8FAFC]/90 max-w-3xl font-body leading-relaxed pt-2 drop-shadow-md"
+          className="space-y-4 text-lg sm:text-xl text-[#F8FAFC]/90 max-w-3xl font-body leading-relaxed pt-2 drop-shadow-md"
         >
-          Final-year Computer Science student at UNIOSUN, in Osogbo. Creator of{" "}
-          <strong className="text-[#E8353E] font-semibold">Privora</strong> (encrypted data vault thesis),{" "}
-          <strong className="text-[#2563EB] font-semibold">Feelms</strong>, and{" "}
-          <strong className="text-[#F8FAFC] font-semibold">Editorial Muse</strong>. Also crafting event flyers, social graphics, and writing on faith, film, and tech.
-        </motion.p>
+          <p>
+            I&apos;m <strong className="text-[#F8FAFC] font-semibold">Precious Olonade</strong>, a full stack developer, UI designer, and creative problem solver who enjoys turning complex ideas into products people genuinely love using.
+          </p>
+          <p>
+            Inspired by Spider-Man, I believe great technology isn&apos;t about showing off powers. It&apos;s about using them to help people.
+          </p>
+          <p>
+            Whether it&apos;s building secure web applications, crafting thoughtful interfaces, or designing visual experiences, I focus on creating products that are fast, accessible, and memorable.
+          </p>
+          <blockquote className="font-heading text-2xl sm:text-3xl text-[#E8353E] border-l-4 border-l-[#E8353E] pl-4 py-1 mt-4 italic">
+            &ldquo;Let&apos;s build something worth remembering.&rdquo;
+          </blockquote>
+        </motion.div>
 
         {/* Action Buttons */}
         <motion.div
