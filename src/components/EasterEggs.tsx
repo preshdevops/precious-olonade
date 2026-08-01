@@ -2,6 +2,62 @@
 
 import { useEffect, useState } from "react";
 
+function playThwipSound() {
+  try {
+    const AudioContextClass =
+      window.AudioContext ||
+      (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
+    if (!AudioContextClass) return;
+    const ctx = new AudioContextClass();
+    const now = ctx.currentTime;
+
+    // 1. Fast frequency sweep (sweeping down from 1600Hz to 250Hz in 120ms)
+    const osc = ctx.createOscillator();
+    const oscGain = ctx.createGain();
+    osc.type = "sine";
+    osc.frequency.setValueAtTime(1600, now);
+    osc.frequency.exponentialRampToValueAtTime(250, now + 0.12);
+
+    oscGain.gain.setValueAtTime(0.45, now);
+    oscGain.gain.exponentialRampToValueAtTime(0.001, now + 0.12);
+
+    osc.connect(oscGain);
+    oscGain.connect(ctx.destination);
+    osc.start(now);
+    osc.stop(now + 0.12);
+
+    // 2. Filtered white noise burst for the web-shooter swish/snap
+    const bufferSize = Math.floor(ctx.sampleRate * 0.15);
+    const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+    const data = buffer.getChannelData(0);
+    for (let i = 0; i < bufferSize; i++) {
+      data[i] = Math.random() * 2 - 1;
+    }
+
+    const noise = ctx.createBufferSource();
+    noise.buffer = buffer;
+
+    const filter = ctx.createBiquadFilter();
+    filter.type = "bandpass";
+    filter.frequency.setValueAtTime(2800, now);
+    filter.frequency.exponentialRampToValueAtTime(700, now + 0.15);
+    filter.Q.setValueAtTime(2.5, now);
+
+    const noiseGain = ctx.createGain();
+    noiseGain.gain.setValueAtTime(0.6, now);
+    noiseGain.gain.exponentialRampToValueAtTime(0.001, now + 0.15);
+
+    noise.connect(filter);
+    filter.connect(noiseGain);
+    noiseGain.connect(ctx.destination);
+
+    noise.start(now);
+    noise.stop(now + 0.15);
+  } catch (err) {
+    console.error("Audio playback error:", err);
+  }
+}
+
 export default function EasterEggs() {
   const [thwipActive, setThwipActive] = useState(false);
   const [symbioteActive, setSymbioteActive] = useState(false);
@@ -39,6 +95,7 @@ export default function EasterEggs() {
 
       if (keyBuffer.endsWith("thwip")) {
         setThwipActive(true);
+        playThwipSound();
         setTimeout(() => setThwipActive(false), 1800);
         keyBuffer = "";
       }
