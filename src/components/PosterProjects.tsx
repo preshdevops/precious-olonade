@@ -27,9 +27,9 @@ const PROJECTS: Project[] = [
     badge: "AES-256-GCM",
     title: "Privora",
     summary:
-      "My final year project. Started as an AI-generated codebase I had to learn line by line to actually own it. Now it's a real encrypted data vault: AES-256 encryption, JWT auth, and a compliance layer built around NDPR and GDPR, not just checkbox security.",
+      "My final year project: an encrypted data vault built around AES-256 encryption, JWT authentication, and a compliance layer mapped to Nigeria's NDPR and GDPR. The kind of project where the interesting work is invisible: key management, access control, the stuff that has to be right even when nobody's looking.",
     description:
-      "My final year project. Started as an AI-generated codebase I had to learn line by line to actually own it. Now it's a real encrypted data vault: AES-256 encryption, JWT auth, and a compliance layer built around NDPR and GDPR, not just checkbox security.",
+      "My final year project: an encrypted data vault built around AES-256 encryption, JWT authentication, and a compliance layer mapped to Nigeria's NDPR and GDPR. The kind of project where the interesting work is invisible: key management, access control, the stuff that has to be right even when nobody's looking.",
     tech: ["React", "Django", "PostgreSQL", "AES-256", "JWT"],
     githubUrl: "https://github.com/preshdevops/privora",
     isFlagship: true,

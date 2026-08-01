@@ -148,7 +148,7 @@ export default function PosterBio() {
             transition={{ duration: 0.6 }}
             className="drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]"
           >
-            Final-year Computer Science student at UNIOSUN, in Osogbo. Most of what I know about building software didn&apos;t come from a classroom. It came from Privora, my final year project, which started as an AI-generated codebase I didn&apos;t fully understand and turned into something I actually own: JWT auth, AES-256 encryption, and NDPR/GDPR compliance built in from the ground up, not bolted on after.
+            I&apos;m Precious. Final-year Computer Science student at UNIOSUN, in Osogbo. Faith comes first for me, before code, before school, before anything else, that&apos;s not a caption, it&apos;s just true.
           </motion.p>
 
           <motion.p
@@ -158,37 +158,17 @@ export default function PosterBio() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]"
           >
-            Outside the thesis, I build things people use. Feelms recommends movies based on your mood, not your watch history. Editorial Muse lets you write and send a real letter instead of a text. Dabar turns long sermon recordings into short clips people actually watch. I also design: flyers, social graphics, brand work for a peace initiative and an NGO reaching over 20,000 young people across southwest Nigeria.
+            I grew up loving football way more than is probably healthy (Man United, for better or worse), I&apos;m slowly learning keyboard and church music, and I write about faith, football, and film on my own time because I like having a place that&apos;s just mine, not tied to a client or a grade. I do graphics and social media for a peace initiative, and I help lead creative work at an NGO that reaches over 20,000 young people across southwest Nigeria, that side of my life matters as much to me as the technical side does.
           </motion.p>
 
-          <motion.p
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.35 }}
-            className="drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]"
-          >
-            I&apos;m also just a person who watches too much football, plays keyboard badly but improving, and writes about faith, film, and tech at{" "}
-            <a
-              href="https://preciouswrites.vercel.app"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[#E8353E] underline font-bold"
-            >
-              preciouswrites.vercel.app
-            </a>
-            .
-          </motion.p>
-
-          {/* Freestanding Splash Pull-Quote */}
           <motion.blockquote
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ type: "spring", stiffness: 140, damping: 12, delay: 0.5 }}
-            className="font-heading text-3xl sm:text-4xl text-[#E8353E] border-l-4 border-l-[#E8353E] pl-6 py-2 my-8 drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)]"
+            transition={{ type: "spring", stiffness: 140, damping: 12, delay: 0.35 }}
+            className="font-heading text-2xl sm:text-3xl text-[#E8353E] border-l-4 border-l-[#E8353E] pl-6 py-2 my-8 drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)] italic"
           >
-            &ldquo;With Great Design Comes Great Responsibility.&rdquo;
+            &ldquo;Gospel. Tech. Precious.&rdquo; isn&apos;t a tagline I came up with for a portfolio, it&apos;s genuinely how I think about myself, faith and building things aren&apos;t two separate lanes I&apos;m juggling.
           </motion.blockquote>
         </div>
 
