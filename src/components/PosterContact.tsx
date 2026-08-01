@@ -37,7 +37,7 @@ export default function PosterContact() {
         {/* Direct Email Mailto Action Button (No Copy, Direct Mail Launch) */}
         <div className="space-y-3 max-w-xl">
           <div className="font-mono text-xs text-[#E8353E] uppercase font-bold tracking-wider flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-[#E8353E] animate-ping" />
+            {/* <span className="w-2 h-2 rounded-full bg-[#E8353E] animate-ping" /> */}
             <span>PRIMARY MAILTO ENDPOINT</span>
           </div>
 

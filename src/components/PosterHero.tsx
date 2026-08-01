@@ -48,7 +48,7 @@ export default function PosterHero() {
             OPEN TO WORK
           </span>
           <span className="font-mono text-xs text-[#F8FAFC] bg-[#121620]/90 backdrop-blur-sm px-3.5 py-1.5 rounded border border-rgba(248,250,252,0.15) flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-[#E8353E] animate-ping" />
+            {/* <span className="w-2 h-2 rounded-full bg-[#E8353E] animate-ping" /> */}
             <span>NIGERIA • OSUN STATE UNIVERSITY</span>
           </span>
         </motion.div>
