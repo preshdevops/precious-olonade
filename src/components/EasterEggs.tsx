@@ -63,6 +63,12 @@ export default function EasterEggs() {
   const [symbioteActive, setSymbioteActive] = useState(false);
 
   useEffect(() => {
+    // Console log secret for DevTools
+    console.log(
+      "%c🕸️ SPIDER-SENSE SECRETS UNLOCKED:\n• Type 'thwip' for web-shooters!\n• Press ↑ ↑ ↓ ↓ ← → ← → B A for Symbiote Mode!",
+      "color: #E8353E; font-size: 13px; font-weight: bold;"
+    );
+
     let keyBuffer = "";
     const konamiSequence = [
       "ArrowUp",
@@ -77,6 +83,12 @@ export default function EasterEggs() {
       "a",
     ];
     let konamiIndex = 0;
+
+    const handleCustomThwip = () => {
+      setThwipActive(true);
+      playThwipSound();
+      setTimeout(() => setThwipActive(false), 1800);
+    };
 
     const handleKeyDown = (e: KeyboardEvent) => {
       // Don't trigger when user is typing in form inputs
@@ -118,7 +130,11 @@ export default function EasterEggs() {
     };
 
     window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
+    window.addEventListener("trigger-thwip", handleCustomThwip);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("trigger-thwip", handleCustomThwip);
+    };
   }, []);
 
   return (

@@ -98,8 +98,19 @@ export default function PosterContact() {
 
       {/* Footer & Spotify Widget */}
       <footer className="pt-10 border-t border-[rgba(248,250,252,0.15)] flex flex-col md:flex-row items-center justify-between gap-6 font-mono text-xs text-[#F8FAFC]/70">
-        <div>
-          &copy; {new Date().getFullYear()} Precious Olonade • Build with intention. Ship with purpose.
+        <div className="flex flex-col sm:flex-row items-center gap-3">
+          <span>&copy; {new Date().getFullYear()} Precious Olonade • Build with intention. Ship with purpose.</span>
+          <button
+            type="button"
+            onClick={() => {
+              window.dispatchEvent(new Event("trigger-thwip"));
+            }}
+            className="font-mono text-[10px] text-[#2563EB] hover:text-[#E8353E] bg-[#090A0F] border border-[#2563EB]/40 hover:border-[#E8353E] px-2.5 py-1 rounded transition-all cursor-pointer inline-flex items-center gap-1.5 group"
+            title="Click or type 'thwip' on keyboard for a secret!"
+          >
+            {/* <span className="w-1.5 h-1.5 rounded-full bg-[#E8353E] animate-ping" /> */}
+            <span>[SECRET: TYPE &apos;THWIP&apos; OR TRY KONAMI CODE 🕷️]</span>
+          </button>
         </div>
 
         <div className="w-full md:w-auto">
