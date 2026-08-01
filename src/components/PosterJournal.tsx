@@ -1,49 +1,41 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import RooftopScene from "./RooftopScene";
-
-const BLOG_POSTS = [
-  {
-    slug: "god-first",
-    title: "God First",
-    excerpt:
-      "Not a slogan. Not a caption. The only order of priority that makes sense when everything else is noise.",
-    date: "May 28, 2026",
-    category: "Faith",
-    readingTime: "2 min read",
-    link: "https://preciouswrites.vercel.app/blog/god-first",
-  },
-  {
-    slug: "cunha-and-mbeumo-era",
-    title: "The Cunha and Mbeumo Era",
-    excerpt:
-      "We went from Garnacho and Antony to actual quality. Man United fans are genuinely not used to this feeling.",
-    date: "May 22, 2026",
-    category: "Football",
-    readingTime: "2 min read",
-    link: "https://preciouswrites.vercel.app/blog/cunha-and-mbeumo-era",
-  },
-  {
-    slug: "watching-below-1080p-should-be-illegal",
-    title: "Watching Movies Below 1080p Should Be Illegal",
-    excerpt:
-      "The Map That Leads to You had some of the best cinematography of 2025. You should not be watching it in 480p.",
-    date: "May 14, 2026",
-    category: "Culture",
-    readingTime: "2 min read",
-    link: "https://preciouswrites.vercel.app/blog/watching-below-1080p-should-be-illegal",
-  },
-];
+import { BlogPost, FALLBACK_BLOG_POSTS, getLatestBlogPosts } from "@/lib/fetchBlogPosts";
 
 export default function PosterJournal() {
+  const [posts, setPosts] = useState<BlogPost[]>(FALLBACK_BLOG_POSTS);
+  const [isLive, setIsLive] = useState(false);
+
+  useEffect(() => {
+    let isMounted = true;
+    async function loadLivePosts() {
+      const liveData = await getLatestBlogPosts();
+      if (isMounted && liveData && liveData.length > 0) {
+        setPosts(liveData);
+        setIsLive(true);
+      }
+    }
+    loadLivePosts();
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
   return (
     <RooftopScene id="blog" rooftopNumber="ROOFTOP #04" rooftopTitle="FROM THE JOURNAL // FAITH, FOOTBALL & FILM" variant="journal">
       {/* Section Header Splash */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-6 border-b-2 border-[#E8353E]/30">
         <div>
-          <div className="font-mono text-xs text-[#2563EB] font-bold uppercase tracking-widest mb-1">
-            WRITING // FAITH, FOOTBALL &amp; FILM
+          <div className="flex items-center gap-2 font-mono text-xs text-[#2563EB] font-bold uppercase tracking-widest mb-1">
+            <span>WRITING // CANONICAL JOURNAL</span>
+            {isLive && (
+              <span className="text-[10px] text-[#E8353E] bg-[#E8353E]/10 border border-[#E8353E]/40 px-2 py-0.5 rounded font-mono font-bold animate-pulse">
+                [LIVE FEED]
+              </span>
+            )}
           </div>
           <h2 className="font-heading text-5xl sm:text-7xl text-[#F8FAFC]">
             From the journal.
@@ -53,15 +45,16 @@ export default function PosterJournal() {
           href="https://preciouswrites.vercel.app"
           target="_blank"
           rel="noopener noreferrer"
-          className="font-mono text-xs font-bold text-[#E8353E] hover:underline"
+          className="font-mono text-xs font-bold text-[#E8353E] hover:underline flex items-center gap-1.5"
         >
-          Read all posts on PreciousWrites &rarr;
+          <span>Read all posts on PreciousWrites</span>
+          <span>&rarr;</span>
         </a>
       </div>
 
-      {/* Freestanding Splash Posts (No Boxed Cards) */}
+      {/* Freestanding Splash Posts */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-10 pt-6">
-        {BLOG_POSTS.map((post, idx) => (
+        {posts.map((post, idx) => (
           <motion.a
             key={post.slug}
             href={post.link}
@@ -89,15 +82,16 @@ export default function PosterJournal() {
               </h3>
 
               {/* Freestanding Excerpt */}
-              <p className="text-sm text-[#F8FAFC]/85 leading-relaxed font-body drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)]">
+              <p className="text-sm text-[#F8FAFC]/85 leading-relaxed font-body drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)] line-clamp-3">
                 {post.excerpt}
               </p>
             </div>
 
             <div className="pt-4 flex items-center justify-between font-mono text-xs text-[#2563EB]">
               <span>{post.readingTime}</span>
-              <span className="group-hover:text-[#E8353E] transition-colors font-bold">
-                Read Article &rarr;
+              <span className="group-hover:text-[#E8353E] transition-colors font-bold flex items-center gap-1">
+                <span>Read Article</span>
+                <span>&rarr;</span>
               </span>
             </div>
           </motion.a>
