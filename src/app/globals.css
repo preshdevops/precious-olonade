@@ -1,16 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Outfit:wght@400;600;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Work+Sans:ital,wght@0,300..900;1,300..900&family=JetBrains+Mono:wght@400;600;700&display=swap');
 
 @import "tailwindcss";
 
-/* ─── POSTER WALL DESIGN SYSTEM ─── */
+/* ─── SPIDER-MAN INSPIRED DESIGN SYSTEM ─── */
 @theme {
-  --font-heading: 'Playfair Display', serif;
-  --font-body: 'Outfit', sans-serif;
+  --font-heading: 'Anton', sans-serif;
+  --font-body: 'Work Sans', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
   --color-background: #090A0F;
   --color-foreground: #F8FAFC;
   --color-accent: #2563EB;
-  --color-yellow: #CCFF00;
+  --color-red: #E8353E;
 }
 
 /* ─── BASE ─── */
@@ -29,11 +29,12 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 /* ─── SELECTION ─── */
 ::selection {
-  background: #CCFF00;
+  background: #E8353E;
   color: #090A0F;
 }
 
@@ -49,12 +50,12 @@ body {
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #CCFF00;
+  background: #E8353E;
 }
 
 /* ─── FOCUS STYLES ─── */
 :focus-visible {
-  outline: 3px solid #CCFF00;
+  outline: 3px solid #E8353E;
   outline-offset: 2px;
 }
 
@@ -88,27 +89,27 @@ body {
   }
 }
 
-/* Poster Card Base & Shadows */
+/* Poster Card Base & Shadows (Comic Panel Treatment) */
 .poster-card {
   background: #11141D;
-  border: 2px solid rgba(248, 250, 252, 0.15);
+  border: 2px solid rgba(248, 250, 252, 0.18);
   transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .poster-card:hover {
-  border-color: #CCFF00;
+  border-color: #E8353E;
   transform: translateY(-4px) scale(1.01);
-  box-shadow: 8px 8px 0px 0px #CCFF00;
+  box-shadow: 6px 6px 0px 0px #E8353E;
 }
 
 .poster-card-flagship {
   background: #161B26;
-  border: 3px solid #CCFF00;
+  border: 3px solid #E8353E;
   box-shadow: 8px 8px 0px 0px #2563EB;
 }
 
 .poster-card-flagship:hover {
-  box-shadow: 12px 12px 0px 0px #CCFF00;
+  box-shadow: 10px 10px 0px 0px #E8353E;
 }
 
 /* Poster Stamp Badge */
@@ -117,7 +118,7 @@ body {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  background: #CCFF00;
+  background: #E8353E;
   color: #090A0F;
   padding: 0.25rem 0.6rem;
   font-size: 0.7rem;
@@ -136,5 +137,56 @@ body {
 .eq-bar {
   width: 2px;
   border-radius: 1px;
-  background: #CCFF00;
+  background: #E8353E;
 }
+
+/* ─── SPIDER-SENSE & EASTER EGGS ─── */
+@keyframes spider-sense {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(232, 53, 62, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(232, 53, 62, 0);
+  }
+}
+
+.spider-sense-pulse {
+  animation: spider-sense 2s cubic-bezier(0.4, 0, 0.6, 1) 2;
+}
+
+/* Symbiote Mode (Konami Code Toggle) */
+body.symbiote-mode {
+  background-color: #040508 !important;
+  color: #E2E8F0 !important;
+}
+
+body.symbiote-mode .poster-card {
+  background: #0A0D14 !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+body.symbiote-mode .poster-card-flagship {
+  background: #0E121B !important;
+  border-color: #E8353E !important;
+  box-shadow: 8px 8px 0px 0px #ffffff !important;
+}
+
+body.symbiote-mode .poster-stamp {
+  background: #ffffff !important;
+  color: #000000 !important;
+}
+
+/* Cursor Glow Halo */
+.cursor-glow {
+  position: fixed;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(232, 53, 62, 0.09) 0%, rgba(37, 99, 235, 0.04) 45%, transparent 70%);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  transition: opacity 0.3s ease;
+}
+
+

@@ -1,5 +1,8 @@
 "use client";
 
+import { motion } from "framer-motion";
+import RooftopScene from "./RooftopScene";
+
 const BLOG_POSTS = [
   {
     slug: "god-first",
@@ -35,16 +38,14 @@ const BLOG_POSTS = [
 
 export default function PosterJournal() {
   return (
-    <section
-      id="blog"
-      className="w-full max-w-7xl mx-auto px-4 md:px-8 py-16 scroll-mt-12 space-y-10"
-    >
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b-4 border-[#CCFF00] pb-4">
+    <RooftopScene id="blog" rooftopNumber="ROOFTOP #04" rooftopTitle="FROM THE JOURNAL // FAITH, FOOTBALL & FILM" variant="journal">
+      {/* Section Header Splash */}
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-6 border-b-2 border-[#E8353E]/30">
         <div>
           <div className="font-mono text-xs text-[#2563EB] font-bold uppercase tracking-widest mb-1">
             WRITING // FAITH, FOOTBALL &amp; FILM
           </div>
-          <h2 className="font-heading font-black text-4xl sm:text-5xl text-[#F8FAFC]">
+          <h2 className="font-heading text-5xl sm:text-7xl text-[#F8FAFC]">
             From the journal.
           </h2>
         </div>
@@ -52,49 +53,56 @@ export default function PosterJournal() {
           href="https://preciouswrites.vercel.app"
           target="_blank"
           rel="noopener noreferrer"
-          className="font-mono text-xs font-bold text-[#CCFF00] hover:underline"
+          className="font-mono text-xs font-bold text-[#E8353E] hover:underline"
         >
           Read all posts on PreciousWrites &rarr;
         </a>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {BLOG_POSTS.map((post) => (
-          <a
+      {/* Freestanding Splash Posts (No Boxed Cards) */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-10 pt-6">
+        {BLOG_POSTS.map((post, idx) => (
+          <motion.a
             key={post.slug}
             href={post.link}
             target="_blank"
             rel="noopener noreferrer"
-            className="poster-card p-6 rounded-xl flex flex-col justify-between space-y-4 group"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ type: "spring", stiffness: 180, damping: 16, delay: idx * 0.15 }}
+            className="flex flex-col justify-between space-y-4 group py-4 border-b border-[rgba(248,250,252,0.15)]"
           >
             <div className="space-y-3">
               <div className="flex items-center justify-between">
-                <span className="font-mono text-[10px] font-bold text-[#090A0F] bg-[#CCFF00] px-2 py-0.5 rounded">
+                <span className="font-mono text-[10px] font-bold text-[#090A0F] bg-[#E8353E] px-2.5 py-0.5 rounded shadow-[2px_2px_0px_0px_#2563EB]">
                   {post.category}
                 </span>
-                <span className="font-mono text-xs text-[#F8FAFC]/60">
+                <span className="font-mono text-xs text-[#F8FAFC]/70">
                   {post.date}
                 </span>
               </div>
 
-              <h3 className="font-heading font-bold text-xl sm:text-2xl text-[#F8FAFC] group-hover:text-[#CCFF00] transition-colors">
+              {/* Freestanding Article Title */}
+              <h3 className="font-heading text-3xl sm:text-4xl text-[#F8FAFC] group-hover:text-[#E8353E] transition-colors drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]">
                 {post.title}
               </h3>
 
-              <p className="text-sm text-[#F8FAFC]/80 leading-relaxed font-body">
+              {/* Freestanding Excerpt */}
+              <p className="text-sm text-[#F8FAFC]/85 leading-relaxed font-body drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)]">
                 {post.excerpt}
               </p>
             </div>
 
-            <div className="pt-4 border-t border-[rgba(248,250,252,0.1)] flex items-center justify-between font-mono text-xs text-[#2563EB]">
+            <div className="pt-4 flex items-center justify-between font-mono text-xs text-[#2563EB]">
               <span>{post.readingTime}</span>
-              <span className="group-hover:text-[#CCFF00] transition-colors">
+              <span className="group-hover:text-[#E8353E] transition-colors font-bold">
                 Read Article &rarr;
               </span>
             </div>
-          </a>
+          </motion.a>
         ))}
       </div>
-    </section>
+    </RooftopScene>
   );
 }

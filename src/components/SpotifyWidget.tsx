@@ -15,7 +15,7 @@ interface SpotifyData {
 export default function SpotifyWidget() {
   const [data, setData] = useState<SpotifyData | null>(null);
   const [loading, setLoading] = useState(true);
-  const [progress, setProgress] = useState(42); // simulated percentage progress
+  const [progress, setProgress] = useState(42);
 
   useEffect(() => {
     async function fetchSpotify() {
@@ -40,7 +40,6 @@ export default function SpotifyWidget() {
     return () => clearInterval(interval);
   }, []);
 
-  // Timer to increment simulated scrubber progress
   useEffect(() => {
     if (!data?.isPlaying) return;
     const progressTimer = setInterval(() => {
@@ -51,7 +50,7 @@ export default function SpotifyWidget() {
 
   if (loading) {
     return (
-      <div className="glass border-l-2 border-l-[#4A8FE7] rounded-2xl p-4 max-w-sm w-full animate-pulse flex items-center gap-4">
+      <div className="glass border-l-2 border-l-[#2563EB] rounded-2xl p-4 max-w-sm w-full animate-pulse flex items-center gap-4">
         <div className="w-11 h-11 bg-[rgba(255,255,255,0.06)] rounded-full"></div>
         <div className="flex-1 flex flex-col gap-2">
           <div className="h-2.5 w-16 bg-[rgba(255,255,255,0.06)] rounded-full"></div>
@@ -62,7 +61,6 @@ export default function SpotifyWidget() {
   }
 
   const isPlaying = data?.isPlaying || false;
-  const hasTrack = !!data?.title;
   const trackUrl = data?.url || "https://open.spotify.com";
   const albumArt = data?.albumArt || "/spotify-placeholder.png";
   const title = data?.title || "Not Listening";
@@ -73,7 +71,7 @@ export default function SpotifyWidget() {
       href={trackUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className="group flex items-center gap-2.5 bg-[#11141D] border border-rgba(248,250,252,0.15) hover:border-[#CCFF00] px-3.5 py-2 rounded-lg text-xs font-mono transition-all"
+      className="group flex items-center gap-2.5 bg-[#11141D] border border-rgba(248,250,252,0.15) hover:border-[#E8353E] px-3.5 py-2 rounded-lg text-xs font-mono transition-all"
       aria-label={`Spotify player: ${title} by ${artist}`}
     >
       <div className="relative w-4 h-4 shrink-0 rounded-full overflow-hidden border border-[#2563EB] bg-[#090A0F]">
@@ -87,8 +85,8 @@ export default function SpotifyWidget() {
       </div>
 
       <div className="flex items-center gap-1.5 truncate max-w-[220px]">
-        {isPlaying && <span className="w-1.5 h-1.5 rounded-full bg-[#CCFF00] shrink-0"></span>}
-        <span className="text-[#F8FAFC] font-semibold truncate group-hover:text-[#CCFF00] transition-colors">{title}</span>
+        {isPlaying && <span className="w-1.5 h-1.5 rounded-full bg-[#E8353E] shrink-0"></span>}
+        <span className="text-[#F8FAFC] font-semibold truncate group-hover:text-[#E8353E] transition-colors">{title}</span>
         <span className="text-[#F8FAFC]/50">•</span>
         <span className="text-[#F8FAFC]/70 truncate">{artist}</span>
       </div>
@@ -103,4 +101,3 @@ export default function SpotifyWidget() {
     </a>
   );
 }
-
