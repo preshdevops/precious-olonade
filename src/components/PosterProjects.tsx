@@ -47,7 +47,7 @@ const PROJECTS: Project[] = [
     tech: ["Django", "React", "Groq / Llama", "PostgreSQL", "Vercel", "Railway", "Aiven"],
     link: "https://feelms.vercel.app",
     linkText: "Launch App (feelms.vercel.app)",
-    githubUrl: "https://github.com/preshdevops/feelms",
+    githubUrl: "https://github.com/preshdevops/feelm",
   },
   {
     id: "editorial-muse",
