@@ -48,6 +48,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <meta name="p:domain_verify" content="13e5b81713a7bd1485cad7146cb39b7c" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
