@@ -14,18 +14,18 @@ export default function StudioHeader() {
         Skip to content
       </a>
 
-      <div className="max-w-6xl mx-auto px-6 md:px-10 h-20 flex items-center justify-between">
+      <div className="max-w-5xl mx-auto px-6 h-20 flex items-center justify-between">
         {/* Brand / Name */}
         <a
           href="#home"
           className="group flex flex-col focus:outline-none"
           aria-label="Precious Oluwasegun Olonade Home"
         >
-          <span className="font-serif text-lg md:text-xl font-medium tracking-tight text-[#F4F4F6] group-hover:text-white transition-colors">
+          <span className="font-serif text-lg sm:text-xl font-medium tracking-tight text-[#F4F4F6] group-hover:text-white transition-colors">
             Precious Oluwasegun Olonade
           </span>
-          <span className="font-mono text-xs text-[#9DA1AA] tracking-wider uppercase">
-            Product Builder &amp; Computer Scientist
+          <span className="font-mono text-xs text-[#9DA1AA] tracking-wide">
+            Product builder &amp; developer
           </span>
         </a>
 
@@ -59,20 +59,15 @@ export default function StudioHeader() {
         </nav>
 
         {/* Right Action / Contact */}
-        <div className="hidden lg:flex items-center space-x-6">
-          <div className="text-right">
-            <span className="block font-mono text-[11px] text-[#646974] tracking-wider uppercase">
-              Osun, Nigeria (GMT+1)
-            </span>
-            <span className="block font-sans text-xs text-[#9DA1AA]">
-              Open to product roles
-            </span>
-          </div>
+        <div className="hidden sm:flex items-center space-x-4">
+          <span className="font-mono text-xs text-[#646974] hidden lg:inline">
+            Osun, Nigeria
+          </span>
           <a
             href="mailto:segunolonade03@gmail.com"
             className="px-4 py-2 rounded-full border border-white/[0.14] text-xs font-mono tracking-wider text-[#F4F4F6] hover:bg-white hover:text-black hover:border-white transition-all duration-200"
           >
-            CONTACT
+            SAY HELLO
           </a>
         </div>
 

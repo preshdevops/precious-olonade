@@ -104,7 +104,7 @@ module.exports = {
   'F4-B4: Case study interactive action trigger is present': async ({ baseUrl }) => {
     const res = await fetch(baseUrl);
     const html = await res.text();
-    assert.ok(html.includes('VIEW CASE STUDY') || html.includes('CASE STUDY'), 'Project case study should contain view action button');
+    assert.ok(html.includes('View project') || html.includes('VIEW CASE STUDY') || html.includes('CASE STUDY'), 'Project case study should contain view action button');
   },
   'F4-B5: Project tech stack tags list valid technologies': async ({ baseUrl }) => {
     const res = await fetch(baseUrl);

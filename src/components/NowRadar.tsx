@@ -1,101 +1,78 @@
 import React from "react";
 
 interface NowItem {
-  area: string;
-  focus: string;
-  notes: string;
-  status: "Active" | "Research" | "Prototyping";
+  title: string;
+  description: string;
 }
 
-const nowItems: NowItem[] = [
+const explorations: NowItem[] = [
   {
-    area: "Product Development",
-    focus: "Independent Product Architecture",
-    notes: "Deepening methodology around problem validation, threat modeling for consumer privacy tools, and sustainable indie software business models.",
-    status: "Active",
+    title: "Product development",
+    description: "Thinking about what makes products genuinely useful, validating ideas early, and learning how to ship sustainable software.",
   },
   {
-    area: "Mobile Systems",
-    focus: "Kotlin & Jetpack Compose",
-    notes: "Building robust, battery-efficient Android client architectures with Kotlin Multiplatform (KMP), Coroutines, and local SQLite state reconciliation.",
-    status: "Active",
+    title: "Kotlin & mobile development",
+    description: "Building Android apps with Kotlin and Jetpack Compose. Focusing on clean state management, offline support, and good mobile UX.",
   },
   {
-    area: "Low-Level Systems",
-    focus: "Rust & Memory Safety",
-    notes: "Studying systems programming in Rust: zero-cost abstractions, deterministic memory cleanup without a garbage collector, and crypto utility CLIs.",
-    status: "Research",
+    title: "Rust & systems",
+    description: "Working my way through the Rust book, building small command-line utilities, and learning how memory works without a garbage collector.",
   },
   {
-    area: "Tech for Development",
-    focus: "Digital Infrastructure for Communities",
-    notes: "Investigating how localized, low-cost digital tools can strengthen civic assemblies, church archives, and peace clubs across West Africa.",
-    status: "Prototyping",
+    title: "Technology for Development",
+    description: "Thinking about practical software solutions for local problems in Nigeria—especially community tools, education, and civic groups.",
   },
   {
-    area: "Studio Experiments",
-    focus: "Building & Prototyping",
-    notes: "Iterating on micro-utilities that reject notification clutter and prioritize user focus, contemplation, and speed.",
-    status: "Active",
+    title: "Experimenting with new projects",
+    description: "Tinkering with small, focused software ideas in my spare time and seeing what clicks.",
   },
 ];
 
 export default function NowRadar() {
   return (
-    <section id="now" className="py-24 md:py-36 border-b border-white/[0.08] scroll-mt-20">
-      <div className="max-w-6xl mx-auto px-6 md:px-10">
+    <section id="now" className="py-20 md:py-28 border-b border-white/[0.08] scroll-mt-20">
+      <div className="max-w-5xl mx-auto px-6">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 md:mb-20">
-          <div className="space-y-4 max-w-2xl">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
+          <div className="space-y-3">
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
               <span className="font-mono text-xs uppercase tracking-widest text-[#9DA1AA]">
-                Now // Active Explorations
+                Now
               </span>
             </div>
-            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#F4F4F6] font-normal tracking-tight">
-              What I am thinking about and building today.
+            <h2 className="font-serif text-3xl sm:text-4xl text-[#F4F4F6] font-normal tracking-tight">
+              What I&rsquo;m currently exploring
             </h2>
-            <p className="text-base sm:text-lg text-[#9DA1AA] leading-relaxed">
-              Inspired by Derek Sivers&rsquo; &lsquo;Now&rsquo; page concept. A public record of my current technical curiosities, ongoing learning, and active prototypes.
+            <p className="text-base text-[#9DA1AA] max-w-xl">
+              A quick snapshot of what I&rsquo;m reading, learning, and tinkering with right now.
             </p>
           </div>
 
-          <div className="text-left md:text-right font-mono text-xs text-[#646974]">
-            <span>Cycle: Q3 / September 2026</span>
+          <div className="font-mono text-xs text-[#646974]">
+            Updated September 2026
           </div>
         </div>
 
         {/* Explorations Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {nowItems.map((item, idx) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {explorations.map((item, idx) => (
             <div
               key={idx}
-              className="p-6 sm:p-8 rounded-xl bg-[#111318] border border-white/[0.08] hover:border-white/[0.14] transition-all flex flex-col justify-between space-y-6"
+              className="p-5 rounded-xl bg-[#111318] border border-white/[0.06] hover:border-white/[0.14] transition-all space-y-2 flex flex-col justify-between"
             >
-              <div className="space-y-4">
-                <div className="flex items-center justify-between">
-                  <span className="font-mono text-xs text-[#9DA1AA] uppercase tracking-wider">
-                    {item.area}
-                  </span>
-                  <span className="px-2 py-0.5 rounded text-[10px] font-mono tracking-wider uppercase border border-white/[0.1] text-[#D0D4DC] bg-white/[0.03]">
-                    {item.status}
-                  </span>
-                </div>
-
-                <h3 className="font-serif text-xl text-[#F4F4F6] font-medium leading-snug">
-                  {item.focus}
+              <div className="space-y-2">
+                <h3 className="font-serif text-lg text-[#F4F4F6] font-medium">
+                  {item.title}
                 </h3>
-
-                <p className="text-xs sm:text-sm text-[#9DA1AA] leading-relaxed">
-                  {item.notes}
+                <p className="text-sm text-[#9DA1AA] leading-relaxed">
+                  {item.description}
                 </p>
               </div>
 
-              <div className="pt-4 border-t border-white/[0.04] flex items-center justify-between text-[11px] font-mono text-[#646974]">
-                <span>Status: In Progress</span>
-                <span>•</span>
+              <div className="pt-3 text-[11px] font-mono text-[#646974]">
+                In progress
               </div>
             </div>
           ))}

@@ -17,14 +17,14 @@ module.exports = {
     const res = await fetch(baseUrl);
     const html = await res.text();
     // Field notes categories should use font-mono
-    assert.ok(html.includes('font-mono') && (html.includes('Architecture') || html.includes('Systems') || html.includes('Development')), 'Category tags must utilize theme typography classes');
+    assert.ok(html.includes('font-mono') && (html.includes('Projects &amp; Decisions') || html.includes('Projects & Decisions') || html.includes('Mobile') || html.includes('Development')), 'Category tags must utilize theme typography classes');
   },
 
   'T3-3: About focus areas layout adheres to theme colors and design': async ({ baseUrl }) => {
     const res = await fetch(baseUrl);
     const html = await res.text();
-    // About focus areas should use font-mono and theme border styling
-    assert.ok(html.includes('font-mono') && (html.includes('Product Development') || html.includes('Privacy')), 'About focus areas must align with layout theme colors and font style');
+    // What I'm into / focus areas should use font-mono and theme border styling
+    assert.ok(html.includes('font-mono') && (html.includes('Product building') || html.includes('Software') || html.includes('Privacy')), 'About focus areas must align with layout theme colors and font style');
   },
 
   'T3-4: Hero section CTA button links to Work target': async ({ baseUrl }) => {

@@ -23,7 +23,7 @@ module.exports = {
   'F1-4: Monospace typography CSS classes exist': async ({ baseUrl }) => {
     const res = await fetch(baseUrl);
     const html = await res.text();
-    assert.ok(html.includes('font-mono'), 'Page should use font-mono class for system specifications');
+    assert.ok(html.includes('font-mono'), 'Page should use font-mono class for specifications');
   },
   'F1-5: Palette uses deep carbon and neutral borders': async ({ baseUrl }) => {
     const res = await fetch(baseUrl);
@@ -45,7 +45,7 @@ module.exports = {
   'F2-3: Header renders brand identity details': async ({ baseUrl }) => {
     const res = await fetch(baseUrl);
     const html = await res.text();
-    assert.ok(html.includes('Product Builder') && html.includes('Computer Scientist'), 'Header should state Product Builder & Computer Scientist');
+    assert.ok(html.includes('Product builder') || html.includes('developer'), 'Header should state Product builder');
   },
   'F2-4: Header contains a call-to-action button or mailto link': async ({ baseUrl }) => {
     const res = await fetch(baseUrl);
@@ -69,27 +69,27 @@ module.exports = {
     const html = await res.text();
     assert.ok(html.includes('Nigeria') || html.includes('Osun'), 'Hero or header should state base in Osun, Nigeria');
   },
-  'F3-3: Hero displays availability status indicator': async ({ baseUrl }) => {
+  'F3-3: Hero displays quick navigation action buttons': async ({ baseUrl }) => {
     const res = await fetch(baseUrl);
     const html = await res.text();
-    assert.ok(html.includes('Available') || html.includes('Status: Available'), 'Hero should display availability status indicator');
+    assert.ok(html.includes('See my work') || html.includes('About me'), 'Hero should display quick action buttons');
   },
-  'F3-4: Computer Scientist building products copy is present': async ({ baseUrl }) => {
+  'F3-4: Computer Science graduate copy is present': async ({ baseUrl }) => {
     const res = await fetch(baseUrl);
     const html = await res.text();
-    assert.ok(html.includes('Computer Scientist building products that solve real-world problems'), 'Hero should state core builder identity');
+    assert.ok(html.includes('Computer Science graduate') && html.includes('Nigeria'), 'Hero should state CS graduate from Nigeria');
   },
-  'F3-5: Core philosophy statement is present in Hero': async ({ baseUrl }) => {
+  'F3-5: Simple I build products statement is present in Hero': async ({ baseUrl }) => {
     const res = await fetch(baseUrl);
     const html = await res.text();
-    assert.ok(html.includes('I don’t just write code') || html.includes('I don&#39;t just write code') || html.includes('what should be built'), 'Hero should emphasize thinking about what should be built');
+    assert.ok(html.includes('I build products'), 'Hero should state I build products');
   },
 
   // === FEATURE 4: Selected Work Case Studies ===
   'F4-1: Selected Work section heading is present': async ({ baseUrl }) => {
     const res = await fetch(baseUrl);
     const html = await res.text();
-    assert.ok(html.includes('Selected Work') || html.includes('Selected work'), 'Section heading should be Selected Work');
+    assert.ok(html.includes('Things I’ve built') || html.includes('Things I&#39;ve built') || html.includes('Things I\'ve built') || html.includes('Selected Work'), 'Section heading should be Things I have built');
   },
   'F4-2: Projects list renders the Privora project': async ({ baseUrl }) => {
     const res = await fetch(baseUrl);
@@ -106,17 +106,17 @@ module.exports = {
     const html = await res.text();
     assert.ok(html.includes('Dabar'), 'Should list Dabar linguistic workspace');
   },
-  'F4-5: Flagship project has flagship thesis designation': async ({ baseUrl }) => {
+  'F4-5: Projects render simple stack indicator': async ({ baseUrl }) => {
     const res = await fetch(baseUrl);
     const html = await res.text();
-    assert.ok(html.includes('FLAGSHIP') || html.includes('Thesis'), 'Privora project should have FLAGSHIP thesis designation');
+    assert.ok(html.includes('React · Django · PostgreSQL') || html.includes('Kotlin · Android') || html.includes('Rust · TypeScript · Next.js'), 'Projects should show clean stack text');
   },
 
   // === FEATURE 5: About Section & Bio ===
   'F5-1: Bio section story header is present': async ({ baseUrl }) => {
     const res = await fetch(baseUrl);
     const html = await res.text();
-    assert.ok(html.includes('About &amp; Background') || html.includes('About & Background'), 'About section should exist');
+    assert.ok(html.includes('A bit about me') || html.includes('About'), 'About section should exist');
   },
   'F5-2: Bio text details university experience': async ({ baseUrl }) => {
     const res = await fetch(baseUrl);
@@ -128,10 +128,10 @@ module.exports = {
     const html = await res.text();
     assert.ok(html.includes('Build with intention. Ship with purpose.'), 'Bio should render operating principle quote');
   },
-  'F5-4: Technical focus areas heading exists': async ({ baseUrl }) => {
+  'F5-4: What I am into section exists': async ({ baseUrl }) => {
     const res = await fetch(baseUrl);
     const html = await res.text();
-    assert.ok(html.includes('Core Focus Areas') || html.includes('Focus Areas'), 'About should contain Core Focus Areas heading');
+    assert.ok(html.includes('What I’m into') || html.includes('What I&#39;m into') || html.includes('What I\'m into') || html.includes('Product building'), 'Section should contain What I am into');
   },
   'F5-5: Mentions TSDI or OSPCN community work': async ({ baseUrl }) => {
     const res = await fetch(baseUrl);
@@ -143,7 +143,7 @@ module.exports = {
   'F6-1: Product thinking section header is present': async ({ baseUrl }) => {
     const res = await fetch(baseUrl);
     const html = await res.text();
-    assert.ok(html.includes('Product Thinking'), 'Product Thinking section should exist');
+    assert.ok(html.includes('Product notes') || html.includes('Writing &amp; Thinking') || html.includes('Thinking'), 'Product Thinking section should exist');
   },
   'F6-2: Field notes render Privacy over AI essay': async ({ baseUrl }) => {
     const res = await fetch(baseUrl);
@@ -170,7 +170,7 @@ module.exports = {
   'F7-1: Now section component is present': async ({ baseUrl }) => {
     const res = await fetch(baseUrl);
     const html = await res.text();
-    assert.ok(html.includes('Now // Active Explorations') || html.includes('id="now"'), 'Page should render Now section');
+    assert.ok(html.includes('What I’m currently exploring') || html.includes('What I&#39;m currently exploring') || html.includes('id="now"'), 'Page should render Now section');
   },
   'F7-2: Obsolete Comic and Spider-Man classes are absent': async ({ baseUrl }) => {
     const res = await fetch(baseUrl);

@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 
-interface FieldNote {
+interface Note {
   id: string;
   title: string;
   category: string;
@@ -12,90 +12,90 @@ interface FieldNote {
   content: string[];
 }
 
-const fieldNotes: FieldNote[] = [
+const notes: Note[] = [
   {
-    id: "privacy-over-ai",
+    id: "privacy-app",
     title: "Why I Built a Privacy App Instead of Another AI Tool",
-    category: "Architecture & Philosophy",
-    date: "February 2026",
-    readTime: "4 min read",
-    synopsis:
-      "When everyone is racing to build thin wrappers around proprietary LLM APIs, building a zero-knowledge cryptographic vault felt almost unfashionable. Here is why mathematical user sovereignty matters more than another chat interface.",
-    content: [
-      "Nearly every tech demo in the past two years follows an identical pattern: an interface makes a POST request to an external foundation model, renders a streaming completion, and claims to be a revolutionary product. But when you peel back the marketing layer, almost none of these tools address fundamental human vulnerability.",
-      "The defining crisis of our technological era is not a shortage of synthetic text; it is the total erosion of user sovereignty. Every service we use treats human data as raw material to be harvested, indexed, and leveraged. Even well-meaning cloud platforms operate on an architecture of benevolent surveillance: 'Trust us, we encrypt your data at rest (with keys we own).' That is not privacy; that is custody with good PR.",
-      "When designing my final-year thesis at Osun State University, I made a deliberate choice to build Privora instead of an AI assistant. I wanted to confront the hardest technical and ethical constraint: zero-knowledge architecture. In Privora, user data is encrypted with AES-256-GCM in the browser before a single byte touches the network. We literally cannot read your files even if served with a government subpoena.",
-      "Building for privacy requires you to surrender power as a developer. You cannot track usage analytics on user files. You cannot inspect payloads to debug edge cases. You have to prove correctness through mathematics rather than trust. To me, that is what real engineering looks like.",
-    ],
-  },
-  {
-    id: "mobile-complexity",
-    title: "What Building Mobile Apps Taught Me About Complexity",
-    category: "Systems & Engineering",
-    date: "November 2025",
-    readTime: "5 min read",
-    synopsis:
-      "On the modern web, high-speed fiber and aggressive browser optimizations forgive sloppy architecture. On a smartphone traversing unstable cellular networks in Nigeria, every bad architectural decision is immediately punished.",
-    content: [
-      "Web development has become dangerously forgiving. When a component re-renders twenty times unnecessarily or an API endpoint returns a bloated 5MB payload, a modern laptop browser masks the crime with multi-core processors and gigabit connections. You can ship sloppiness and call it agile.",
-      "Building mobile software in Nigeria shatters that illusion in your first week. When your user is commuting along a highway between Osogbo and Ibadan, their phone is alternating between 4G, EDGE, and complete packet drops. If your application relies on continuous server connectivity to render a simple screen, your app isn't just slow—it's broken.",
-      "Mobile engineering forced me to embrace offline-first state machines, SQLite local caching, and byte-budget discipline. I learned that optimistic UI updates without deterministic conflict resolution create ghost states that destroy user trust. More importantly, it taught me that memory management and battery drain are ethical UX concerns, not just low-level profiling metrics.",
-      "When you design for volatile environments first, your software becomes bulletproof everywhere else. Constraints are not handicaps; they are the truest teachers of software architecture.",
-    ],
-  },
-  {
-    id: "starting-late",
-    title: "Starting Software Development Later Than Most People",
-    category: "Reflections & Craft",
-    date: "September 2025",
+    category: "Projects & Decisions",
+    date: "2026",
     readTime: "3 min read",
     synopsis:
-      "For a long time, not having written code since age eleven felt like an insurmountable deficit. Over time, I discovered that entering technology with life experience outside of code is an extraordinary advantage.",
+      "When choosing my final-year project at university, everyone was building ChatGPT wrappers. I wanted to build something practical that taught me how security actually works.",
     content: [
-      "In developer culture, there is an enduring myth of the teenage prodigy who wrote Linux device drivers at fourteen. When I entered the Computer Science department at Osun State University, I was surrounded by people who seemed to speak in syntax naturally. For the first two years, an invisible imposter syndrome whispered that I was perpetually behind.",
-      "Then something shifted. As coursework moved from rote syntax drills to architectural design, distributed systems, and real product development, I noticed where purely syntax-obsessed developers struggled: they were so in love with their code that they forgot to ask whether the problem they were solving was real.",
-      "Starting later meant I had already spent years observing human behavior, analyzing literature, and understanding how real organizations operate. It meant I didn't fall in love with programming languages; I fell in love with what software makes possible for human beings.",
-      "Code is simply a means of translation. The ultimate craft is not typing speed or memorizing obscure standard library methods; it is the discipline of understanding what must be built, why it must exist, and who it serves.",
+      "When it was time to pick a final-year project at Osun State University, almost everyone in my class was looking at building wrappers around AI APIs. It makes sense—you can get a working demo up in an afternoon, and it looks impressive quickly.",
+      "But I wanted to build something where the core engineering happened in the software itself, not on an external API server. I’ve always been curious about privacy and how cloud platforms handle our data.",
+      "Most services tell you your files are safe, but in reality, they have the master keys and could read everything if they wanted to. With Privora, I wanted to see if I could build a tool where files are encrypted directly in the user’s browser before they ever reach the database.",
+      "It ended up being much harder than calling an API, but it taught me ten times more about cryptography, binary streams in JavaScript, and handling sensitive data properly. It made me realize that building something useful is way more satisfying than chasing a hype cycle.",
     ],
   },
   {
-    id: "community-technology",
+    id: "mobile-apps",
+    title: "What Building Mobile Apps Taught Me About Complexity",
+    category: "Mobile & Engineering",
+    date: "2025",
+    readTime: "3 min read",
+    synopsis:
+      "On the web, you can often get away with a lot of mistakes. On a smartphone with patchy mobile data, every bad design decision shows up immediately.",
+    content: [
+      "When you build for the web on a fast laptop, it’s easy to get sloppy. If an endpoint takes two seconds or a bundle is a little heavy, your laptop barely breaks a sweat.",
+      "Building for Android with Kotlin completely changed how I think about software. When someone is using an app on a budget phone while traveling on a road with spotty network in Nigeria, the app can’t just show a blank screen or crash.",
+      "It forced me to learn about local caching, keeping background threads quiet, and making sure the UI responds even when the phone is offline. You realize quickly that smooth software isn’t about fancy animations; it’s about making sure basic things work reliably when conditions aren’t ideal.",
+      "It gave me a huge respect for mobile developers and made my web code much cleaner, too.",
+    ],
+  },
+  {
+    id: "starting-later",
+    title: "Starting Software Development Later Than Most People",
+    category: "Learning & Perspective",
+    date: "2025",
+    readTime: "3 min read",
+    synopsis:
+      "I didn’t start coding as a teenager. For a while that felt like a disadvantage, until I noticed it helped me stay focused on the actual problem rather than just the code.",
+    content: [
+      "In tech culture, there's always a story about someone who started programming at age twelve and spent their teenage years hacking on Linux kernels. When I got to university, I met people who had already been writing code for years, and for a while, I felt like I was perpetually playing catch-up.",
+      "Over time, though, I realized that having interests outside of programming before getting into tech was actually a gift. I had spent years reading, watching films, and observing how people interact.",
+      "That meant when I sat down to build something, I wasn’t just in love with writing lines of code. I was thinking: Who is going to use this? Does this make sense? Is this actually solving a real headache, or am I just writing code for the sake of it?",
+      "Code is just the tool. What matters is having the curiosity to figure out how things work and the patience to build something people actually enjoy using.",
+    ],
+  },
+  {
+    id: "community-tech",
     title: "Why Community Technology Interests Me",
     category: "Tech for Development",
-    date: "January 2026",
-    readTime: "4 min read",
+    date: "2026",
+    readTime: "3 min read",
     synopsis:
-      "Silicon Valley builds products to monetize isolated individuals. Community technology builds infrastructure for people who gather in physical rooms to look each other in the eye.",
+      "A lot of tech is designed to keep people staring at screens alone. The projects that excite me most are the ones that help real groups and communities coordinate better.",
     content: [
-      "The dominant paradigm of modern consumer software is atomization. Social platforms design algorithms specifically to isolate individuals in personal feedback loops, maximizing time-on-screen and ad impressions. The user is a solitary consumer scrolling in the dark.",
-      "Through my work with grassroots initiatives, ministry assemblies, and organizations like TSDI and OSPCN, I encountered a completely different category of software need: community technology. These are tools designed for groups of people who share physical geography, shared values, and mutual accountability.",
-      "When building Makarios, the goal was not to increase 'daily active time'. In fact, the measure of success was the opposite: can a community member find the audio teaching archive or access community care in forty seconds and then put their phone away to be present with their family?",
-      "Technology for Development (Tech4Dev) is not about handing down charity apps from high-income nations. It is about building dignified, reliable, localized infrastructure that honors the real social fabric of communities. That is where I want my engineering energy to live.",
+      "Most commercial apps are optimized for one thing: keeping your eyes glued to the screen for as many minutes as possible each day so they can serve you ads.",
+      "Through my volunteer work and community involvements, like with TSDI and local initiatives, I saw a very different side of software. People running local organizations, community clubs, and faith groups don’t need an algorithm telling them what to look at. They just need simple, reliable tools to organize information, share recordings, and stay in touch without getting spammed.",
+      "When technology helps people in a physical room stay organized and communicate clearly, it feels like it’s doing what computers were originally meant to do: helping people do their work better, so they can get back to their real lives.",
+      "That’s the kind of technology I want to keep exploring as a product builder.",
     ],
   },
 ];
 
 export default function ProductThinking() {
-  const [activeNote, setActiveNote] = useState<FieldNote | null>(null);
+  const [activeNote, setActiveNote] = useState<Note | null>(null);
 
   return (
-    <section id="thinking" className="py-24 md:py-36 border-b border-white/[0.08] scroll-mt-20">
+    <section id="thinking" className="py-20 md:py-28 border-b border-white/[0.08] scroll-mt-20">
       {/* Anchor alias for blog */}
       <span id="blog" className="sr-only" aria-hidden="true" />
 
-      <div className="max-w-6xl mx-auto px-6 md:px-10">
+      <div className="max-w-5xl mx-auto px-6">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 md:mb-20">
-          <div className="space-y-4 max-w-2xl">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-14">
+          <div className="space-y-3">
             <span className="font-mono text-xs uppercase tracking-widest text-[#9DA1AA] block">
-              Product Thinking
+              Writing &amp; Thinking
             </span>
-            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#F4F4F6] font-normal tracking-tight">
-              Field notes on systems, privacy, and utility.
+            <h2 className="font-serif text-3xl sm:text-4xl text-[#F4F4F6] font-normal tracking-tight">
+              Product notes
             </h2>
-            <p className="text-base sm:text-lg text-[#9DA1AA] leading-relaxed">
-              Short written pieces exploring why products exist, what fails in production, and how technology intersects with human dignity.
+            <p className="text-base text-[#9DA1AA] max-w-xl">
+              Short, honest notes on what I&rsquo;ve learned from building products, exploring new tools, and learning software.
             </p>
           </div>
 
@@ -103,25 +103,25 @@ export default function ProductThinking() {
             href="https://preciouswrites.vercel.app"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[#9DA1AA] hover:text-white transition-colors"
+            className="inline-flex items-center gap-1.5 text-xs font-mono text-[#9DA1AA] hover:text-white transition-colors"
           >
-            <span>PreciousWrites (Faith, Film, Football)</span>
+            <span>Personal blog (preciouswrites)</span>
             <span>↗</span>
           </a>
         </div>
 
-        {/* Field Notes List */}
+        {/* Notes List */}
         <div className="divide-y divide-white/[0.08] border-t border-b border-white/[0.08]">
-          {fieldNotes.map((note) => (
+          {notes.map((note) => (
             <article
               key={note.id}
-              className="py-8 md:py-10 group cursor-pointer hover:bg-white/[0.02] transition-colors -mx-4 px-4 sm:mx-0 sm:px-0"
+              className="py-8 group cursor-pointer hover:bg-white/[0.02] transition-colors -mx-4 px-4 sm:mx-0 sm:px-0"
               onClick={() => setActiveNote(note)}
             >
-              <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-baseline">
+              <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 items-baseline">
                 
-                {/* Meta Date & Category */}
-                <div className="md:col-span-3 space-y-1 font-mono text-xs text-[#646974]">
+                {/* Meta */}
+                <div className="md:col-span-3 font-mono text-xs text-[#646974] space-y-1">
                   <div>{note.date}</div>
                   <div className="text-[#9DA1AA]">{note.category}</div>
                 </div>
@@ -136,8 +136,8 @@ export default function ProductThinking() {
                   </p>
                 </div>
 
-                {/* Read Time & Action */}
-                <div className="md:col-span-2 text-left md:text-right flex items-center md:justify-end gap-3">
+                {/* Read Action */}
+                <div className="md:col-span-2 flex md:justify-end items-center gap-3">
                   <span className="font-mono text-xs text-[#646974]">
                     {note.readTime}
                   </span>
@@ -153,17 +153,17 @@ export default function ProductThinking() {
 
       </div>
 
-      {/* Full Article Reader Modal */}
+      {/* Note Reader Modal */}
       {activeNote && (
         <div
           role="dialog"
           aria-modal="true"
           className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/85 backdrop-blur-md overflow-y-auto"
         >
-          <div className="relative w-full max-w-2xl my-8 rounded-xl bg-[#0F1116] border border-white/[0.14] p-6 sm:p-10 shadow-2xl text-[#F4F4F6] space-y-8 max-h-[90vh] overflow-y-auto">
+          <div className="relative w-full max-w-2xl my-8 rounded-xl bg-[#0F1116] border border-white/[0.14] p-6 sm:p-10 shadow-2xl text-[#F4F4F6] space-y-6 max-h-[90vh] overflow-y-auto">
             
             {/* Header */}
-            <div className="flex items-start justify-between pb-6 border-b border-white/[0.08]">
+            <div className="flex items-start justify-between pb-5 border-b border-white/[0.08]">
               <div className="space-y-2">
                 <div className="flex items-center gap-3 font-mono text-xs text-[#9DA1AA]">
                   <span>{activeNote.date}</span>
@@ -172,13 +172,13 @@ export default function ProductThinking() {
                   <span>•</span>
                   <span>{activeNote.readTime}</span>
                 </div>
-                <h3 className="font-serif text-2xl sm:text-3xl font-medium text-white leading-tight">
+                <h3 className="font-serif text-2xl sm:text-3xl font-medium text-white leading-snug">
                   {activeNote.title}
                 </h3>
               </div>
               <button
                 onClick={() => setActiveNote(null)}
-                aria-label="Close field note"
+                aria-label="Close note"
                 className="p-2 text-[#9DA1AA] hover:text-white rounded-lg border border-white/[0.08] hover:border-white/[0.2] transition-colors"
               >
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -187,23 +187,23 @@ export default function ProductThinking() {
               </button>
             </div>
 
-            {/* Essay Content */}
-            <div className="space-y-6 text-base text-[#D0D4DC] leading-relaxed font-sans">
+            {/* Note Paragraphs */}
+            <div className="space-y-5 text-base text-[#D0D4DC] leading-relaxed font-sans">
               {activeNote.content.map((paragraph, pIdx) => (
                 <p key={pIdx}>{paragraph}</p>
               ))}
             </div>
 
-            {/* Monograph Signoff */}
+            {/* Modal Signoff */}
             <div className="pt-6 border-t border-white/[0.08] flex items-center justify-between">
               <span className="font-mono text-xs text-[#646974]">
-                Author: Precious Oluwasegun Olonade
+                Precious Oluwasegun Olonade
               </span>
               <button
                 onClick={() => setActiveNote(null)}
                 className="px-4 py-2 rounded-lg bg-white text-black font-mono text-xs font-semibold hover:bg-neutral-200 transition-colors"
               >
-                DONE READING
+                CLOSE
               </button>
             </div>
 
