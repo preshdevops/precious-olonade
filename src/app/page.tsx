@@ -1,32 +1,25 @@
-import PosterHeader from "@/components/PosterHeader";
-import MarqueeTicker from "@/components/MarqueeTicker";
-import PosterHero from "@/components/PosterHero";
-import PosterProjects from "@/components/PosterProjects";
-import PosterBio from "@/components/PosterBio";
-import PosterJournal from "@/components/PosterJournal";
-import PosterContact from "@/components/PosterContact";
-import CursorGlow from "@/components/CursorGlow";
-import EasterEggs from "@/components/EasterEggs";
-import WebCanopyAndConnectors from "@/components/WebCanopyAndConnectors";
-import OpeningNightSky from "@/components/OpeningNightSky";
+import StudioHeader from "@/components/StudioHeader";
+import HeroMonograph from "@/components/HeroMonograph";
+import SelectedWork from "@/components/SelectedWork";
+import ProductThinking from "@/components/ProductThinking";
+import StudioAbout from "@/components/StudioAbout";
+import NowRadar from "@/components/NowRadar";
+import StudioColophon from "@/components/StudioColophon";
 
 export default function Home() {
   return (
-    <>
-      <OpeningNightSky />
-      <WebCanopyAndConnectors />
-      <CursorGlow />
-      <EasterEggs />
-      <PosterHeader />
-      <MarqueeTicker />
+    <div className="min-h-screen bg-[#0B0C0E] text-[#F4F4F6] selection:bg-white selection:text-black">
+      <StudioHeader />
 
-      <main id="main-content" className="w-full relative z-20">
-        <PosterHero />
-        <PosterProjects />
-        <PosterBio />
-        <PosterJournal />
-        <PosterContact />
+      <main id="main-content" className="w-full relative z-10">
+        <HeroMonograph />
+        <SelectedWork />
+        <ProductThinking />
+        <StudioAbout />
+        <NowRadar />
       </main>
-    </>
+
+      <StudioColophon />
+    </div>
   );
 }

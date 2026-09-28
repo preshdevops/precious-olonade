@@ -15,7 +15,6 @@ interface SpotifyData {
 export default function SpotifyWidget() {
   const [data, setData] = useState<SpotifyData | null>(null);
   const [loading, setLoading] = useState(true);
-  const [progress, setProgress] = useState(42);
 
   useEffect(() => {
     async function fetchSpotify() {
@@ -40,21 +39,13 @@ export default function SpotifyWidget() {
     return () => clearInterval(interval);
   }, []);
 
-  useEffect(() => {
-    if (!data?.isPlaying) return;
-    const progressTimer = setInterval(() => {
-      setProgress((prev) => (prev >= 98 ? 5 : prev + 1));
-    }, 1000);
-    return () => clearInterval(progressTimer);
-  }, [data?.isPlaying]);
-
   if (loading) {
     return (
-      <div className="glass border-l-2 border-l-[#2563EB] rounded-2xl p-4 max-w-sm w-full animate-pulse flex items-center gap-4">
-        <div className="w-11 h-11 bg-[rgba(255,255,255,0.06)] rounded-full"></div>
-        <div className="flex-1 flex flex-col gap-2">
-          <div className="h-2.5 w-16 bg-[rgba(255,255,255,0.06)] rounded-full"></div>
-          <div className="h-3.5 w-28 bg-[rgba(255,255,255,0.06)] rounded-full"></div>
+      <div className="rounded-lg bg-[#13151A] border border-white/[0.08] p-3 max-w-xs w-full animate-pulse flex items-center gap-3">
+        <div className="w-8 h-8 bg-white/[0.06] rounded"></div>
+        <div className="flex-1 flex flex-col gap-1.5">
+          <div className="h-2 w-16 bg-white/[0.06] rounded"></div>
+          <div className="h-3 w-28 bg-white/[0.06] rounded"></div>
         </div>
       </div>
     );
@@ -71,31 +62,34 @@ export default function SpotifyWidget() {
       href={trackUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className="group flex items-center gap-2.5 bg-[#11141D] border border-rgba(248,250,252,0.15) hover:border-[#E8353E] px-3.5 py-2 rounded-lg text-xs font-mono transition-all"
+      className="group flex items-center gap-3 bg-[#111318] border border-white/[0.08] hover:border-white/[0.18] px-3.5 py-2.5 rounded-lg text-xs font-mono transition-all"
       aria-label={`Spotify player: ${title} by ${artist}`}
     >
-      <div className="relative w-4 h-4 shrink-0 rounded-full overflow-hidden border border-[#2563EB] bg-[#090A0F]">
+      <div className="relative w-7 h-7 shrink-0 rounded overflow-hidden border border-white/[0.1] bg-[#0B0C0E]">
         <img
           src={albumArt}
           alt={data?.album || "Spotify album art"}
-          width={16}
-          height={16}
-          className={`w-full h-full object-cover ${isPlaying ? "animate-spin" : ""}`}
+          width={28}
+          height={28}
+          className="w-full h-full object-cover"
         />
       </div>
 
-      <div className="flex items-center gap-1.5 truncate max-w-[220px]">
-        {isPlaying && <span className="w-1.5 h-1.5 rounded-full bg-[#E8353E] shrink-0"></span>}
-        <span className="text-[#F8FAFC] font-semibold truncate group-hover:text-[#E8353E] transition-colors">{title}</span>
-        <span className="text-[#F8FAFC]/50">•</span>
-        <span className="text-[#F8FAFC]/70 truncate">{artist}</span>
+      <div className="flex flex-col truncate max-w-[200px]">
+        <div className="flex items-center gap-1.5">
+          {isPlaying && <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0 animate-pulse" />}
+          <span className="text-[#F4F4F6] font-medium truncate group-hover:text-white transition-colors">
+            {title}
+          </span>
+        </div>
+        <span className="text-[#9DA1AA] truncate text-[11px]">{artist}</span>
       </div>
 
       {isPlaying && (
-        <div className="flex items-end gap-[2px] h-3 shrink-0" aria-hidden="true">
-          <span className="eq-bar" style={{ animation: "eq-bounce 1.0s 0.1s ease-in-out infinite" }}></span>
-          <span className="eq-bar" style={{ animation: "eq-bounce 1.4s 0.4s ease-in-out infinite" }}></span>
-          <span className="eq-bar" style={{ animation: "eq-bounce 1.2s 0.2s ease-in-out infinite" }}></span>
+        <div className="flex items-end gap-[2px] h-3 ml-auto shrink-0" aria-hidden="true">
+          <span className="w-0.5 bg-white/70 animate-[eq-bounce_1.0s_0.1s_ease-in-out_infinite] h-2"></span>
+          <span className="w-0.5 bg-white/70 animate-[eq-bounce_1.4s_0.4s_ease-in-out_infinite] h-3"></span>
+          <span className="w-0.5 bg-white/70 animate-[eq-bounce_1.2s_0.2s_ease-in-out_infinite] h-1.5"></span>
         </div>
       )}
     </a>

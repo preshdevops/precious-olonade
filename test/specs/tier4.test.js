@@ -51,19 +51,20 @@ module.exports = {
     const res = await fetch(baseUrl);
     const html = await res.text();
     
-    // Verify that blog section renders valid posts
-    assert.ok(html.includes('God First'), 'Home page should display blog post 1 title');
-    assert.ok(html.includes('The Cunha and Mbeumo Era'), 'Home page should display blog post 2 title');
-    assert.ok(html.includes('Faith'), 'Home page should display category for post 1');
-    assert.ok(html.includes('Football'), 'Home page should display category for post 2');
+    // Verify field notes and external blog integration
+    assert.ok(html.includes('Why I Built a Privacy App Instead of Another AI Tool'), 'Home page should display field note 1 title');
+    assert.ok(html.includes('What Building Mobile Apps Taught Me About Complexity'), 'Home page should display field note 2 title');
+    assert.ok(html.includes('Architecture &amp; Philosophy') || html.includes('Architecture & Philosophy'), 'Home page should display category for essay 1');
+    assert.ok(html.includes('Systems &amp; Engineering') || html.includes('Systems & Engineering'), 'Home page should display category for essay 2');
+    assert.ok(html.includes('preciouswrites.vercel.app'), 'Home page should link to PreciousWrites blog');
   },
 
   'T4-5: Contact Email Copier Component Integration': async ({ baseUrl }) => {
     const res = await fetch(baseUrl);
     const html = await res.text();
     
+    // Verify email copier component structure and attributes
+    assert.ok(html.includes('segunolonade03@gmail.com'), 'Contact form should display target email address');
     assert.ok(html.includes('copied') || html.includes('handleCopy') || html.includes('COPY EMAIL'), 'Email button must integrate copy function or state');
   }
 };
-
-

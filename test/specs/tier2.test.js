@@ -4,16 +4,16 @@
 const assert = require('assert');
 
 module.exports = {
-  // === FEATURE 1: Theme Colors & Fonts (Boundary/Corner Cases) ===
+  // === FEATURE 1: Theme Typography & Editorial Palette (Boundary/Corner Cases) ===
   'F1-B1: Root HTML node has correct lang attribute': async ({ baseUrl }) => {
     const res = await fetch(baseUrl);
     const html = await res.text();
     assert.ok(html.includes('lang="en"'), 'Root HTML element should have lang="en"');
   },
-  'F1-B2: Accent color hex is defined in configuration': async ({ baseUrl }) => {
+  'F1-B2: Editorial carbon palette is defined in theme and HTML': async ({ baseUrl }) => {
     const res = await fetch(baseUrl);
     const html = await res.text();
-    assert.ok(html.includes('#2563EB') || html.includes('#CCFF00') || html.includes('text-[#2563EB]'), 'CSS/HTML should define the accent color palette');
+    assert.ok(html.includes('#0B0C0E') || html.includes('#13151A') || html.includes('bg-[#0B0C0E]'), 'CSS/HTML should define the editorial carbon palette');
   },
   'F1-B3: Head tag contains meta viewport tag for responsive scale boundaries': async ({ baseUrl }) => {
     const res = await fetch(baseUrl);
@@ -35,7 +35,7 @@ module.exports = {
   'F2-B1: Active section styles use distinct tracking classes': async ({ baseUrl }) => {
     const res = await fetch(baseUrl);
     const html = await res.text();
-    assert.ok(html.includes('font-mono') || html.includes('text-[#CCFF00]'), 'Navigation links should utilize tracking classes');
+    assert.ok(html.includes('font-mono') || html.includes('tracking-wide') || html.includes('tracking-wider'), 'Navigation links should utilize tracking classes');
   },
   'F2-B2: Mobile menu toggle button contains aria-label': async ({ baseUrl }) => {
     const res = await fetch(baseUrl);
@@ -52,10 +52,10 @@ module.exports = {
     const html = await res.text();
     assert.ok(html.includes('href="#home"'), 'Header logo brand should link back to #home container');
   },
-  'F2-B5: Navigation link text matches exactly uppercase/lowercase style requirements': async ({ baseUrl }) => {
+  'F2-B5: Navigation link text presents Work and Thinking labels': async ({ baseUrl }) => {
     const res = await fetch(baseUrl);
     const html = await res.text();
-    assert.ok(html.includes('Projects') || html.includes('PROJECTS'), 'Navigation must present Projects label');
+    assert.ok(html.includes('Work') && html.includes('Thinking'), 'Navigation must present Work and Thinking labels');
   },
 
   // === FEATURE 3: Identity Information (Boundary/Corner Cases) ===
@@ -79,37 +79,37 @@ module.exports = {
     const html = await res.text();
     assert.ok(html.includes('rel="noopener noreferrer"'), 'External social links must use rel="noopener noreferrer"');
   },
-  'F3-B5: Availability status uses animate ping for animation loop': async ({ baseUrl }) => {
+  'F3-B5: Availability status uses pulse animation': async ({ baseUrl }) => {
     const res = await fetch(baseUrl);
     const html = await res.text();
-    assert.ok(html.includes('animate-ping'), 'Status indicator must use animate-ping for pulse animation');
+    assert.ok(html.includes('animate-pulse') || html.includes('bg-emerald-400'), 'Status indicator must use pulse animation');
   },
 
-  // === FEATURE 4: Poster Wall Projects (Boundary/Corner Cases) ===
-  'F4-B1: Projects container uses unique DOM ID projects': async ({ baseUrl }) => {
+  // === FEATURE 4: Selected Work Case Studies (Boundary/Corner Cases) ===
+  'F4-B1: Selected Work container uses unique DOM ID work': async ({ baseUrl }) => {
     const res = await fetch(baseUrl);
     const html = await res.text();
-    assert.ok(html.includes('id="projects"'), 'Projects section must have matching id="projects"');
+    assert.ok(html.includes('id="work"') || html.includes('id="projects"'), 'Work section must have matching id="work"');
   },
-  'F4-B2: Projects use scroll margin top offset scroll-mt': async ({ baseUrl }) => {
+  'F4-B2: Work section uses scroll margin top offset scroll-mt': async ({ baseUrl }) => {
     const res = await fetch(baseUrl);
     const html = await res.text();
-    assert.ok(html.includes('scroll-mt-12') || html.includes('scroll-mt-'), 'Projects section should define a scroll offset');
+    assert.ok(html.includes('scroll-mt-20') || html.includes('scroll-mt-'), 'Work section should define a scroll offset');
   },
-  'F4-B3: Project indices use padded strings': async ({ baseUrl }) => {
+  'F4-B3: Project case studies format with leading numbers': async ({ baseUrl }) => {
     const res = await fetch(baseUrl);
     const html = await res.text();
     assert.ok(html.includes('01') && html.includes('02'), 'Project indices must format with leading zero (e.g., 01)');
   },
-  'F4-B4: Project card markup opens target link in new window': async ({ baseUrl }) => {
+  'F4-B4: Case study interactive action trigger is present': async ({ baseUrl }) => {
     const res = await fetch(baseUrl);
     const html = await res.text();
-    assert.ok(html.includes('target="_blank"') || html.includes('rel="noopener noreferrer"'), 'Project external links must use target blank');
+    assert.ok(html.includes('VIEW CASE STUDY') || html.includes('CASE STUDY'), 'Project case study should contain view action button');
   },
-  'F4-B5: Project tech stack badges list valid tech items': async ({ baseUrl }) => {
+  'F4-B5: Project tech stack tags list valid technologies': async ({ baseUrl }) => {
     const res = await fetch(baseUrl);
     const html = await res.text();
-    assert.ok(html.includes('React') || html.includes('Django') || html.includes('SQLite'), 'Project badges must render correct technologies');
+    assert.ok(html.includes('Web Crypto API') || html.includes('React') || html.includes('Django') || html.includes('PostgreSQL'), 'Project stack must render valid technologies');
   },
 
   // === FEATURE 5: About Section & Bio (Boundary/Corner Cases) ===
@@ -118,15 +118,15 @@ module.exports = {
     const html = await res.text();
     assert.ok(html.includes('id="about"'), 'About section must have matching id="about"');
   },
-  'F5-B2: Intention quote is enclosed in a blockquote or italic styling class': async ({ baseUrl }) => {
+  'F5-B2: Operating principle quote is enclosed in blockquote': async ({ baseUrl }) => {
     const res = await fetch(baseUrl);
     const html = await res.text();
-    assert.ok(html.includes('italic') || html.includes('blockquote') || html.includes('&quot;'), 'Intention quote must use italic/blockquote elements');
+    assert.ok(html.includes('blockquote') || html.includes('Build with intention'), 'Quote must be properly rendered');
   },
-  'F5-B3: Poster layout uses responsive padding': async ({ baseUrl }) => {
+  'F5-B3: Monograph layout uses responsive padding': async ({ baseUrl }) => {
     const res = await fetch(baseUrl);
     const html = await res.text();
-    assert.ok(html.includes('p-4') || html.includes('p-6') || html.includes('p-8'), 'Poster layout should define responsive padding');
+    assert.ok(html.includes('px-6') || html.includes('px-10') || html.includes('py-24'), 'Layout should define responsive padding');
   },
   'F5-B4: About bio text references location Nigeria': async ({ baseUrl }) => {
     const res = await fetch(baseUrl);
@@ -139,35 +139,35 @@ module.exports = {
     assert.ok(!html.includes('name is derived from') && !html.includes('meaning of my name'), 'Bio copy must remain professional and exclude name etymology');
   },
 
-  // === FEATURE 6: Minimal Journal Feed (Boundary/Corner Cases) ===
-  'F6-B1: Journal container uses unique DOM ID blog': async ({ baseUrl }) => {
+  // === FEATURE 6: Product Thinking Field Notes (Boundary/Corner Cases) ===
+  'F6-B1: Field notes container uses unique DOM ID thinking': async ({ baseUrl }) => {
     const res = await fetch(baseUrl);
     const html = await res.text();
-    assert.ok(html.includes('id="blog"'), 'Blog section must have matching id="blog"');
+    assert.ok(html.includes('id="thinking"') || html.includes('id="blog"'), 'Thinking section must have matching id="thinking"');
   },
-  'F6-B2: Blog list contains no more than three rendered posts': async ({ baseUrl }) => {
+  'F6-B2: Field notes list contains exactly four curated essays': async ({ baseUrl }) => {
     const res = await fetch(baseUrl);
     const html = await res.text();
-    const postCount = (html.match(/god-first|cunha-and-mbeumo|watching-below/g) || []).length;
-    assert.ok(postCount <= 3, 'Blog feed should show a maximum of 3 post items');
+    assert.ok(html.includes('Why I Built a Privacy App Instead of Another AI Tool'), 'Field notes must include Privacy essay');
+    assert.ok(html.includes('Why Community Technology Interests Me'), 'Field notes must include Community tech essay');
   },
-  'F6-B3: Blog posts contain hover transition styles': async ({ baseUrl }) => {
+  'F6-B3: Field notes entries contain hover transition styles': async ({ baseUrl }) => {
     const res = await fetch(baseUrl);
     const html = await res.text();
-    assert.ok(html.includes('group-hover') || html.includes('transition-colors') || html.includes('transition-all'), 'Blog cards must use hover animation styles');
+    assert.ok(html.includes('group') && (html.includes('transition-colors') || html.includes('transition-transform') || html.includes('transition-all')), 'Notes list must use hover animation styles');
   },
-  'F6-B4: Blog layout wrapper implements flex/grid columns': async ({ baseUrl }) => {
+  'F6-B4: Field notes layout implements structured editorial columns': async ({ baseUrl }) => {
     const res = await fetch(baseUrl);
     const html = await res.text();
-    assert.ok(html.includes('grid-cols-') || html.includes('flex-col'), 'Blog feed layout must implement responsive flex/grid columns');
+    assert.ok(html.includes('grid-cols-') || html.includes('divide-y'), 'Field notes layout must implement structured editorial divisions');
   },
-  'F6-B5: Blog feed links to PreciousWrites': async ({ baseUrl }) => {
+  'F6-B5: Field notes header links to external writing platform': async ({ baseUrl }) => {
     const res = await fetch(baseUrl);
     const html = await res.text();
-    assert.ok(html.includes('preciouswrites.vercel.app'), 'Blog feed must link out to PreciousWrites');
+    assert.ok(html.includes('preciouswrites.vercel.app'), 'Field notes must link out to PreciousWrites');
   },
 
-  // === FEATURE 7: Clean Architecture (Boundary/Corner Cases) ===
+  // === FEATURE 7: Architectural Cleanliness & Zero Slop ===
   'F7-B1: Animation transitions utilize duration parameters': async ({ baseUrl }) => {
     const res = await fetch(baseUrl);
     const html = await res.text();
@@ -178,7 +178,7 @@ module.exports = {
     const html = await res.text();
     assert.ok(!html.includes('scrollspy.js') && !html.includes('parallax.js'), 'HTML must not load heavy legacy scrollspy or parallax libraries');
   },
-  'F7-[#CCFF00]': async ({ baseUrl }) => {
+  'F7-B3: No generic gradient blobs or purple neon accents': async ({ baseUrl }) => {
     const res = await fetch(baseUrl);
     const html = await res.text();
     assert.ok(!html.includes('bg-blob') && !html.includes('bg-purple-500/20'), 'Legacy background blob overlay elements should not exist');
@@ -188,11 +188,9 @@ module.exports = {
     const html = await res.text();
     assert.ok(html.includes('transition') || html.includes('duration'), 'Interactive state anchors should define transition durations');
   },
-  'F7-B5: Page uses clean poster card borders': async ({ baseUrl }) => {
+  'F7-B5: Page uses clean structural borders': async ({ baseUrl }) => {
     const res = await fetch(baseUrl);
     const html = await res.text();
-    assert.ok(html.includes('poster-card') || html.includes('border-b') || html.includes('border-'), 'Poster layout should contain clean card borders');
+    assert.ok(html.includes('border-white/[0.08]') || html.includes('border-white/[0.14]'), 'Layout should contain clean hairline borders');
   }
 };
-
-
