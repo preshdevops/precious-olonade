@@ -14,28 +14,37 @@ export default function StudioColophon() {
   };
 
   return (
-    <footer id="contact" className="pt-20 pb-14 bg-[#08090B] text-[#F4F4F6] scroll-mt-20">
+    <footer id="contact" className="pt-20 pb-14 bg-[#08090B] text-[#F4F4F6] scroll-mt-20 border-t border-white/[0.08]">
       <div className="max-w-5xl mx-auto px-6">
         
         {/* Main Contact Statement */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 pb-16 border-b border-white/[0.08]">
           
-          <div className="lg:col-span-7 space-y-5">
-            <span className="font-mono text-xs uppercase tracking-widest text-[#9DA1AA] block">
-              Contact
-            </span>
+          <div className="lg:col-span-7 space-y-6">
+            <div className="flex items-center gap-2">
+              <span className="font-mono text-xs uppercase tracking-widest text-[#9DA1AA] block">
+                Contact
+              </span>
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-500/[0.08] text-emerald-400 border border-emerald-500/20">
+                Inbox Open
+              </span>
+            </div>
+
             <h2 className="font-serif text-3xl sm:text-4xl text-[#F4F4F6] font-normal tracking-tight">
               Let&rsquo;s talk.
             </h2>
+
             <p className="text-base sm:text-lg text-[#9DA1AA] leading-relaxed max-w-lg">
               I&rsquo;m currently looking for junior / early-career product engineering and developer opportunities, and I&rsquo;m always happy to connect with other builders.
             </p>
 
-            {/* Email Copier */}
+            {/* Email Copier & Direct Action */}
             <div className="pt-2 flex flex-wrap items-center gap-3">
               <button
                 onClick={handleCopyEmail}
-                className="group px-4 py-2.5 rounded-lg bg-[#14161D] border border-white/[0.12] hover:border-white text-xs font-mono text-white flex items-center gap-3 transition-all"
+                type="button"
+                className="tactile-press group px-4 py-2.5 rounded-xl bg-[#14161D] border border-white/[0.12] hover:border-white text-xs font-mono text-white flex items-center gap-3 transition-all cursor-pointer"
+                aria-label="Copy email address"
               >
                 <span>{copied ? "COPIED TO CLIPBOARD" : email}</span>
                 <span className="text-[#9DA1AA] group-hover:text-white transition-colors">
@@ -45,14 +54,15 @@ export default function StudioColophon() {
 
               <a
                 href={`mailto:${email}`}
-                className="px-4 py-2.5 rounded-lg bg-white text-black font-mono text-xs font-semibold hover:bg-neutral-200 transition-colors"
+                className="tactile-press px-5 py-2.5 rounded-xl bg-white text-black font-mono text-xs font-semibold hover:bg-neutral-200 transition-colors inline-flex items-center gap-1.5"
               >
-                SEND EMAIL ↵
+                <span>SEND EMAIL</span>
+                <span>↵</span>
               </a>
             </div>
           </div>
 
-          {/* Social Links & Spotify Widget */}
+          {/* Social Links & Spotify Cassette Widget */}
           <div className="lg:col-span-5 space-y-6 lg:border-l lg:border-white/[0.08] lg:pl-10 flex flex-col justify-between">
             <div className="space-y-3">
               <h3 className="font-mono text-xs uppercase tracking-widest text-[#646974]">
@@ -64,10 +74,10 @@ export default function StudioColophon() {
                     href="https://github.com/preshdevops"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:text-white transition-colors flex items-center justify-between pb-1.5 border-b border-white/[0.04]"
+                    className="hover:text-white transition-colors flex items-center justify-between pb-1.5 border-b border-white/[0.04] group"
                   >
                     <span>GitHub (@preshdevops)</span>
-                    <span>↗</span>
+                    <span className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">↗</span>
                   </a>
                 </li>
                 <li>
@@ -75,10 +85,10 @@ export default function StudioColophon() {
                     href="https://www.linkedin.com/in/precious-olonade/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:text-white transition-colors flex items-center justify-between pb-1.5 border-b border-white/[0.04]"
+                    className="hover:text-white transition-colors flex items-center justify-between pb-1.5 border-b border-white/[0.04] group"
                   >
                     <span>LinkedIn (Precious Olonade)</span>
-                    <span>↗</span>
+                    <span className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">↗</span>
                   </a>
                 </li>
                 <li>
@@ -86,10 +96,10 @@ export default function StudioColophon() {
                     href="https://preciouswrites.vercel.app"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:text-white transition-colors flex items-center justify-between pb-1.5 border-b border-white/[0.04]"
+                    className="hover:text-white transition-colors flex items-center justify-between pb-1.5 border-b border-white/[0.04] group"
                   >
                     <span>Blog (preciouswrites.vercel.app)</span>
-                    <span>↗</span>
+                    <span className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">↗</span>
                   </a>
                 </li>
               </ul>
@@ -107,12 +117,15 @@ export default function StudioColophon() {
 
         {/* Footer Bottom */}
         <div className="pt-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs font-mono text-[#646974]">
-          <p>Precious Oluwasegun Olonade © 2026</p>
+          <div className="flex items-center gap-2">
+            <span>Precious Oluwasegun Olonade © 2026</span>
+          </div>
           <div className="flex items-center gap-5">
             <span>Osun State, Nigeria</span>
             <span>•</span>
-            <a href="#home" className="hover:text-white transition-colors">
-              Back to top ↑
+            <a href="#home" className="hover:text-white transition-colors flex items-center gap-1">
+              <span>Back to top</span>
+              <span>↑</span>
             </a>
           </div>
         </div>

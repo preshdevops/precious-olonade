@@ -76,7 +76,11 @@ const notes: Note[] = [
 ];
 
 export default function ProductThinking() {
-  const [activeNote, setActiveNote] = useState<Note | null>(null);
+  const [expandedNoteId, setExpandedNoteId] = useState<string | null>(null);
+
+  const toggleNote = (id: string) => {
+    setExpandedNoteId(expandedNoteId === id ? null : id);
+  };
 
   return (
     <section id="thinking" className="py-20 md:py-28 border-b border-white/[0.08] scroll-mt-20">
@@ -88,9 +92,14 @@ export default function ProductThinking() {
         {/* Section Header */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-14">
           <div className="space-y-3">
-            <span className="font-mono text-xs uppercase tracking-widest text-[#9DA1AA] block">
-              Writing &amp; Thinking
-            </span>
+            <div className="flex items-center gap-2">
+              <span className="font-mono text-xs uppercase tracking-widest text-[#9DA1AA] block">
+                Writing &amp; Thinking
+              </span>
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-white/[0.06] text-[#9DA1AA]">
+                Field Notes
+              </span>
+            </div>
             <h2 className="font-serif text-3xl sm:text-4xl text-[#F4F4F6] font-normal tracking-tight">
               Product notes
             </h2>
@@ -99,117 +108,89 @@ export default function ProductThinking() {
             </p>
           </div>
 
-          <a
-            href="https://preciouswrites.vercel.app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-xs font-mono text-[#9DA1AA] hover:text-white transition-colors"
-          >
-            <span>Personal blog (preciouswrites)</span>
-            <span>↗</span>
-          </a>
+          <div>
+            <a
+              href="https://preciouswrites.vercel.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="tactile-press inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-white/[0.12] text-xs font-mono text-[#F4F4F6] hover:bg-white hover:text-black hover:border-white transition-all cursor-pointer"
+            >
+              <span>Visit PreciousWrites</span>
+              <span>↗</span>
+            </a>
+          </div>
         </div>
 
-        {/* Notes List */}
+        {/* Structured Field Notes List */}
         <div className="divide-y divide-white/[0.08] border-t border-b border-white/[0.08]">
-          {notes.map((note) => (
-            <article
-              key={note.id}
-              className="py-8 group cursor-pointer hover:bg-white/[0.02] transition-colors -mx-4 px-4 sm:mx-0 sm:px-0"
-              onClick={() => setActiveNote(note)}
-            >
-              <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 items-baseline">
-                
-                {/* Meta */}
-                <div className="md:col-span-3 font-mono text-xs text-[#646974] space-y-1">
-                  <div>{note.date}</div>
-                  <div className="text-[#9DA1AA]">{note.category}</div>
-                </div>
+          {notes.map((note, index) => {
+            const isExpanded = expandedNoteId === note.id;
 
-                {/* Title & Synopsis */}
-                <div className="md:col-span-7 space-y-2">
-                  <h3 className="font-serif text-xl sm:text-2xl text-[#F4F4F6] group-hover:text-white transition-colors font-medium">
-                    {note.title}
-                  </h3>
-                  <p className="text-sm text-[#9DA1AA] leading-relaxed line-clamp-2">
-                    {note.synopsis}
-                  </p>
-                </div>
+            return (
+              <article
+                key={note.id}
+                className="group py-8 transition-colors duration-200 -mx-4 px-4 sm:mx-0 sm:px-0 hover:bg-white/[0.015]"
+              >
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                  
+                  {/* Note Meta */}
+                  <div className="lg:col-span-3 font-mono text-xs text-[#646974] space-y-1">
+                    <div className="flex items-center gap-2">
+                      <span className="text-white font-medium">NOTE 0{index + 1}</span>
+                      <span>·</span>
+                      <span>{note.date}</span>
+                    </div>
+                    <div className="font-mono text-[#9DA1AA]">
+                      {note.category}
+                    </div>
+                    <div className="text-[11px] text-[#646974]">
+                      {note.readTime}
+                    </div>
+                  </div>
 
-                {/* Read Action */}
-                <div className="md:col-span-2 flex md:justify-end items-center gap-3">
-                  <span className="font-mono text-xs text-[#646974]">
-                    {note.readTime}
-                  </span>
-                  <span className="text-sm font-mono text-[#F4F4F6] group-hover:translate-x-1 transition-transform">
-                    →
-                  </span>
-                </div>
+                  {/* Note Headline & Body */}
+                  <div className="lg:col-span-7 space-y-3">
+                    <button
+                      onClick={() => toggleNote(note.id)}
+                      className="text-left w-full focus:outline-none group/title cursor-pointer"
+                    >
+                      <h3 className="font-serif text-xl sm:text-2xl text-[#F4F4F6] font-medium tracking-tight group-hover/title:text-white transition-colors">
+                        {note.title}
+                      </h3>
+                    </button>
 
-              </div>
-            </article>
-          ))}
+                    <p className="text-sm sm:text-base text-[#D0D4DC] leading-relaxed">
+                      {note.synopsis}
+                    </p>
+
+                    {/* Inline Expanded Article */}
+                    {isExpanded && (
+                      <div className="pt-4 mt-4 border-t border-white/[0.08] space-y-3.5 text-sm sm:text-base text-[#9DA1AA] leading-relaxed animate-in fade-in duration-200">
+                        {note.content.map((paragraph, pIdx) => (
+                          <p key={pIdx}>{paragraph}</p>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Expand / Read Toggle */}
+                  <div className="lg:col-span-2 flex lg:justify-end items-center pt-1 lg:pt-0">
+                    <button
+                      onClick={() => toggleNote(note.id)}
+                      className="tactile-press inline-flex items-center gap-1.5 text-xs font-mono text-[#9DA1AA] hover:text-white transition-colors cursor-pointer px-2.5 py-1.5 rounded border border-white/[0.08] hover:border-white/[0.2]"
+                    >
+                      <span>{isExpanded ? "Collapse" : "Read note"}</span>
+                      <span className="text-[10px]">{isExpanded ? "↑" : "↓"}</span>
+                    </button>
+                  </div>
+
+                </div>
+              </article>
+            );
+          })}
         </div>
 
       </div>
-
-      {/* Note Reader Modal */}
-      {activeNote && (
-        <div
-          role="dialog"
-          aria-modal="true"
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/85 backdrop-blur-md overflow-y-auto"
-        >
-          <div className="relative w-full max-w-2xl my-8 rounded-xl bg-[#0F1116] border border-white/[0.14] p-6 sm:p-10 shadow-2xl text-[#F4F4F6] space-y-6 max-h-[90vh] overflow-y-auto">
-            
-            {/* Header */}
-            <div className="flex items-start justify-between pb-5 border-b border-white/[0.08]">
-              <div className="space-y-2">
-                <div className="flex items-center gap-3 font-mono text-xs text-[#9DA1AA]">
-                  <span>{activeNote.date}</span>
-                  <span>•</span>
-                  <span>{activeNote.category}</span>
-                  <span>•</span>
-                  <span>{activeNote.readTime}</span>
-                </div>
-                <h3 className="font-serif text-2xl sm:text-3xl font-medium text-white leading-snug">
-                  {activeNote.title}
-                </h3>
-              </div>
-              <button
-                onClick={() => setActiveNote(null)}
-                aria-label="Close note"
-                className="p-2 text-[#9DA1AA] hover:text-white rounded-lg border border-white/[0.08] hover:border-white/[0.2] transition-colors"
-              >
-                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
-            </div>
-
-            {/* Note Paragraphs */}
-            <div className="space-y-5 text-base text-[#D0D4DC] leading-relaxed font-sans">
-              {activeNote.content.map((paragraph, pIdx) => (
-                <p key={pIdx}>{paragraph}</p>
-              ))}
-            </div>
-
-            {/* Modal Signoff */}
-            <div className="pt-6 border-t border-white/[0.08] flex items-center justify-between">
-              <span className="font-mono text-xs text-[#646974]">
-                Precious Oluwasegun Olonade
-              </span>
-              <button
-                onClick={() => setActiveNote(null)}
-                className="px-4 py-2 rounded-lg bg-white text-black font-mono text-xs font-semibold hover:bg-neutral-200 transition-colors"
-              >
-                CLOSE
-              </button>
-            </div>
-
-          </div>
-        </div>
-      )}
     </section>
   );
 }

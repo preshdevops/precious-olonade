@@ -65,7 +65,7 @@ export default function StudioHeader() {
           </span>
           <a
             href="mailto:segunolonade03@gmail.com"
-            className="px-4 py-2 rounded-full border border-white/[0.14] text-xs font-mono tracking-wider text-[#F4F4F6] hover:bg-white hover:text-black hover:border-white transition-all duration-200"
+            className="tactile-press px-4 py-2 rounded-full border border-white/[0.14] text-xs font-mono tracking-wider text-[#F4F4F6] hover:bg-white hover:text-black hover:border-white transition-all duration-200 cursor-pointer"
           >
             SAY HELLO
           </a>
