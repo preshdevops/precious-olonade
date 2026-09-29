@@ -35,3 +35,8 @@ spotify-config.json
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# python
+__pycache__/
+*.pyc
+
