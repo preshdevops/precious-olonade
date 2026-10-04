@@ -17,7 +17,7 @@ module.exports = {
   'T3-2: Project category tags inherit typography classes': async ({ baseUrl }) => {
     const res = await fetch(baseUrl);
     const html = await res.text();
-    assert.ok(html.includes('font-mono') && (html.includes('Web') || html.includes('Mobile') || html.includes('Tools') || html.includes('Thesis')), 'Category tags must utilize theme typography classes');
+    assert.ok(html.includes('font-mono') && (html.includes('Web') || html.includes('Mobile') || html.includes('Desktop') || html.includes('Thesis')), 'Category tags must utilize theme typography classes');
   },
 
   'T3-3: About focus areas layout adheres to theme colors and design': async ({ baseUrl }) => {

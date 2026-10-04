@@ -4,7 +4,7 @@ import React, { useState } from "react";
 
 interface ProjectItem {
   id: string;
-  category: "tools" | "web" | "thesis" | "mobile";
+  category: "desktop" | "web" | "thesis" | "mobile";
   name: string;
   tagline: string;
   stampText: string;
@@ -24,22 +24,22 @@ interface ProjectItem {
 const projects: ProjectItem[] = [
   {
     id: "dabar",
-    category: "tools",
+    category: "desktop",
     name: "Dabaar",
-    tagline: "Video repurposing tool",
-    stampText: "ACTIVE BUILD · RUST & REACT",
+    tagline: "Desktop application",
+    stampText: "ACTIVE BUILD · DESKTOP",
     stampColor: "border-sky-500/30 text-sky-400 bg-sky-500/[0.06]",
-    description: "A tool that repurposes long videos into short-form clips.",
+    description: "A desktop app built with Rust and React that turns long videos into short-form clips.",
     stackText: "Rust · React",
-    stackList: ["Rust", "React"],
+    stackList: ["Rust", "React", "Desktop"],
     role: "Builder",
     status: "Actively built",
     whyBuilt:
-      "I wanted a fast, straightforward way to take long video recordings and generate short, shareable clips without the overhead of heavy editing software.",
+      "I wanted a dedicated desktop app to take long video recordings and turn them into short-form clips quickly, processing video locally on the machine.",
     howItWorks:
-      "Long video files are processed to extract key segments and output clean, formatted short clips ready for sharing.",
+      "A native desktop application that takes long video inputs, processes key segments locally, and outputs formatted short clips ready to share.",
     learnings:
-      "Working with media pipelines in Rust and pairing it with a responsive React interface.",
+      "Building desktop software with Rust for native performance and pairing it with a clean React interface.",
     githubUrl: "https://github.com/preshdevops/dabar",
   },
   {
@@ -67,20 +67,20 @@ const projects: ProjectItem[] = [
     id: "curious-bright",
     category: "web",
     name: "Curious Bright",
-    tagline: "Client website",
-    stampText: "COMPLETED · FRONTEND",
+    tagline: "Collaborative project",
+    stampText: "COLLABORATION · FRONTEND",
     stampColor: "border-blue-500/30 text-blue-400 bg-blue-500/[0.06]",
-    description: "Frontend developer for the Curious Bright website.",
+    description: "Frontend developer for Curious Bright, built in collaboration with a partner.",
     stackText: "Frontend",
     stackList: ["HTML", "CSS", "JavaScript"],
     role: "Frontend developer",
     status: "Completed",
     whyBuilt:
-      "Developed the frontend of the website to provide a clean, accessible web presence.",
+      "Built as a collaborative project, creating a responsive web frontend to present ideas and content clearly.",
     howItWorks:
-      "Built responsive page layouts and components ensuring consistency across mobile and desktop browsers.",
+      "Developed the responsive interface, page layouts, and component structure across devices.",
     learnings:
-      "Collaborating on frontend requirements and delivering clean interface code.",
+      "Working in close collaboration with another builder and translating shared concepts into clean frontend code.",
   },
   {
     id: "privora",
@@ -124,7 +124,7 @@ const projects: ProjectItem[] = [
   },
 ];
 
-type FilterType = "all" | "web" | "mobile" | "tools" | "thesis";
+type FilterType = "all" | "web" | "desktop" | "mobile" | "thesis";
 type ModalTab = "why" | "how" | "lessons";
 
 export default function SelectedWork() {
@@ -164,7 +164,7 @@ export default function SelectedWork() {
               Things I&rsquo;ve built
             </h2>
             <p className="text-base text-[#9DA1AA] max-w-xl">
-              Five projects I&rsquo;ve designed, built, and contributed to recently, from university research to client work and personal prototypes.
+              Five projects I&rsquo;ve designed, built, and contributed to recently, from university research to collaborations and personal prototypes.
             </p>
           </div>
 
@@ -191,6 +191,16 @@ export default function SelectedWork() {
               Web (2)
             </button>
             <button
+              onClick={() => setFilter("desktop")}
+              className={`tactile-press px-3 py-1.5 rounded-lg border transition-all cursor-pointer ${
+                filter === "desktop"
+                  ? "bg-sky-400 text-black border-sky-400 font-semibold"
+                  : "bg-[#13151A] text-[#9DA1AA] border-white/[0.1] hover:border-white/[0.25] hover:text-white"
+              }`}
+            >
+              Desktop (1)
+            </button>
+            <button
               onClick={() => setFilter("mobile")}
               className={`tactile-press px-3 py-1.5 rounded-lg border transition-all cursor-pointer ${
                 filter === "mobile"
@@ -199,16 +209,6 @@ export default function SelectedWork() {
               }`}
             >
               Mobile (1)
-            </button>
-            <button
-              onClick={() => setFilter("tools")}
-              className={`tactile-press px-3 py-1.5 rounded-lg border transition-all cursor-pointer ${
-                filter === "tools"
-                  ? "bg-sky-400 text-black border-sky-400 font-semibold"
-                  : "bg-[#13151A] text-[#9DA1AA] border-white/[0.1] hover:border-white/[0.25] hover:text-white"
-              }`}
-            >
-              Tools (1)
             </button>
             <button
               onClick={() => setFilter("thesis")}

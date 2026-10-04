@@ -2,14 +2,14 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Precious Oluwasegun Olonade — Product Builder & Computer Scientist",
+  title: "Precious Oluwasegun Olonade - Product Builder & Computer Scientist",
   description:
-    "Computer Scientist and product builder. Designing and engineering products that solve real-world problems through privacy-preserving architectures, community infrastructure, and intentional software.",
+    "Computer Scientist and product builder. Designing and engineering software and products that solve real-world problems.",
   metadataBase: new URL("https://precious-olonade.netlify.app"),
   openGraph: {
-    title: "Precious Oluwasegun Olonade — Product Builder & Computer Scientist",
+    title: "Precious Oluwasegun Olonade - Product Builder & Computer Scientist",
     description:
-      "Independent product builder and Computer Scientist. Privora, Makarios, Dabar, and product thinking field notes.",
+      "Independent product builder and Computer Scientist. Selected work includes Dabaar, editorial-muse, Curious Bright, Privora, and Makarios.",
     url: "https://precious-olonade.netlify.app",
     siteName: "Precious Oluwasegun Olonade",
     type: "website",
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Precious Oluwasegun Olonade — Product Builder",
+    title: "Precious Oluwasegun Olonade - Product Builder",
     description:
       "Computer Scientist building products that solve real-world problems. Build with intention. Ship with purpose.",
   },
@@ -47,11 +47,9 @@ export default function RootLayout({
       "https://preciouswrites.vercel.app",
     ],
     knowsAbout: [
-      "Product Architecture",
-      "Zero-Knowledge Cryptography",
+      "Product Development",
+      "Software Engineering",
       "Computer Science",
-      "Systems Engineering",
-      "Web Crypto API",
       "React",
       "Next.js",
       "Django",
