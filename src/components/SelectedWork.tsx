@@ -4,7 +4,7 @@ import React, { useState } from "react";
 
 interface ProjectItem {
   id: string;
-  category: "thesis" | "mobile" | "exploration";
+  category: "tools" | "web" | "thesis" | "mobile";
   name: string;
   tagline: string;
   stampText: string;
@@ -18,9 +18,70 @@ interface ProjectItem {
   howItWorks: string;
   learnings: string;
   githubUrl?: string;
+  liveUrl?: string;
 }
 
 const projects: ProjectItem[] = [
+  {
+    id: "dabar",
+    category: "tools",
+    name: "Dabaar",
+    tagline: "Video repurposing tool",
+    stampText: "ACTIVE BUILD · RUST & REACT",
+    stampColor: "border-sky-500/30 text-sky-400 bg-sky-500/[0.06]",
+    description: "A tool that repurposes long videos into short-form clips.",
+    stackText: "Rust · React",
+    stackList: ["Rust", "React"],
+    role: "Builder",
+    status: "Actively built",
+    whyBuilt:
+      "I wanted a fast, straightforward way to take long video recordings and generate short, shareable clips without the overhead of heavy editing software.",
+    howItWorks:
+      "Long video files are processed to extract key segments and output clean, formatted short clips ready for sharing.",
+    learnings:
+      "Working with media pipelines in Rust and pairing it with a responsive React interface.",
+    githubUrl: "https://github.com/preshdevops/dabar",
+  },
+  {
+    id: "editorial-muse",
+    category: "web",
+    name: "editorial-muse",
+    tagline: "Letter website",
+    stampText: "LIVE · WEB",
+    stampColor: "border-purple-500/30 text-purple-400 bg-purple-500/[0.06]",
+    description: "A letter website.",
+    stackText: "HTML · CSS",
+    stackList: ["HTML", "CSS"],
+    role: "Developer & Designer",
+    status: "Shipped",
+    whyBuilt:
+      "Built as an editorial platform for reading and publishing letters with a calm, typography-first layout.",
+    howItWorks:
+      "Clean semantic HTML structure with careful typographic hierarchy and distraction-free presentation.",
+    learnings:
+      "Structuring responsive, accessible editorial layouts with pure web standards.",
+    githubUrl: "https://github.com/preshdevops/editorial-muse",
+    liveUrl: "https://editorial-muse.pxxl.click",
+  },
+  {
+    id: "curious-bright",
+    category: "web",
+    name: "Curious Bright",
+    tagline: "Client website",
+    stampText: "COMPLETED · FRONTEND",
+    stampColor: "border-blue-500/30 text-blue-400 bg-blue-500/[0.06]",
+    description: "Frontend developer for the Curious Bright website.",
+    stackText: "Frontend",
+    stackList: ["HTML", "CSS", "JavaScript"],
+    role: "Frontend developer",
+    status: "Completed",
+    whyBuilt:
+      "Developed the frontend of the website to provide a clean, accessible web presence.",
+    howItWorks:
+      "Built responsive page layouts and components ensuring consistency across mobile and desktop browsers.",
+    learnings:
+      "Collaborating on frontend requirements and delivering clean interface code.",
+  },
   {
     id: "privora",
     category: "thesis",
@@ -52,38 +113,18 @@ const projects: ProjectItem[] = [
     stackText: "Kotlin · Android",
     stackList: ["Kotlin", "Android", "Jetpack Compose", "Room DB", "Clean Architecture"],
     role: "Developer",
-    status: "In progress",
+    status: "In active build",
     whyBuilt:
-      "I wanted to build an Android app with a calm, peaceful experience where people could start their morning with positive affirmations, reflect, and build constructive daily habits without ads or notification spam.",
+      "I wanted to build an Android app with a calm, peaceful experience where people could start their morning with positive affirmations, reflect, and build constructive daily habits.",
     howItWorks:
-      "Makarios provides a simple daily feed of affirmations, bookmarking, and personal journaling. Everything is stored locally on the device for fast access and total privacy.",
+      "Makarios provides a simple daily feed of affirmations, bookmarking, and personal journaling. Everything is stored locally on the device for fast access and privacy.",
     learnings:
       "Working on Makarios has helped me dive deeper into modern Android development with Kotlin and Jetpack Compose, understanding mobile lifecycle states, and designing clean interfaces for handheld devices.",
     githubUrl: "https://github.com/preshdevops",
   },
-  {
-    id: "dabar",
-    category: "exploration",
-    name: "Dabar",
-    tagline: "Exploration & prototype",
-    stampText: "RESEARCH LAB · RUST",
-    stampColor: "border-sky-500/30 text-sky-400 bg-sky-500/[0.06]",
-    description: "A project I'm exploring around better ways to read and study digital content.",
-    stackText: "Rust · TypeScript · Next.js",
-    stackList: ["Rust", "TypeScript", "Next.js", "WebAssembly", "Tailwind CSS"],
-    role: "Builder",
-    status: "Exploration",
-    whyBuilt:
-      "Most digital reading apps are crowded with notifications, popups, and clutter. I wanted to explore what a distraction-free, typography-focused reading tool could look like for studying long texts.",
-    howItWorks:
-      "A fast, minimal workspace focused on typography, smooth navigation, and instant word lookups, making reading on a screen feel as focused and natural as reading a book.",
-    learnings:
-      "This project has been my sandbox for learning Rust for text processing, exploring WebAssembly, and experimenting with clean typographic layouts on the web.",
-    githubUrl: "https://github.com/preshdevops",
-  },
 ];
 
-type FilterType = "all" | "thesis" | "mobile" | "exploration";
+type FilterType = "all" | "web" | "mobile" | "tools" | "thesis";
 type ModalTab = "why" | "how" | "lessons";
 
 export default function SelectedWork() {
@@ -116,18 +157,18 @@ export default function SelectedWork() {
                 Selected Work
               </span>
               <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-white/[0.06] text-[#9DA1AA]">
-                3 Projects
+                5 Projects
               </span>
             </div>
             <h2 className="font-serif text-3xl sm:text-4xl text-[#F4F4F6] font-normal tracking-tight">
               Things I&rsquo;ve built
             </h2>
             <p className="text-base text-[#9DA1AA] max-w-xl">
-              A few projects I&rsquo;ve designed and built recently, from university research to personal side projects.
+              Five projects I&rsquo;ve designed, built, and contributed to recently, from university research to client work and personal prototypes.
             </p>
           </div>
 
-          {/* Playful Filter Pills */}
+          {/* Filter Pills */}
           <div className="flex flex-wrap items-center gap-2 font-mono text-xs">
             <button
               onClick={() => setFilter("all")}
@@ -137,17 +178,17 @@ export default function SelectedWork() {
                   : "bg-[#13151A] text-[#9DA1AA] border-white/[0.1] hover:border-white/[0.25] hover:text-white"
               }`}
             >
-              All (3)
+              All (5)
             </button>
             <button
-              onClick={() => setFilter("thesis")}
+              onClick={() => setFilter("web")}
               className={`tactile-press px-3 py-1.5 rounded-lg border transition-all cursor-pointer ${
-                filter === "thesis"
-                  ? "bg-amber-400 text-black border-amber-400 font-semibold"
+                filter === "web"
+                  ? "bg-purple-400 text-black border-purple-400 font-semibold"
                   : "bg-[#13151A] text-[#9DA1AA] border-white/[0.1] hover:border-white/[0.25] hover:text-white"
               }`}
             >
-              Thesis (1)
+              Web (2)
             </button>
             <button
               onClick={() => setFilter("mobile")}
@@ -160,21 +201,31 @@ export default function SelectedWork() {
               Mobile (1)
             </button>
             <button
-              onClick={() => setFilter("exploration")}
+              onClick={() => setFilter("tools")}
               className={`tactile-press px-3 py-1.5 rounded-lg border transition-all cursor-pointer ${
-                filter === "exploration"
+                filter === "tools"
                   ? "bg-sky-400 text-black border-sky-400 font-semibold"
                   : "bg-[#13151A] text-[#9DA1AA] border-white/[0.1] hover:border-white/[0.25] hover:text-white"
               }`}
             >
-              Exploration (1)
+              Tools (1)
+            </button>
+            <button
+              onClick={() => setFilter("thesis")}
+              className={`tactile-press px-3 py-1.5 rounded-lg border transition-all cursor-pointer ${
+                filter === "thesis"
+                  ? "bg-amber-400 text-black border-amber-400 font-semibold"
+                  : "bg-[#13151A] text-[#9DA1AA] border-white/[0.1] hover:border-white/[0.25] hover:text-white"
+              }`}
+            >
+              Thesis (1)
             </button>
           </div>
         </div>
 
         {/* Project Cards List */}
         <div className="divide-y divide-white/[0.08] border-t border-b border-white/[0.08]">
-          {filteredProjects.map((project, index) => {
+          {filteredProjects.map((project) => {
             const displayIndex = projects.findIndex((p) => p.id === project.id) + 1;
             const indexStr = displayIndex < 10 ? `0${displayIndex}` : `${displayIndex}`;
 
@@ -189,11 +240,11 @@ export default function SelectedWork() {
                   <div className="lg:col-span-3 font-mono text-xs text-[#646974] space-y-2">
                     <div className="flex items-center gap-2">
                       <span className="text-white font-medium">{indexStr}</span>
-                      <span className="text-[#646974]">/ 03</span>
+                      <span className="text-[#646974]">/ 05</span>
                     </div>
                     <div className="text-[#9DA1AA]">{project.tagline}</div>
                     
-                    {/* Playful Stamp Badge */}
+                    {/* Stamp Badge */}
                     <div className="pt-1">
                       <span
                         className={`inline-block text-[10px] font-mono tracking-wider px-2 py-0.5 rounded border ${project.stampColor}`}
@@ -228,14 +279,36 @@ export default function SelectedWork() {
                     </div>
                   </div>
 
-                  {/* Action Link */}
-                  <div className="lg:col-span-3 flex lg:justify-end items-center pt-2 lg:pt-0">
+                  {/* Action Links */}
+                  <div className="lg:col-span-3 flex flex-wrap lg:justify-end items-center gap-2 pt-2 lg:pt-0">
+                    {project.githubUrl && (
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="tactile-press px-2.5 py-1 rounded-md border border-white/[0.1] hover:border-white/[0.3] text-xs font-mono text-[#9DA1AA] hover:text-white transition-colors"
+                        aria-label={`${project.name} repository`}
+                      >
+                        GitHub ↗
+                      </a>
+                    )}
+                    {project.liveUrl && (
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="tactile-press px-2.5 py-1 rounded-md border border-emerald-500/20 bg-emerald-500/[0.05] hover:border-emerald-400 text-xs font-mono text-emerald-400 transition-colors"
+                        aria-label={`${project.name} live site`}
+                      >
+                        Live ↗
+                      </a>
+                    )}
                     <button
                       onClick={() => openModal(project.id)}
-                      className="tactile-press inline-flex items-center gap-2 text-sm font-medium text-[#F4F4F6] hover:text-white group-hover:underline underline-offset-4 transition-all cursor-pointer px-3 py-1.5 rounded-lg hover:bg-white/[0.06]"
+                      className="tactile-press inline-flex items-center gap-1.5 text-xs font-mono font-medium text-[#F4F4F6] hover:text-white group-hover:underline underline-offset-4 transition-all cursor-pointer px-2.5 py-1 rounded-md hover:bg-white/[0.06]"
                     >
-                      <span>View project</span>
-                      <span className="font-mono text-xs group-hover:translate-x-1 transition-transform">→</span>
+                      <span>Details</span>
+                      <span className="font-mono text-xs group-hover:translate-x-0.5 transition-transform">→</span>
                     </button>
                   </div>
 
@@ -247,7 +320,7 @@ export default function SelectedWork() {
 
       </div>
 
-      {/* Project Detail Modal / Blueprint Inspector */}
+      {/* Project Detail Modal */}
       {activeProject && (
         <div
           role="dialog"
@@ -288,7 +361,7 @@ export default function SelectedWork() {
               </button>
             </div>
 
-            {/* Blueprint Tabs */}
+            {/* Modal Tabs */}
             <div className="flex items-center gap-2 border-b border-white/[0.08] pb-3 font-mono text-xs">
               <button
                 onClick={() => setActiveModalTab("why")}
@@ -377,7 +450,7 @@ export default function SelectedWork() {
 
             {/* Modal Actions */}
             <div className="pt-4 border-t border-white/[0.08] flex items-center justify-between">
-              <div>
+              <div className="flex items-center gap-3">
                 {activeProject.githubUrl && (
                   <a
                     href={activeProject.githubUrl}
@@ -386,6 +459,16 @@ export default function SelectedWork() {
                     className="tactile-press px-4 py-2 rounded-lg border border-white/[0.14] text-xs font-mono text-white hover:border-white hover:bg-white/[0.06] transition-all inline-block"
                   >
                     GITHUB ↗
+                  </a>
+                )}
+                {activeProject.liveUrl && (
+                  <a
+                    href={activeProject.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="tactile-press px-4 py-2 rounded-lg border border-emerald-500/30 text-xs font-mono text-emerald-400 hover:border-emerald-400 hover:bg-emerald-500/[0.08] transition-all inline-block"
+                  >
+                    LIVE SITE ↗
                   </a>
                 )}
               </div>

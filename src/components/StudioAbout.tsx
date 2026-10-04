@@ -32,7 +32,7 @@ export default function StudioAbout() {
               I love the process of figuring out problems and building products around them. Whether it&rsquo;s writing backend logic in Django, building an Android app with Kotlin, or learning Rust to understand lower-level systems, I enjoy getting my hands dirty and turning concepts into things people can actually use.
             </p>
             <p>
-              During university, I worked on projects ranging from client-side file encryption (Privora) to mobile apps for personal growth. I also spent time volunteering with organizations like TSDI and OSPCN, which gave me a deep appreciation for how everyday people and local communities interact with technology.
+              During university, I focused on core software fundamentals, web systems, and mobile development. I also spent time volunteering with organizations like TSDI and OSPCN, which gave me a deep appreciation for how everyday people and local communities interact with technology.
             </p>
             <p>
               Right now, I&rsquo;m focused on improving my product craft, learning modern mobile and backend development, and finding teams where I can build useful software alongside people who care about quality.
@@ -69,7 +69,7 @@ export default function StudioAbout() {
               <div className="flex items-center justify-between text-xs font-mono pt-1 text-[#9DA1AA]">
                 <span>Precious Olonade</span>
                 <span className="text-emerald-400 flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
                   Active
                 </span>
               </div>
@@ -99,7 +99,7 @@ export default function StudioAbout() {
 
                 <div className="p-3.5 rounded-xl bg-[#111318] border border-white/[0.06] space-y-1">
                   <span className="text-[#646974] block">Outside of code</span>
-                  <span className="text-[#F4F4F6] text-sm">Writing on faith, football (Man United), and film</span>
+                  <span className="text-[#F4F4F6] text-sm">Writing, football (Man United), and film</span>
                 </div>
               </div>
             </div>

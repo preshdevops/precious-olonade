@@ -23,7 +23,7 @@ export default function HeroMonograph() {
         {/* Top Studio Header Strip */}
         <div className="flex flex-wrap items-center gap-3 mb-8">
           <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#13151A] border border-white/[0.1] text-xs font-mono text-[#9DA1AA]">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
             <span>STUDIO / WORKBENCH</span>
           </span>
 

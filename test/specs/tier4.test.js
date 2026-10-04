@@ -51,12 +51,9 @@ module.exports = {
     const res = await fetch(baseUrl);
     const html = await res.text();
     
-    // Verify field notes and external blog integration
-    assert.ok(html.includes('Why I Built a Privacy App Instead of Another AI Tool'), 'Home page should display field note 1 title');
-    assert.ok(html.includes('What Building Mobile Apps Taught Me About Complexity'), 'Home page should display field note 2 title');
-    assert.ok(html.includes('Projects &amp; Decisions') || html.includes('Projects & Decisions') || html.includes('Projects'), 'Home page should display category for essay 1');
-    assert.ok(html.includes('Mobile &amp; Engineering') || html.includes('Mobile & Engineering') || html.includes('Mobile'), 'Home page should display category for essay 2');
+    // Verify external blog integration under find me online and removal of thinking section
     assert.ok(html.includes('preciouswrites.vercel.app'), 'Home page should link to PreciousWrites blog');
+    assert.ok(!html.includes('id="thinking"'), 'Thinking section should be completely removed');
   },
 
   'T4-5: Contact Email Copier Component Integration': async ({ baseUrl }) => {

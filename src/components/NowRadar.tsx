@@ -33,7 +33,7 @@ const explorations: NowItem[] = [
     tag: "CIVIC TECH",
     title: "Technology for Development",
     description:
-      "Thinking about practical software solutions for local problems in Nigeria—especially community tools, education, and civic groups.",
+      "Thinking about practical software solutions for local problems in Nigeria, especially community tools, education, and civic groups.",
     stage: "Field exploration",
   },
   {
@@ -54,7 +54,7 @@ export default function NowRadar() {
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
           <div className="space-y-3">
             <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+              <span className="w-2 h-2 rounded-full bg-emerald-400" />
               <span className="font-mono text-xs uppercase tracking-widest text-[#9DA1AA]">
                 Now
               </span>

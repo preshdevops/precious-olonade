@@ -52,10 +52,10 @@ module.exports = {
     const html = await res.text();
     assert.ok(html.includes('href="#home"'), 'Header logo brand should link back to #home container');
   },
-  'F2-B5: Navigation link text presents Work and Thinking labels': async ({ baseUrl }) => {
+  'F2-B5: Navigation link text presents Work and About labels': async ({ baseUrl }) => {
     const res = await fetch(baseUrl);
     const html = await res.text();
-    assert.ok(html.includes('Work') && html.includes('Thinking'), 'Navigation must present Work and Thinking labels');
+    assert.ok(html.includes('Work') && html.includes('About') && !html.includes('href="#thinking"'), 'Navigation must present Work and About labels without Thinking');
   },
 
   // === FEATURE 3: Identity Information (Boundary/Corner Cases) ===
@@ -79,10 +79,10 @@ module.exports = {
     const html = await res.text();
     assert.ok(html.includes('rel="noopener noreferrer"'), 'External social links must use rel="noopener noreferrer"');
   },
-  'F3-B5: Availability status uses pulse animation': async ({ baseUrl }) => {
+  'F3-B5: Availability status uses emerald indicator dot': async ({ baseUrl }) => {
     const res = await fetch(baseUrl);
     const html = await res.text();
-    assert.ok(html.includes('animate-pulse') || html.includes('bg-emerald-400'), 'Status indicator must use pulse animation');
+    assert.ok(html.includes('bg-emerald-400'), 'Status indicator must use emerald indicator dot');
   },
 
   // === FEATURE 4: Selected Work Case Studies (Boundary/Corner Cases) ===
@@ -104,12 +104,12 @@ module.exports = {
   'F4-B4: Case study interactive action trigger is present': async ({ baseUrl }) => {
     const res = await fetch(baseUrl);
     const html = await res.text();
-    assert.ok(html.includes('View project') || html.includes('VIEW CASE STUDY') || html.includes('CASE STUDY'), 'Project case study should contain view action button');
+    assert.ok(html.includes('Details') || html.includes('View project') || html.includes('CASE STUDY'), 'Project case study should contain action button');
   },
   'F4-B5: Project tech stack tags list valid technologies': async ({ baseUrl }) => {
     const res = await fetch(baseUrl);
     const html = await res.text();
-    assert.ok(html.includes('Web Crypto API') || html.includes('React') || html.includes('Django') || html.includes('PostgreSQL'), 'Project stack must render valid technologies');
+    assert.ok(html.includes('Web Crypto API') || html.includes('React') || html.includes('Django') || html.includes('Rust') || html.includes('Kotlin'), 'Project stack must render valid technologies');
   },
 
   // === FEATURE 5: About Section & Bio (Boundary/Corner Cases) ===
@@ -139,32 +139,35 @@ module.exports = {
     assert.ok(!html.includes('name is derived from') && !html.includes('meaning of my name'), 'Bio copy must remain professional and exclude name etymology');
   },
 
-  // === FEATURE 6: Product Thinking Field Notes (Boundary/Corner Cases) ===
-  'F6-B1: Field notes container uses unique DOM ID thinking': async ({ baseUrl }) => {
+  // === FEATURE 6: Spotlighted Projects (Boundary/Corner Cases) ===
+  'F6-B1: Thinking anchor is absent from navigation': async ({ baseUrl }) => {
     const res = await fetch(baseUrl);
     const html = await res.text();
-    assert.ok(html.includes('id="thinking"') || html.includes('id="blog"'), 'Thinking section must have matching id="thinking"');
+    assert.ok(!html.includes('href="#thinking"'), 'Thinking link must be removed from navigation');
   },
-  'F6-B2: Field notes list contains exactly four curated essays': async ({ baseUrl }) => {
+  'F6-B2: Projects list contains exactly five spotlighted projects': async ({ baseUrl }) => {
     const res = await fetch(baseUrl);
     const html = await res.text();
-    assert.ok(html.includes('Why I Built a Privacy App Instead of Another AI Tool'), 'Field notes must include Privacy essay');
-    assert.ok(html.includes('Why Community Technology Interests Me'), 'Field notes must include Community tech essay');
+    assert.ok(html.includes('dabar') || html.includes('Dabaar'), 'Must include Dabaar');
+    assert.ok(html.includes('editorial-muse'), 'Must include editorial-muse');
+    assert.ok(html.includes('Curious Bright'), 'Must include Curious Bright');
+    assert.ok(html.includes('Privora'), 'Must include Privora');
+    assert.ok(html.includes('Makarios'), 'Must include Makarios');
   },
-  'F6-B3: Field notes entries contain hover transition styles': async ({ baseUrl }) => {
+  'F6-B3: Project entries contain hover transition styles': async ({ baseUrl }) => {
     const res = await fetch(baseUrl);
     const html = await res.text();
-    assert.ok(html.includes('group') && (html.includes('transition-colors') || html.includes('transition-transform') || html.includes('transition-all')), 'Notes list must use hover animation styles');
+    assert.ok(html.includes('group') && (html.includes('transition-colors') || html.includes('transition-transform') || html.includes('transition-all')), 'Projects list must use hover animation styles');
   },
-  'F6-B4: Field notes layout implements structured editorial columns': async ({ baseUrl }) => {
+  'F6-B4: Project layout implements structured divisions': async ({ baseUrl }) => {
     const res = await fetch(baseUrl);
     const html = await res.text();
-    assert.ok(html.includes('grid-cols-') || html.includes('divide-y'), 'Field notes layout must implement structured editorial divisions');
+    assert.ok(html.includes('grid-cols-') || html.includes('divide-y'), 'Work layout must implement structured divisions');
   },
-  'F6-B5: Field notes header links to external writing platform': async ({ baseUrl }) => {
+  'F6-B5: Contact footer links to external writing platform': async ({ baseUrl }) => {
     const res = await fetch(baseUrl);
     const html = await res.text();
-    assert.ok(html.includes('preciouswrites.vercel.app'), 'Field notes must link out to PreciousWrites');
+    assert.ok(html.includes('preciouswrites.vercel.app'), 'Contact footer must link out to PreciousWrites');
   },
 
   // === FEATURE 7: Architectural Cleanliness & Zero Slop ===

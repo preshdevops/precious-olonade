@@ -7,17 +7,17 @@ module.exports = {
   'T3-1: Navbar links correspond to major page section IDs': async ({ baseUrl }) => {
     const res = await fetch(baseUrl);
     const html = await res.text();
-    // Navbar uses #work, #thinking, #about, and #now, which correspond to section IDs
+    // Navbar uses #work, #about, and #now, which correspond to section IDs
     assert.ok(html.includes('href="#work"') && html.includes('id="work"'), 'Navbar work link must match Work section ID');
     assert.ok(html.includes('href="#about"') && html.includes('id="about"'), 'Navbar about link must match About section ID');
-    assert.ok(html.includes('href="#thinking"') && html.includes('id="thinking"'), 'Navbar thinking link must match Thinking section ID');
+    assert.ok(html.includes('href="#now"') && html.includes('id="now"'), 'Navbar now link must match Now section ID');
+    assert.ok(!html.includes('href="#thinking"'), 'Navbar thinking link must be removed');
   },
 
-  'T3-2: Field notes category tags inherit typography classes': async ({ baseUrl }) => {
+  'T3-2: Project category tags inherit typography classes': async ({ baseUrl }) => {
     const res = await fetch(baseUrl);
     const html = await res.text();
-    // Field notes categories should use font-mono
-    assert.ok(html.includes('font-mono') && (html.includes('Projects &amp; Decisions') || html.includes('Projects & Decisions') || html.includes('Mobile') || html.includes('Development')), 'Category tags must utilize theme typography classes');
+    assert.ok(html.includes('font-mono') && (html.includes('Web') || html.includes('Mobile') || html.includes('Tools') || html.includes('Thesis')), 'Category tags must utilize theme typography classes');
   },
 
   'T3-3: About focus areas layout adheres to theme colors and design': async ({ baseUrl }) => {
@@ -38,14 +38,13 @@ module.exports = {
     const res = await fetch(baseUrl);
     const html = await res.text();
     // Project badges style check
-    assert.ok(html.includes('font-mono') && (html.includes('TypeScript') || html.includes('PostgreSQL') || html.includes('Django')), 'Project tech badges must combine theme typography and color properties');
+    assert.ok(html.includes('font-mono') && (html.includes('React') || html.includes('PostgreSQL') || html.includes('Rust')), 'Project tech badges must combine theme typography and color properties');
   },
 
-  'T3-6: Field notes titles utilize the serif heading font': async ({ baseUrl }) => {
+  'T3-6: Project titles utilize the serif heading font': async ({ baseUrl }) => {
     const res = await fetch(baseUrl);
     const html = await res.text();
-    // Essay titles should use font-serif
-    assert.ok(html.includes('font-serif') && html.includes('Why I Built a Privacy App Instead of Another AI Tool'), 'Field notes titles must utilize theme serif font properties');
+    assert.ok(html.includes('font-serif') && (html.includes('Privora') || html.includes('Dabaar') || html.includes('Makarios')), 'Project titles must utilize theme serif font properties');
   },
 
   'T3-7: Contact section CTA action elements align with theme colors': async ({ baseUrl }) => {

@@ -41,7 +41,7 @@ export default function SpotifyWidget() {
 
   if (loading) {
     return (
-      <div className="rounded-xl bg-[#13151A] border border-white/[0.08] p-3 max-w-xs w-full animate-pulse flex items-center gap-3">
+      <div className="rounded-xl bg-[#13151A] border border-white/[0.08] p-3 max-w-xs w-full flex items-center gap-3">
         <div className="w-8 h-8 bg-white/[0.06] rounded-lg"></div>
         <div className="flex-1 flex flex-col gap-1.5">
           <div className="h-2 w-16 bg-white/[0.06] rounded"></div>
@@ -84,7 +84,7 @@ export default function SpotifyWidget() {
       <div className="flex flex-col truncate max-w-[190px]">
         <div className="flex items-center gap-1.5">
           {isPlaying ? (
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0 animate-pulse" />
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0" />
           ) : (
             <span className="w-1.5 h-1.5 rounded-full bg-neutral-600 shrink-0" />
           )}

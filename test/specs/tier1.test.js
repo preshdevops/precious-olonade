@@ -99,17 +99,17 @@ module.exports = {
   'F4-3: Projects list renders Makarios product': async ({ baseUrl }) => {
     const res = await fetch(baseUrl);
     const html = await res.text();
-    assert.ok(html.includes('Makarios'), 'Should list Makarios community platform');
+    assert.ok(html.includes('Makarios'), 'Should list Makarios product');
   },
-  'F4-4: Projects list renders Dabar product': async ({ baseUrl }) => {
+  'F4-4: Projects list renders Dabar / Dabaar product': async ({ baseUrl }) => {
     const res = await fetch(baseUrl);
     const html = await res.text();
-    assert.ok(html.includes('Dabar'), 'Should list Dabar linguistic workspace');
+    assert.ok(html.includes('Dabaar') || html.includes('Dabar') || html.includes('dabar'), 'Should list Dabaar product');
   },
   'F4-5: Projects render simple stack indicator': async ({ baseUrl }) => {
     const res = await fetch(baseUrl);
     const html = await res.text();
-    assert.ok(html.includes('React · Django · PostgreSQL') || html.includes('Kotlin · Android') || html.includes('Rust · TypeScript · Next.js'), 'Projects should show clean stack text');
+    assert.ok(html.includes('React · Django · PostgreSQL') || html.includes('Kotlin · Android') || html.includes('Rust · React') || html.includes('HTML · CSS'), 'Projects should show clean stack text');
   },
 
   // === FEATURE 5: About Section & Bio ===
@@ -139,31 +139,31 @@ module.exports = {
     assert.ok(html.includes('TSDI') || html.includes('OSPCN'), 'About should reference TSDI or OSPCN');
   },
 
-  // === FEATURE 6: Product Thinking Field Notes ===
-  'F6-1: Product thinking section header is present': async ({ baseUrl }) => {
+  // === FEATURE 6: Spotlighted Projects & Restraint ===
+  'F6-1: Product notes section is absent from page': async ({ baseUrl }) => {
     const res = await fetch(baseUrl);
     const html = await res.text();
-    assert.ok(html.includes('Product notes') || html.includes('Writing &amp; Thinking') || html.includes('Thinking'), 'Product Thinking section should exist');
+    assert.ok(!html.includes('Product notes') && !html.includes('id="thinking"') && !html.includes('Visit PreciousWrites'), 'Product notes section should be absent');
   },
-  'F6-2: Field notes render Privacy over AI essay': async ({ baseUrl }) => {
+  'F6-2: Projects list renders editorial-muse project': async ({ baseUrl }) => {
     const res = await fetch(baseUrl);
     const html = await res.text();
-    assert.ok(html.includes('Why I Built a Privacy App Instead of Another AI Tool'), 'Field notes should render Privacy App essay');
+    assert.ok(html.includes('editorial-muse'), 'Should list editorial-muse project');
   },
-  'F6-3: Field notes render Mobile complexity essay': async ({ baseUrl }) => {
+  'F6-3: Projects list renders Curious Bright project': async ({ baseUrl }) => {
     const res = await fetch(baseUrl);
     const html = await res.text();
-    assert.ok(html.includes('What Building Mobile Apps Taught Me About Complexity'), 'Field notes should render Mobile Apps essay');
+    assert.ok(html.includes('Curious Bright'), 'Should list Curious Bright project');
   },
-  'F6-4: Field notes render Starting late essay': async ({ baseUrl }) => {
+  'F6-4: Projects section count displays 5 Projects': async ({ baseUrl }) => {
     const res = await fetch(baseUrl);
     const html = await res.text();
-    assert.ok(html.includes('Starting Software Development Later Than Most People'), 'Field notes should render Starting Late essay');
+    assert.ok(html.includes('5 Projects'), 'Projects count should show 5 Projects');
   },
-  'F6-5: Field notes render Community technology essay': async ({ baseUrl }) => {
+  'F6-5: External blog link is maintained in contact area': async ({ baseUrl }) => {
     const res = await fetch(baseUrl);
     const html = await res.text();
-    assert.ok(html.includes('Why Community Technology Interests Me'), 'Field notes should render Community Tech essay');
+    assert.ok(html.includes('preciouswrites.vercel.app'), 'Blog link must be present in contact area');
   },
 
   // === FEATURE 7: Now Section & Architectural Restraint ===
