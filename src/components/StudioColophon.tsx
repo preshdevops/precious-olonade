@@ -25,9 +25,6 @@ export default function StudioColophon() {
               <span className="font-mono text-xs uppercase tracking-widest text-[#9DA1AA] block">
                 Contact
               </span>
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-500/[0.08] text-emerald-400 border border-emerald-500/20">
-                Inbox Open
-              </span>
             </div>
 
             <h2 className="font-serif text-3xl sm:text-4xl text-[#F4F4F6] font-normal tracking-tight">
@@ -35,7 +32,7 @@ export default function StudioColophon() {
             </h2>
 
             <p className="text-base sm:text-lg text-[#9DA1AA] leading-relaxed max-w-lg">
-              I&rsquo;m currently looking for junior / early-career product engineering and developer opportunities, and I&rsquo;m always happy to connect with other builders.
+              I&rsquo;m currently looking for early-career product engineering and developer opportunities, and I&rsquo;m always happy to connect with other builders.
             </p>
 
             {/* Email Copier & Direct Action */}

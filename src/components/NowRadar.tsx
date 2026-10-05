@@ -54,12 +54,8 @@ export default function NowRadar() {
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
           <div className="space-y-3">
             <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-emerald-400" />
               <span className="font-mono text-xs uppercase tracking-widest text-[#9DA1AA]">
                 Now
-              </span>
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-white/[0.06] text-[#9DA1AA]">
-                Workbench Radar
               </span>
             </div>
             <h2 className="font-serif text-3xl sm:text-4xl text-[#F4F4F6] font-normal tracking-tight">
@@ -70,9 +66,8 @@ export default function NowRadar() {
             </p>
           </div>
 
-          <div className="font-mono text-xs text-[#646974] flex items-center gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-white/40" />
-            <span>Updated September 2026</span>
+          <div className="font-mono text-xs text-[#646974]">
+            Updated September 2026
           </div>
         </div>
 
@@ -85,7 +80,7 @@ export default function NowRadar() {
             >
               <div className="space-y-2.5">
                 <div className="flex items-center justify-between">
-                  <span className="font-mono text-[10px] uppercase tracking-wider px-2 py-0.5 rounded bg-white/[0.04] border border-white/[0.06] text-[#9DA1AA]">
+                  <span className="font-mono text-[10px] uppercase tracking-wider text-[#9DA1AA]">
                     {item.tag}
                   </span>
                   <span className="text-[10px] font-mono text-[#646974]">

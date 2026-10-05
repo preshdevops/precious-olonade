@@ -7,8 +7,6 @@ interface ProjectItem {
   category: "desktop" | "web" | "thesis" | "mobile";
   name: string;
   tagline: string;
-  stampText: string;
-  stampColor: string;
   description: string;
   stackText: string;
   stackList: string[];
@@ -27,8 +25,6 @@ const projects: ProjectItem[] = [
     category: "desktop",
     name: "Dabaar",
     tagline: "Desktop application",
-    stampText: "ACTIVE BUILD · DESKTOP",
-    stampColor: "border-sky-500/30 text-sky-400 bg-sky-500/[0.06]",
     description: "A desktop app built with Rust and React that turns long videos into short-form clips.",
     stackText: "Rust · React",
     stackList: ["Rust", "React", "Desktop"],
@@ -47,8 +43,6 @@ const projects: ProjectItem[] = [
     category: "web",
     name: "editorial-muse",
     tagline: "Letter website",
-    stampText: "LIVE · WEB",
-    stampColor: "border-purple-500/30 text-purple-400 bg-purple-500/[0.06]",
     description: "A letter website.",
     stackText: "HTML · CSS",
     stackList: ["HTML", "CSS"],
@@ -68,8 +62,6 @@ const projects: ProjectItem[] = [
     category: "web",
     name: "Curious Bright",
     tagline: "Collaborative project",
-    stampText: "COLLABORATION · FRONTEND",
-    stampColor: "border-blue-500/30 text-blue-400 bg-blue-500/[0.06]",
     description: "Frontend developer for Curious Bright, built in collaboration with a partner.",
     stackText: "Frontend",
     stackList: ["HTML", "CSS", "JavaScript"],
@@ -87,8 +79,6 @@ const projects: ProjectItem[] = [
     category: "thesis",
     name: "Privora",
     tagline: "Final-year university project",
-    stampText: "SHIPPED v1.0 · THESIS",
-    stampColor: "border-amber-500/30 text-amber-400 bg-amber-500/[0.06]",
     description: "A privacy tool for keeping your personal files secure.",
     stackText: "React · Django · PostgreSQL",
     stackList: ["React", "Django", "PostgreSQL", "Web Crypto API", "AES-GCM"],
@@ -107,8 +97,6 @@ const projects: ProjectItem[] = [
     category: "mobile",
     name: "Makarios",
     tagline: "Mobile application",
-    stampText: "IN ACTIVE BUILD · ANDROID",
-    stampColor: "border-emerald-500/30 text-emerald-400 bg-emerald-500/[0.06]",
     description: "A mobile app for daily affirmations and personal growth.",
     stackText: "Kotlin · Android",
     stackList: ["Kotlin", "Android", "Jetpack Compose", "Room DB", "Clean Architecture"],
@@ -156,8 +144,8 @@ export default function SelectedWork() {
               <span className="font-mono text-xs uppercase tracking-widest text-[#9DA1AA]">
                 Selected Work
               </span>
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-white/[0.06] text-[#9DA1AA]">
-                5 Projects
+              <span className="text-xs font-mono text-[#646974]">
+                (5 Projects)
               </span>
             </div>
             <h2 className="font-serif text-3xl sm:text-4xl text-[#F4F4F6] font-normal tracking-tight">
@@ -168,7 +156,7 @@ export default function SelectedWork() {
             </p>
           </div>
 
-          {/* Filter Pills */}
+          {/* Monochrome Filter Buttons */}
           <div className="flex flex-wrap items-center gap-2 font-mono text-xs">
             <button
               onClick={() => setFilter("all")}
@@ -184,7 +172,7 @@ export default function SelectedWork() {
               onClick={() => setFilter("web")}
               className={`tactile-press px-3 py-1.5 rounded-lg border transition-all cursor-pointer ${
                 filter === "web"
-                  ? "bg-purple-400 text-black border-purple-400 font-semibold"
+                  ? "bg-white text-black border-white font-semibold"
                   : "bg-[#13151A] text-[#9DA1AA] border-white/[0.1] hover:border-white/[0.25] hover:text-white"
               }`}
             >
@@ -194,7 +182,7 @@ export default function SelectedWork() {
               onClick={() => setFilter("desktop")}
               className={`tactile-press px-3 py-1.5 rounded-lg border transition-all cursor-pointer ${
                 filter === "desktop"
-                  ? "bg-sky-400 text-black border-sky-400 font-semibold"
+                  ? "bg-white text-black border-white font-semibold"
                   : "bg-[#13151A] text-[#9DA1AA] border-white/[0.1] hover:border-white/[0.25] hover:text-white"
               }`}
             >
@@ -204,7 +192,7 @@ export default function SelectedWork() {
               onClick={() => setFilter("mobile")}
               className={`tactile-press px-3 py-1.5 rounded-lg border transition-all cursor-pointer ${
                 filter === "mobile"
-                  ? "bg-emerald-400 text-black border-emerald-400 font-semibold"
+                  ? "bg-white text-black border-white font-semibold"
                   : "bg-[#13151A] text-[#9DA1AA] border-white/[0.1] hover:border-white/[0.25] hover:text-white"
               }`}
             >
@@ -214,7 +202,7 @@ export default function SelectedWork() {
               onClick={() => setFilter("thesis")}
               className={`tactile-press px-3 py-1.5 rounded-lg border transition-all cursor-pointer ${
                 filter === "thesis"
-                  ? "bg-amber-400 text-black border-amber-400 font-semibold"
+                  ? "bg-white text-black border-white font-semibold"
                   : "bg-[#13151A] text-[#9DA1AA] border-white/[0.1] hover:border-white/[0.25] hover:text-white"
               }`}
             >
@@ -236,22 +224,12 @@ export default function SelectedWork() {
               >
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-baseline">
                   
-                  {/* Number & Tag */}
-                  <div className="lg:col-span-3 font-mono text-xs text-[#646974] space-y-2">
-                    <div className="flex items-center gap-2">
+                  {/* Number & Tagline */}
+                  <div className="lg:col-span-3 font-mono text-xs text-[#646974] space-y-1">
+                    <div>
                       <span className="text-white font-medium">{indexStr}</span>
-                      <span className="text-[#646974]">/ 05</span>
                     </div>
                     <div className="text-[#9DA1AA]">{project.tagline}</div>
-                    
-                    {/* Stamp Badge */}
-                    <div className="pt-1">
-                      <span
-                        className={`inline-block text-[10px] font-mono tracking-wider px-2 py-0.5 rounded border ${project.stampColor}`}
-                      >
-                        {project.stampText}
-                      </span>
-                    </div>
                   </div>
 
                   {/* Project Details */}
@@ -297,7 +275,7 @@ export default function SelectedWork() {
                         href={project.liveUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="tactile-press px-2.5 py-1 rounded-md border border-emerald-500/20 bg-emerald-500/[0.05] hover:border-emerald-400 text-xs font-mono text-emerald-400 transition-colors"
+                        className="tactile-press px-2.5 py-1 rounded-md border border-white/[0.1] hover:border-white/[0.3] text-xs font-mono text-[#9DA1AA] hover:text-white transition-colors"
                         aria-label={`${project.name} live site`}
                       >
                         Live ↗
@@ -332,15 +310,8 @@ export default function SelectedWork() {
             {/* Modal Header */}
             <div className="flex items-start justify-between pb-5 border-b border-white/[0.08]">
               <div className="space-y-1">
-                <div className="flex items-center gap-2">
-                  <span className="font-mono text-xs text-[#9DA1AA] uppercase tracking-wider">
-                    {activeProject.tagline}
-                  </span>
-                  <span
-                    className={`text-[10px] font-mono tracking-wider px-2 py-0.5 rounded border ${activeProject.stampColor}`}
-                  >
-                    {activeProject.stampText}
-                  </span>
+                <div className="font-mono text-xs text-[#9DA1AA] uppercase tracking-wider">
+                  {activeProject.tagline}
                 </div>
                 <h3 className="font-serif text-2xl sm:text-3xl font-medium text-[#F4F4F6] mt-1">
                   {activeProject.name}
@@ -466,7 +437,7 @@ export default function SelectedWork() {
                     href={activeProject.liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="tactile-press px-4 py-2 rounded-lg border border-emerald-500/30 text-xs font-mono text-emerald-400 hover:border-emerald-400 hover:bg-emerald-500/[0.08] transition-all inline-block"
+                    className="tactile-press px-4 py-2 rounded-lg border border-white/[0.14] text-xs font-mono text-white hover:border-white hover:bg-white/[0.06] transition-all inline-block"
                   >
                     LIVE SITE ↗
                   </a>

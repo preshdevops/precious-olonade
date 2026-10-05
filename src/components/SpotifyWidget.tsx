@@ -82,24 +82,17 @@ export default function SpotifyWidget() {
       </div>
 
       <div className="flex flex-col truncate max-w-[190px]">
-        <div className="flex items-center gap-1.5">
-          {isPlaying ? (
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0" />
-          ) : (
-            <span className="w-1.5 h-1.5 rounded-full bg-neutral-600 shrink-0" />
-          )}
-          <span className="text-[#F4F4F6] font-medium truncate group-hover:text-white transition-colors">
-            {title}
-          </span>
-        </div>
+        <span className="text-[#F4F4F6] font-medium truncate group-hover:text-white transition-colors">
+          {title}
+        </span>
         <span className="text-[#9DA1AA] truncate text-[11px]">{artist}</span>
       </div>
 
       {isPlaying ? (
         <div className="flex items-end gap-[2px] h-3 ml-auto shrink-0" aria-hidden="true">
-          <span className="w-0.5 bg-emerald-400/80 animate-[eq-bounce_1.0s_0.1s_ease-in-out_infinite] h-2"></span>
-          <span className="w-0.5 bg-emerald-400/80 animate-[eq-bounce_1.4s_0.4s_ease-in-out_infinite] h-3"></span>
-          <span className="w-0.5 bg-emerald-400/80 animate-[eq-bounce_1.2s_0.2s_ease-in-out_infinite] h-1.5"></span>
+          <span className="w-0.5 bg-white/80 animate-[eq-bounce_1.0s_0.1s_ease-in-out_infinite] h-2"></span>
+          <span className="w-0.5 bg-white/80 animate-[eq-bounce_1.4s_0.4s_ease-in-out_infinite] h-3"></span>
+          <span className="w-0.5 bg-white/80 animate-[eq-bounce_1.2s_0.2s_ease-in-out_infinite] h-1.5"></span>
         </div>
       ) : (
         <span className="ml-auto text-[10px] font-mono text-[#646974] shrink-0">

@@ -45,9 +45,8 @@ export default function StudioHeader() {
           </a>
           <a
             href="#now"
-            className="text-sm font-medium text-[#9DA1AA] hover:text-[#F4F4F6] transition-colors duration-150 tracking-wide flex items-center gap-2"
+            className="text-sm font-medium text-[#9DA1AA] hover:text-[#F4F4F6] transition-colors duration-150 tracking-wide"
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
             Now
           </a>
         </nav>
@@ -103,9 +102,8 @@ export default function StudioHeader() {
             <a
               href="#now"
               onClick={() => setMobileMenuOpen(false)}
-              className="text-base text-[#F4F4F6] hover:text-white font-medium flex items-center gap-2"
+              className="text-base text-[#F4F4F6] hover:text-white font-medium"
             >
-              <span className="w-2 h-2 rounded-full bg-emerald-400" />
               Now
             </a>
             <div className="pt-4 border-t border-white/[0.08] flex items-center justify-between">

@@ -21,19 +21,10 @@ export default function HeroMonograph() {
       <div className="max-w-5xl mx-auto px-6 relative z-10">
         
         {/* Top Studio Header Strip */}
-        <div className="flex flex-wrap items-center gap-3 mb-8">
-          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#13151A] border border-white/[0.1] text-xs font-mono text-[#9DA1AA]">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-            <span>STUDIO / WORKBENCH</span>
-          </span>
-
-          <span className="inline-flex items-center px-3 py-1 rounded-full bg-[#13151A] border border-white/[0.1] text-xs font-mono text-[#9DA1AA]">
-            <span>OSUN, NIGERIA</span>
-          </span>
-
-          <span className="hidden sm:inline-flex items-center px-3 py-1 rounded-full bg-[#13151A] border border-white/[0.08] text-xs font-mono text-[#646974]">
-            <span>WAT (UTC+1)</span>
-          </span>
+        <div className="flex flex-wrap items-center gap-3 mb-8 font-mono text-xs text-[#9DA1AA]">
+          <span>Osun, Nigeria</span>
+          <span className="text-[#646974]">·</span>
+          <span className="text-[#646974]">WAT (UTC+1)</span>
         </div>
 
         {/* Main Hero Header */}
@@ -70,15 +61,12 @@ export default function HeroMonograph() {
           </div>
         </div>
 
-        {/* Playful Interactive Studio Scratchpad */}
+        {/* Studio Scratchpad */}
         <div className="mt-12 p-4 sm:p-5 rounded-2xl bg-[#13151A] border border-white/[0.08] max-w-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div className="space-y-1">
             <div className="flex items-center gap-2">
               <span className="text-[10px] font-mono uppercase tracking-wider text-[#646974]">
                 Workbench Note #{thoughtIndex + 1}
-              </span>
-              <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-white/[0.06] text-[#9DA1AA]">
-                Casual thought
               </span>
             </div>
             <p className="font-serif italic text-sm sm:text-base text-[#F4F4F6] leading-snug">
@@ -111,7 +99,7 @@ export default function HeroMonograph() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             <div className="group p-5 rounded-xl bg-[#111318] border border-white/[0.06] hover:border-white/[0.18] transition-all duration-200 flex flex-col justify-between space-y-3">
               <div className="space-y-2">
-                <span className="font-mono text-[10px] text-[#646974] block">AREA / 01</span>
+                <span className="font-mono text-[10px] text-[#646974] block">01</span>
                 <h3 className="font-serif text-lg text-[#F4F4F6] font-medium group-hover:text-white transition-colors">
                   Product building
                 </h3>
@@ -126,7 +114,7 @@ export default function HeroMonograph() {
 
             <div className="group p-5 rounded-xl bg-[#111318] border border-white/[0.06] hover:border-white/[0.18] transition-all duration-200 flex flex-col justify-between space-y-3">
               <div className="space-y-2">
-                <span className="font-mono text-[10px] text-[#646974] block">AREA / 02</span>
+                <span className="font-mono text-[10px] text-[#646974] block">02</span>
                 <h3 className="font-serif text-lg text-[#F4F4F6] font-medium group-hover:text-white transition-colors">
                   Software
                 </h3>
@@ -141,7 +129,7 @@ export default function HeroMonograph() {
 
             <div className="group p-5 rounded-xl bg-[#111318] border border-white/[0.06] hover:border-white/[0.18] transition-all duration-200 flex flex-col justify-between space-y-3">
               <div className="space-y-2">
-                <span className="font-mono text-[10px] text-[#646974] block">AREA / 03</span>
+                <span className="font-mono text-[10px] text-[#646974] block">03</span>
                 <h3 className="font-serif text-lg text-[#F4F4F6] font-medium group-hover:text-white transition-colors">
                   Privacy
                 </h3>
@@ -156,7 +144,7 @@ export default function HeroMonograph() {
 
             <div className="group p-5 rounded-xl bg-[#111318] border border-white/[0.06] hover:border-white/[0.18] transition-all duration-200 flex flex-col justify-between space-y-3">
               <div className="space-y-2">
-                <span className="font-mono text-[10px] text-[#646974] block">AREA / 04</span>
+                <span className="font-mono text-[10px] text-[#646974] block">04</span>
                 <h3 className="font-serif text-lg text-[#F4F4F6] font-medium group-hover:text-white transition-colors">
                   Tech for Development
                 </h3>

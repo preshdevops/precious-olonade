@@ -11,9 +11,6 @@ export default function StudioAbout() {
             <span className="font-mono text-xs uppercase tracking-widest text-[#9DA1AA] block">
               About
             </span>
-            <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-white/[0.06] text-[#9DA1AA]">
-              The Person Behind The Products
-            </span>
           </div>
           <h2 className="font-serif text-3xl sm:text-4xl text-[#F4F4F6] font-normal tracking-tight">
             A bit about me
@@ -51,10 +48,10 @@ export default function StudioAbout() {
             </div>
           </div>
 
-          {/* Builder Desk Badge & Snapshot */}
+          {/* Builder Snapshot */}
           <div className="lg:col-span-5 space-y-6 lg:border-l lg:border-white/[0.08] lg:pl-10">
             
-            {/* Tactile Builder Polaroid Card */}
+            {/* Minimal Photo Card */}
             <div className="p-4 rounded-2xl bg-[#13151A] border border-white/[0.1] space-y-3 shadow-lg">
               <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-[#181A20] border border-white/[0.08]">
                 <img
@@ -62,16 +59,10 @@ export default function StudioAbout() {
                   alt="Precious Oluwasegun Olonade"
                   className="w-full h-full object-cover filter grayscale contrast-105 hover:grayscale-0 transition-all duration-300"
                 />
-                <div className="absolute top-2.5 left-2.5 px-2 py-0.5 rounded bg-black/70 backdrop-blur-md text-[10px] font-mono text-white/90 border border-white/10">
-                  BUILDER ID / OSUN, NIGERIA
-                </div>
               </div>
               <div className="flex items-center justify-between text-xs font-mono pt-1 text-[#9DA1AA]">
                 <span>Precious Olonade</span>
-                <span className="text-emerald-400 flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                  Active
-                </span>
+                <span className="text-[#9DA1AA]">Available for roles</span>
               </div>
             </div>
 
@@ -94,7 +85,7 @@ export default function StudioAbout() {
 
                 <div className="p-3.5 rounded-xl bg-[#111318] border border-white/[0.06] space-y-1">
                   <span className="text-[#646974] block">What I&rsquo;m looking for</span>
-                  <span className="text-[#F4F4F6] text-sm">Junior / early-career product engineering and software developer roles</span>
+                  <span className="text-[#F4F4F6] text-sm">Early-career product engineering and software developer roles</span>
                 </div>
 
                 <div className="p-3.5 rounded-xl bg-[#111318] border border-white/[0.06] space-y-1">
